@@ -1,0 +1,42 @@
+@import "../../styles/main.scss";
+
+.role_switcher {
+  display: flex;
+  flex-direction: row;
+  gap: rem(8);
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  align-self: auto;
+
+  &__active_span {
+    color: $blue;
+    font-weight: 600;
+  }
+
+  &__toogle {
+    position: relative;
+    height: rem(32);
+    @include breakpoint(large) {
+      height: rem(40);
+    }
+    width: rem(80);
+
+    border-radius: rem(20);
+    border: 1px solid $grey;
+
+    &__item {
+      position: absolute;
+      right: 0;
+      width: 60%;
+      height: 100%;
+      border-radius: rem(20);
+      background-color: $blue;
+      transition: right 0.4s ease-in-out;
+
+      &__active {
+        right: 40%;
+      }
+    }
+  }
+}

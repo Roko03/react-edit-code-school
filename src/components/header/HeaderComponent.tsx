@@ -2,6 +2,7 @@ import { useState } from "react";
 import BurgerMenuComponent from "../burger-menu/BurgerMenuComponent";
 import styles from "./HeaderComponent.module.scss";
 import RoleSwitcherComponent from "../role-switcher/RoleSwitcherComponent";
+import { Link, NavLink } from "react-router-dom";
 
 const HeaderComponent = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
@@ -20,7 +21,7 @@ const HeaderComponent = () => {
         </div>
         <div className={styles.header__container}>
           <div className={styles.header__main}>
-            <div className={styles.header__main__logo}>
+            <Link to={"/"} className={styles.header__main__logo}>
               <img
                 src={"/logo-mobile.svg"}
                 alt="mobile-logo"
@@ -31,10 +32,48 @@ const HeaderComponent = () => {
                 alt="mobile-logo"
                 className={styles.header__main__logo__desktop}
               />
-            </div>
+            </Link>
             <ul className={styles.header__main__links}>
-              <li>List</li>
-              <li>List</li>
+              <li>
+                <NavLink
+                  to={"/"}
+                  className={({ isActive }) =>
+                    isActive ? styles.header__main__links__active : ""
+                  }
+                >
+                  Naslovna
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/radionice"}
+                  className={({ isActive }) =>
+                    isActive ? styles.header__main__links__active : ""
+                  }
+                >
+                  Radionice
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/predavaci"}
+                  className={({ isActive }) =>
+                    isActive ? styles.header__main__links__active : ""
+                  }
+                >
+                  Predavaci
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/admin"}
+                  className={({ isActive }) =>
+                    isActive ? styles.header__main__links__active : ""
+                  }
+                >
+                  Administracija
+                </NavLink>
+              </li>
             </ul>
             <BurgerMenuComponent
               isActive={isMenuActive}

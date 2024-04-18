@@ -69,6 +69,14 @@
       @include breakpoint(large) {
         display: flex;
       }
+
+      flex-direction: row;
+      gap: rem(18);
+
+      &__active {
+        font-weight: 700;
+        color: $blue;
+      }
     }
 
     &__switcher {

@@ -3,6 +3,7 @@ import BurgerMenuComponent from "../burger-menu/BurgerMenuComponent";
 import styles from "./HeaderComponent.module.scss";
 import RoleSwitcherComponent from "../role-switcher/RoleSwitcherComponent";
 import { Link, NavLink } from "react-router-dom";
+import MenuComponent from "./menu/MenuComponent";
 
 const HeaderComponent = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
@@ -88,6 +89,10 @@ const HeaderComponent = () => {
           </div>
         </div>
       </header>
+      <MenuComponent
+        isActive={isMenuActive}
+        closeModal={() => setIsMenuActive(false)}
+      />
     </>
   );
 };

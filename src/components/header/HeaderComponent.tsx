@@ -4,6 +4,7 @@ import styles from "./HeaderComponent.module.scss";
 import RoleSwitcherComponent from "../role-switcher/RoleSwitcherComponent";
 import { Link, NavLink } from "react-router-dom";
 import MenuComponent from "./menu/MenuComponent";
+import LinkListComponent from "../link-list/LinkListComponent";
 
 const HeaderComponent = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
@@ -34,48 +35,9 @@ const HeaderComponent = () => {
                 className={styles.header__main__logo__desktop}
               />
             </Link>
-            <ul className={styles.header__main__links}>
-              <li>
-                <NavLink
-                  to={"/"}
-                  className={({ isActive }) =>
-                    isActive ? styles.header__main__links__active : ""
-                  }
-                >
-                  Naslovna
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"/radionice"}
-                  className={({ isActive }) =>
-                    isActive ? styles.header__main__links__active : ""
-                  }
-                >
-                  Radionice
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"/predavaci"}
-                  className={({ isActive }) =>
-                    isActive ? styles.header__main__links__active : ""
-                  }
-                >
-                  Predavaci
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"/admin"}
-                  className={({ isActive }) =>
-                    isActive ? styles.header__main__links__active : ""
-                  }
-                >
-                  Administracija
-                </NavLink>
-              </li>
-            </ul>
+            <div className={styles.header__main__links}>
+              <LinkListComponent />
+            </div>
             <BurgerMenuComponent
               isActive={isMenuActive}
               onClick={() => setIsMenuActive(!isMenuActive)}

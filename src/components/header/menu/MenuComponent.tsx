@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import styles from "./MenuComponent.module.scss";
 import useScreenSize from "../../../util/useScreenSize";
+import LinkListComponent from "../../link-list/LinkListComponent";
+import { Link } from "react-router-dom";
 
 interface MenuComponentProps {
   isActive: boolean;
@@ -36,7 +38,23 @@ const MenuComponent: React.FC<MenuComponentProps> = ({
 
   return (
     <div className={`${styles.menu} ${isActive ? styles.menu_active : ""}`}>
-      <div className={styles.menu__box} ref={menuRef}></div>
+      <div className={styles.menu__box} ref={menuRef}>
+        <div className={styles.menu__box__container}>
+          <Link to={"/"} className={styles.menu__box__logo}>
+            <img
+              src={"/logo-mobile.svg"}
+              alt="mobile.logo"
+              className={styles.menu__box__logo__mobile}
+            />
+            <img
+              src={"/logo-desktop.svg"}
+              alt="mobile.logo"
+              className={styles.menu__box__logo__desktop}
+            />
+          </Link>
+          <LinkListComponent />
+        </div>
+      </div>
     </div>
   );
 };

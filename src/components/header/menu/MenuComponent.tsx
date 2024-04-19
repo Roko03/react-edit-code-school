@@ -23,6 +23,8 @@ const MenuComponent: React.FC<MenuComponentProps> = ({
       }
     };
 
+    document.addEventListener("mousedown", handleOutSideBox);
+
     return () => {
       document.addEventListener("mousedown", handleOutSideBox);
     };

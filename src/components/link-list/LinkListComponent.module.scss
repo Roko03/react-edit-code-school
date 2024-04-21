@@ -1,0 +1,25 @@
+@import "../../styles/main.scss";
+
+.link_list {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: rem(24);
+
+  @include breakpoint(medium) {
+    font-size: rem(28);
+  }
+
+  @include breakpoint(large) {
+    font-size: rem(21);
+    flex-direction: row;
+  }
+
+  gap: rem(18);
+
+  &__active {
+    font-weight: 700;
+    color: $blue;
+  }
+}

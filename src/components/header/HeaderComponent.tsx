@@ -36,7 +36,10 @@ const HeaderComponent = () => {
         </div>
         <div className={styles.header__container}>
           <div className={styles.header__main}>
-            <Link to={"/"} className={styles.header__main__logo}>
+            <Link
+              to={isAdmin ? "/admin" : "/"}
+              className={styles.header__main__logo}
+            >
               <img
                 src={"/logo-mobile.svg"}
                 alt="mobile-logo"

@@ -12,7 +12,36 @@
   }
 
   &__box {
-    padding: rem(24) 0;
+    padding: rem(64) 0 rem(48);
     background-color: $blue;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: auto;
+      max-width: rem(1440);
+    }
+
+    &__logo {
+      img {
+        filter: brightness(10000%);
+      }
+
+      &__mobile {
+        display: flex;
+
+        @include breakpoint(large) {
+          display: none;
+        }
+      }
+      &__desktop {
+        display: none;
+
+        @include breakpoint(large) {
+          display: flex;
+        }
+      }
+    }
   }
 }

@@ -20,6 +20,22 @@
 
   &__active {
     font-weight: 700;
+  }
+}
+
+.link_list_header {
+  color: $black !important;
+
+  .link_list__active {
     color: $blue;
+  }
+}
+
+.link_list_footer {
+  color: $white !important;
+
+  .link_list__active {
+    color: $white;
+    text-decoration: underline;
   }
 }

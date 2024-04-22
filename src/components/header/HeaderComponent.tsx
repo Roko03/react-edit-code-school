@@ -52,7 +52,7 @@ const HeaderComponent = () => {
               />
             </Link>
             <div className={styles.header__main__links}>
-              <LinkListComponent />
+              <LinkListComponent variant={"header"} />
             </div>
             <BurgerMenuComponent
               isActive={isMenuActive}

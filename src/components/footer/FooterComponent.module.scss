@@ -1,0 +1,18 @@
+@import "../../styles/main.scss";
+
+.footer {
+  position: relative;
+  margin-top: auto;
+
+  &__wave {
+    position: absolute;
+    img {
+      width: 100%;
+    }
+  }
+
+  &__box {
+    padding: rem(24) 0;
+    background-color: $blue;
+  }
+}

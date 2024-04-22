@@ -1,12 +1,10 @@
 @import "../../styles/main.scss";
 
 .footer {
-  position: relative;
-  margin-top: auto;
-
   &__wave {
     position: absolute;
     top: 0;
+    z-index: 1;
     display: flex;
     flex-direction: column;
 
@@ -21,6 +19,7 @@
 
   &__box {
     position: absolute;
+    z-index: 1;
     top: rem(84);
     height: auto;
     width: 100%;

@@ -47,6 +47,7 @@
     }
 
     &__logo {
+      align-self: baseline;
       img {
         filter: brightness(10000%);
       }

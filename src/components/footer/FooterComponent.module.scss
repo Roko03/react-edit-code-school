@@ -6,21 +6,24 @@
 
   &__wave {
     position: absolute;
+    height: rem(84);
     img {
       width: 100%;
     }
   }
 
   &__box {
-    padding: rem(64) 0 rem(48);
+    padding: rem(98) 0 rem(48);
     background-color: $blue;
 
     &__container {
       display: flex;
+      gap: rem(42);
       flex-direction: column;
       width: 90%;
       margin: auto;
       max-width: rem(1440);
+      height: 100%;
     }
 
     &__logo {

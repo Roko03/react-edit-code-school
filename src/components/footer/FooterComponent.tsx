@@ -1,6 +1,7 @@
 import styles from "./FooterComponent.module.scss";
 import { Link } from "react-router-dom";
 import { userRoleManager } from "../../util/userRoleContext";
+import LinkListComponent from "../link-list/LinkListComponent";
 
 const FooterComponent = () => {
   const { role } = userRoleManager();
@@ -28,6 +29,7 @@ const FooterComponent = () => {
                 className={styles.footer__box__logo__desktop}
               />
             </Link>
+            <LinkListComponent variant={"footer"} />
           </div>
         </div>
       </footer>

@@ -54,7 +54,7 @@ const MenuComponent: React.FC<MenuComponentProps> = ({
               className={styles.menu__box__logo__desktop}
             />
           </Link>
-          <LinkListComponent />
+          <LinkListComponent variant={"header"} />
         </div>
       </div>
     </div>

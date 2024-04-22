@@ -2,7 +2,11 @@ import { userRoleManager } from "../../util/userRoleContext";
 import styles from "./LinkListComponent.module.scss";
 import { NavLink } from "react-router-dom";
 
-const LinkListComponent = () => {
+interface LinkListComponentProps {
+  variant: "header" | "footer";
+}
+
+const LinkListComponent: React.FC<LinkListComponentProps> = ({ variant }) => {
   const { role } = userRoleManager();
 
   const linksByRole = () => {
@@ -60,7 +64,15 @@ const LinkListComponent = () => {
     }
   };
 
-  return <ul className={styles.link_list}>{linksByRole()}</ul>;
+  return (
+    <ul
+      className={`${styles.link_list} ${
+        variant == "header" ? styles.link_list_header : styles.link_list_footer
+      }`}
+    >
+      {linksByRole()}
+    </ul>
+  );
 };
 
 export default LinkListComponent;

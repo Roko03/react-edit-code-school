@@ -1,5 +1,11 @@
 @import "../../styles/main.scss";
 
+.container {
+  width: 90%;
+  max-width: rem(1440);
+  margin: auto;
+}
+
 .home_section {
   display: flex;
   flex-direction: column;

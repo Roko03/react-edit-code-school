@@ -1,5 +1,11 @@
+import HomePageSection from "../pages/home-page/HomePageSection";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <HomePageSection />
+    </>
+  );
 };
 
 export default HomePage;

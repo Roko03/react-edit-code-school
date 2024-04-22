@@ -1,0 +1,28 @@
+@import "../../styles/main.scss";
+
+.home_section {
+  display: flex;
+  flex-direction: column;
+  padding: rem(48) 0 rem(32);
+
+  &__small_title {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-size: rem(16);
+    @include breakpoint(large) {
+      font-size: rem(18);
+    }
+    font-weight: 500;
+    font-family: Poppins;
+    color: $red;
+  }
+
+  &__small_title::after {
+    content: "";
+    width: 100%;
+    height: rem(1);
+    background-color: transparent;
+    border-top: 2px dashed $red;
+  }
+}

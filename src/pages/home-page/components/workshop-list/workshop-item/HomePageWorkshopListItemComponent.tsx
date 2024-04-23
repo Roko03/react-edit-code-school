@@ -26,6 +26,7 @@ const HomePageWorkshopListItemComponent: React.FC<
           </span>
         </div>
       </div>
+      <div className={styles.workshop_list_item__overlay}></div>
     </div>
   );
 };

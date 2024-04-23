@@ -13,3 +13,12 @@ h6 {
 p {
   font-family: "Roboto", sans-serif;
 }
+
+h1 {
+  font-size: rem(28);
+  font-weight: bold;
+
+  @include breakpoint(large) {
+    font-size: rem(54);
+  }
+}

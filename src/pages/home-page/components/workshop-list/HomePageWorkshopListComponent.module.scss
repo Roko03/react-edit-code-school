@@ -1,0 +1,13 @@
+@import "../../../../styles/main.scss";
+
+.workshop_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: rem(40);
+  justify-content: center;
+
+  @include breakpoint(large) {
+    justify-content: space-between;
+  }
+}

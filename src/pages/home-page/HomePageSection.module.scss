@@ -31,4 +31,17 @@
     background-color: transparent;
     border-top: 2px dashed $red;
   }
+
+  h1 {
+    text-align: center;
+  }
+
+  &__workshop {
+    display: flex;
+    flex-direction: column;
+    gap: rem(28);
+    @include breakpoint(large) {
+      gap: rem(42);
+    }
+  }
 }

@@ -1,0 +1,90 @@
+@import "../../../../../styles/main.scss";
+
+.workshop_list_item {
+  position: relative;
+  width: 100%;
+  max-width: rem(292);
+  height: rem(415);
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(large) {
+    height: rem(462);
+    max-width: rem(385);
+  }
+
+  box-shadow: $box-shadow;
+  border-radius: rem(14);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.5);
+  }
+
+  &__info {
+    margin-top: auto;
+    color: $white;
+
+    h2 {
+      padding: rem(12) rem(36);
+      font-size: rem(18);
+
+      @include breakpoint(large) {
+        font-size: rem(24);
+      }
+      font-weight: 500;
+    }
+
+    hr {
+      border: rem(1.6) solid $white;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      gap: rem(18);
+      padding: rem(12) rem(36) rem(24);
+
+      span {
+        display: flex;
+        flex-direction: row;
+        gap: rem(6);
+        align-items: center;
+        font-size: rem(18);
+        @include breakpoint(large) {
+          font-size: rem(16);
+        }
+        font-weight: 500;
+
+        img {
+          width: rem(24);
+          height: rem(24);
+        }
+      }
+    }
+  }
+}
+
+.workshop_list_item:hover {
+  transform: scale(1.1);
+}

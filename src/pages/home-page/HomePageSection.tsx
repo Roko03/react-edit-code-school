@@ -11,10 +11,14 @@ const HomePageSection = () => {
       />
       <div className={styles.container}>
         <section className={styles.home_section}>
-          <div className={styles.home_section__workshop}>
+          <div className={styles.home_section__box}>
             <span className={styles.home_section__small_title}>RADIONICE</span>
             <h1>Pogledaj Naše Radionice</h1>
             <HomePageWorkShopListComponent />
+          </div>
+          <div className={styles.home_section__box}>
+            <span className={styles.home_section__small_title}>PREDAVAČI</span>
+            <h1>Pogledaj Naše Predavače</h1>
           </div>
         </section>
       </div>

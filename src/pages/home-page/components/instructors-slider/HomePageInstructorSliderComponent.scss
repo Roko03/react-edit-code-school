@@ -7,8 +7,9 @@
 
 .swiper {
   width: 100%;
-  height: rem(354);
+  height: fit-content;
   margin: 20px auto;
+  padding: 0 rem(24);
 }
 
 .swiper-button-prev,
@@ -21,6 +22,14 @@
     width: rem(60);
     height: rem(60);
   }
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
 }
 
 .swiper-button-prev::after,

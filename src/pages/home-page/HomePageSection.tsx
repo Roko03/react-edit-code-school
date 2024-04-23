@@ -1,5 +1,6 @@
 import BannerComponent from "../../components/banner/BannerComponent";
 import styles from "./HomePageSection.module.scss";
+import HomePageInstructorSliderComponent from "./components/instructors-slider/HomePageInstructorSliderComponent";
 import HomePageWorkShopListComponent from "./components/workshop-list/HomePageWorkshopListComponent";
 
 const HomePageSection = () => {
@@ -19,6 +20,7 @@ const HomePageSection = () => {
           <div className={styles.home_section__box}>
             <span className={styles.home_section__small_title}>PREDAVAČI</span>
             <h1>Pogledaj Naše Predavače</h1>
+            <HomePageInstructorSliderComponent />
           </div>
         </section>
       </div>

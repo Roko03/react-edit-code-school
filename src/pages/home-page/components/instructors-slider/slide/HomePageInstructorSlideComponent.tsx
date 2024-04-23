@@ -1,12 +1,12 @@
 import "./HomePageInstructorSlideComponent.scss";
 
 interface HomePageInstructorSlideComponentProps {
-  index: number;
+  instructor: Instructor;
 }
 
 const HomePageInstructorSlideComponent: React.FC<
   HomePageInstructorSlideComponentProps
-> = ({ index }) => {
+> = ({ instructor }) => {
   return <div>jA</div>;
 };
 

@@ -9,3 +9,11 @@ type WorkShop = {
     info: string;
     numOfEntry: number;
 }
+
+type Instructor = {
+    id: string;
+    name: string;
+    imageUrl: string;
+    biography: string;
+    organization: string;
+}

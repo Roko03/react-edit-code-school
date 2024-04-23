@@ -12,7 +12,22 @@ import HomePageInstructorSlideComponent from "./slide/HomePageInstructorSlideCom
 const HomePageInstructorSliderComponent = () => {
   const [slidesPerView, setSlidesPerView] = useState<number>(4);
   const screenSize = useScreenSize();
-  const arr = ["ja", "ti"];
+  const arr: Instructor[] = [
+    {
+      id: "predavac_1",
+      name: "Predavac 1",
+      imageUrl: "/",
+      biography: "Biografija predavaca 1",
+      organization: "organizacija_1",
+    },
+    {
+      id: "predavac_2",
+      name: "Predavac 2",
+      imageUrl: "/",
+      biography: "Biografija predavaca 2",
+      organization: "organizacija_1",
+    },
+  ];
 
   useEffect(() => {
     if (screenSize.width < 500) {
@@ -35,10 +50,10 @@ const HomePageInstructorSliderComponent = () => {
         navigation={true}
         virtual
       >
-        {arr.map((el, index) => {
+        {arr.map((instructor, index) => {
           return (
             <SwiperSlide key={index} virtualIndex={index}>
-              <HomePageInstructorSlideComponent index={index} />
+              <HomePageInstructorSlideComponent instructor={instructor} />
             </SwiperSlide>
           );
         })}

@@ -68,7 +68,7 @@
       span {
         display: flex;
         flex-direction: row;
-        gap: rem(6);
+        gap: rem(12);
         align-items: center;
         font-size: rem(18);
         @include breakpoint(large) {

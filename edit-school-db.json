@@ -9,6 +9,16 @@
       "instructor": "predavac 1",
       "info": "Kratki opis radionice 1",
       "numOfEntry": 0
+    },
+    {
+      "id": "abgc1235-24d5-4e1d-891f-ea228b632ea1",
+      "name": "Radionica 2",
+      "imageUrl": "/",
+      "date": "01.01.2025",
+      "instructorId": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
+      "instructor": "predavac 1",
+      "info": "Kratki opis radionice 1",
+      "numOfEntry": 0
     }
   ],
   "predavaci": [

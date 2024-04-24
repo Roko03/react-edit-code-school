@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import styles from "./AdminPageTabsLinkComponent.module.scss";
 
 interface AdminPageTabsLinkComponentProps {
@@ -11,17 +12,24 @@ const AdminPageTabsLinkComponent: React.FC<AdminPageTabsLinkComponentProps> = ({
   tabActiveLink,
   setTabActiveLink,
 }) => {
+  let [searchParams, setSearchParams] = useSearchParams();
   return (
     <>
       <ul className={styles.admin_tabs_links}>
         <li
-          onClick={() => setTabActiveLink("workshops")}
+          onClick={() => {
+            setTabActiveLink("workshops");
+            setSearchParams({ tab: "workshops" });
+          }}
           className={`${tabActiveLink == "workshops" ? styles.tab_active : ""}`}
         >
           Radionice
         </li>
         <li
-          onClick={() => setTabActiveLink("instructors")}
+          onClick={() => {
+            setTabActiveLink("instructors");
+            setSearchParams({ tab: "instructors" });
+          }}
           className={`${
             tabActiveLink == "instructors" ? styles.tab_active : ""
           }`}
@@ -29,7 +37,10 @@ const AdminPageTabsLinkComponent: React.FC<AdminPageTabsLinkComponentProps> = ({
           Predavači
         </li>
         <li
-          onClick={() => setTabActiveLink("organizations")}
+          onClick={() => {
+            setTabActiveLink("organizations");
+            setSearchParams({ tab: "organizations" });
+          }}
           className={`${
             tabActiveLink == "organizations" ? styles.tab_active : ""
           }`}
@@ -38,11 +49,17 @@ const AdminPageTabsLinkComponent: React.FC<AdminPageTabsLinkComponentProps> = ({
         </li>
       </ul>
       <select
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
           setTabActiveLink(
             `${e.target.value as "workshops" | "instructors" | "organizations"}`
-          )
-        }
+          );
+          setSearchParams({
+            tab: e.target.value as
+              | "workshops"
+              | "instructors"
+              | "organizations",
+          });
+        }}
         value={tabActiveLink}
         className={styles.admin_tabs_select}
       >

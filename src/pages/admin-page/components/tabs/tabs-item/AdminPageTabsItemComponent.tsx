@@ -7,7 +7,18 @@ interface AdminPageTabsItemComponentProps {
 const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
   tabsActiveLink,
 }) => {
-  return <div>AdminPageTabsItemComponent</div>;
+  const getTabItem = () => {
+    switch (tabsActiveLink) {
+      case "workshops":
+        return <p>Radionice</p>;
+      case "instructors":
+        return <p>Predavači</p>;
+      case "organizations":
+        return <p>Organizacije</p>;
+    }
+  };
+
+  return <div>{getTabItem()}</div>;
 };
 
 export default AdminPageTabsItemComponent;

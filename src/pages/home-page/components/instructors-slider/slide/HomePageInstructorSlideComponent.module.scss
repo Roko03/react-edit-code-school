@@ -1,0 +1,55 @@
+@import "../../../../../styles/main.scss";
+
+.instructor_slide {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $grey;
+  position: relative;
+
+  &__image {
+    overflow: hidden;
+    height: rem(214.42);
+
+    @include breakpoint(large) {
+      height: rem(235);
+    }
+
+    img {
+      transition: transform 0.2s ease-in-out;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__info {
+    height: rem(109);
+    z-index: 2;
+
+    @include breakpoint(large) {
+      height: rem(120);
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: rem(24);
+    text-align: center;
+
+    font-family: Roboto;
+    font-size: rem(16);
+    font-weight: 500;
+    color: $black;
+
+    &__name {
+      font-size: rem(18);
+      font-weight: 600;
+      font-family: Poppins;
+    }
+  }
+}
+
+.instructor_slide:hover .instructor_slide__image img {
+  transform: scale(1.2);
+}

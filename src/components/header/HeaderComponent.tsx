@@ -16,10 +16,10 @@ const HeaderComponent = () => {
   useEffect(() => {
     if (isAdmin) {
       roleManager.setRole("admin");
-      navigate("/admin");
+      //navigate("/admin");
     } else {
       roleManager.setRole("user");
-      navigate("/");
+      //navigate("/");
     }
   }, [isAdmin]);
 

@@ -1,3 +1,4 @@
+import ButtonComponent from "../../../../../components/button/ButtonComponent";
 import styles from "./AdminPageWorkshopListItemComponent.module.scss";
 
 interface AdminPageWorkshopListItemComponentProps {
@@ -11,6 +12,20 @@ const AdminPageWorkshopListItemComponent: React.FC<
     <div className={styles.workshop_item}>
       <div className={styles.workshop_item__image}>
         <img src={"/background-banner.png"} alt={`${workshop.name}-image`} />
+        <div className={styles.workshop_item__buttons}>
+          <ButtonComponent variant={"adminEdit"}>
+            <img src={"/pencil.svg"} alt="edit" />
+            <span>
+              <p>Edit</p>
+            </span>
+          </ButtonComponent>
+          <ButtonComponent variant={"adminTrash"}>
+            <img src={"/trash.svg"} alt="trash" />
+            <span>
+              <p>Trash</p>
+            </span>
+          </ButtonComponent>
+        </div>
       </div>
       <div className={styles.workshop_item__info}>
         <div className={styles.workshop_item__info__top}>

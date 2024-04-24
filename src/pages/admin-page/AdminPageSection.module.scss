@@ -3,5 +3,57 @@
 .container {
   width: 90%;
   max-width: rem(1440);
-  margin: auto;
+  margin: 0 auto;
+}
+
+.admin_section {
+  padding: rem(48) 0 rem(32);
+
+  &__tabs_links {
+    display: none;
+
+    @include breakpoint(large) {
+      display: flex;
+    }
+
+    flex-direction: row;
+    gap: rem(32);
+    font-family: Poppins;
+    font-size: rem(24);
+    font-weight: 700;
+    color: rgba($black, 0.5);
+
+    .tab_active {
+      color: $black;
+      text-decoration: underline;
+    }
+
+    li {
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+
+    li:hover {
+      color: $black;
+    }
+  }
+
+  &__tabs_select {
+    display: block;
+
+    @include breakpoint(large) {
+      display: none;
+    }
+
+    width: 100%;
+    font-size: rem(18);
+    padding: rem(10) rem(20);
+    background-color: #f8f8f8;
+    border: 1px solid $grey;
+    border-radius: rem(6);
+    color: $black;
+    cursor: pointer;
+    font-family: Poppins;
+    outline: none;
+  }
 }

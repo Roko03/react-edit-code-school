@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BannerComponent from "../../components/banner/BannerComponent";
 import styles from "./AdminPageSection.module.scss";
-import AdminPageTabsLinkComponent from "./components/tabs-links/AdminPageTabsLinkComponent";
+import AdminPageTabsLinkComponent from "./components/tabs/tabs-links/AdminPageTabsLinkComponent";
 
 const AdminPageSection = () => {
   const [tabActiveLink, setTabActiveLink] = useState<

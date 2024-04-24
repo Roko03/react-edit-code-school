@@ -1,3 +1,4 @@
+import ButtonComponent from "../../../../../components/button/ButtonComponent";
 import styles from "./HomePageWorkshopListItemComponent.module.scss";
 
 interface HomePageWorkshopListItemComponentProps {
@@ -26,7 +27,11 @@ const HomePageWorkshopListItemComponent: React.FC<
           </span>
         </div>
       </div>
-      <div className={styles.workshop_list_item__overlay}></div>
+      <div className={styles.workshop_list_item__overlay}>
+        <ButtonComponent variant={"entry"}>
+          <p>Prijavi se</p>
+        </ButtonComponent>
+      </div>
     </div>
   );
 };

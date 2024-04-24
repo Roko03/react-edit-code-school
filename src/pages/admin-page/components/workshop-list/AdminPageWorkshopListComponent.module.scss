@@ -1,1 +1,13 @@
 @import "../../../../styles/main.scss";
+
+.workshop_list {
+  margin: rem(38) 0;
+  display: flex;
+  gap: rem(70);
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media only screen and (min-width: rem(900)) {
+    justify-content: flex-start;
+  }
+}

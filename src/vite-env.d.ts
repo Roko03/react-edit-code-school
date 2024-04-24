@@ -8,6 +8,7 @@ type WorkShop = {
     instructor: string;
     info: string;
     numOfEntry: number;
+    tags: string[]
 }
 
 type Instructor = {

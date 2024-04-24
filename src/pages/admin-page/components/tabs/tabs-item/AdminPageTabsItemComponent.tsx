@@ -1,3 +1,4 @@
+import AdminPageWorkshopListComponent from "../../workshop-list/AdminPageWorkshopListComponent";
 import styles from "./AdminPageTabsItemComponent.module.scss";
 
 interface AdminPageTabsItemComponentProps {
@@ -10,7 +11,7 @@ const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
   const getTabItem = () => {
     switch (tabsActiveLink) {
       case "workshops":
-        return <p>Radionice</p>;
+        return <AdminPageWorkshopListComponent />;
       case "instructors":
         return <p>Predavači</p>;
       case "organizations":

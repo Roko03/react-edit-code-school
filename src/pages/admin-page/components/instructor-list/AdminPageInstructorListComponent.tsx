@@ -3,21 +3,29 @@ import styles from "./AdminPageInstructorListComponent.module.scss";
 import getInstructors from "../../../../lib/getInstructors";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
 import AdminPageListItemComponent from "../admin-list-item/AdminPageListItemComponent";
+import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
 
 const AdminPageInstructorListComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const fetchInstructors = async () => {
+    setIsLoading(true);
     const response = await getInstructors();
 
     setInstructorList(response);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchInstructors();
-  }, [0]);
+  }, []);
+
+  if (isLoading) {
+    return <CircularProgressComponent />;
+  }
 
   return (
     <>
@@ -33,19 +41,22 @@ const AdminPageInstructorListComponent = () => {
           <p>Organizacije</p>
         </div>
       </div>
-      {instructorList != null && (
-        <div className={styles.instructor_list}>
-          {instructorList.map((instructor) => {
-            return (
-              <AdminPageListItemComponent
-                variant={"instructor"}
-                data={instructor}
-                key={instructor.id}
-              />
-            );
-          })}
-        </div>
-      )}
+      {instructorList != null &&
+        (instructorList.length > 0 ? (
+          <div className={styles.instructor_list}>
+            {instructorList.map((instructor) => {
+              return (
+                <AdminPageListItemComponent
+                  variant={"instructor"}
+                  data={instructor}
+                  key={instructor.id}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <h2>Nema predavača</h2>
+        ))}
     </>
   );
 };

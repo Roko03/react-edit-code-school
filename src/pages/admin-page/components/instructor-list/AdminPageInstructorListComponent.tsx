@@ -25,6 +25,14 @@ const AdminPageInstructorListComponent = () => {
         <img src={"/plus.svg"} alt="plus" />
         <p>Dodaj predavača</p>
       </ButtonComponent>
+      <div className={styles.instructor_header}>
+        <div className={styles.instructor_header__box}></div>
+        <div className={styles.instructor_header__list}>
+          <p>Naziv predavača</p>
+          <p>Biografija predavača</p>
+          <p>Organizacije</p>
+        </div>
+      </div>
       {instructorList != null && (
         <div className={styles.instructor_list}>
           {instructorList.map((instructor) => {

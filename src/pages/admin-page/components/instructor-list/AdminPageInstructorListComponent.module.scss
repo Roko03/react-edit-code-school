@@ -1,1 +1,45 @@
 @import "../../../../styles/main.scss";
+
+.instructor_header {
+  display: none;
+  padding: rem(36) 0 rem(16);
+
+  @include breakpoint(large) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  width: 100%;
+  gap: rem(24);
+
+  &__box {
+    min-width: rem(120);
+  }
+
+  &__list {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0.4fr 1fr 0.4fr;
+    gap: rem(32);
+    padding: 0 rem(12);
+
+    @include breakpoint(large) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 0.2fr 1fr 0.4fr;
+    }
+
+    font-size: rem(16);
+    font-weight: 500;
+  }
+}
+
+.instructor_list {
+  margin-top: rem(36);
+
+  @include breakpoint(large) {
+    margin-top: 0;
+  }
+  display: flex;
+  flex-direction: column;
+  gap: rem(24);
+}

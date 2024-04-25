@@ -10,18 +10,35 @@ interface AdminPageTabsItemComponentProps {
 const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
   tabsActiveLink,
 }) => {
-  const getTabItem = () => {
-    switch (tabsActiveLink) {
-      case "workshops":
-        return <AdminPageWorkshopListComponent />;
-      case "instructors":
-        return <AdminPageInstructorListComponent />;
-      case "organizations":
-        return <AdminPageOrganizationListComponent />;
-    }
-  };
-
-  return <div>{getTabItem()}</div>;
+  return (
+    <div className={styles.tab_item_list}>
+      <div
+        className={`${styles.tab_item_list__item} ${
+          tabsActiveLink == "workshops" ? styles.tab_item_list_item_active : ""
+        }`}
+      >
+        <AdminPageWorkshopListComponent />
+      </div>
+      <div
+        className={`${styles.tab_item_list__item} ${
+          tabsActiveLink == "instructors"
+            ? styles.tab_item_list_item_active
+            : ""
+        }`}
+      >
+        <AdminPageInstructorListComponent />
+      </div>
+      <div
+        className={`${styles.tab_item_list__item} ${
+          tabsActiveLink == "organizations"
+            ? styles.tab_item_list_item_active
+            : ""
+        }`}
+      >
+        <AdminPageOrganizationListComponent />
+      </div>
+    </div>
+  );
 };
 
 export default AdminPageTabsItemComponent;

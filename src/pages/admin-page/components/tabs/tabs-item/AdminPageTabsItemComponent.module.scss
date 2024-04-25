@@ -1,1 +1,21 @@
-@import "../../../../styles/main.scss";
+@import "../../../../../styles/main.scss";
+
+.tab_item_list {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+
+    transition: opacity 375ms ease-in-out;
+  }
+}
+
+.tab_item_list_item_active {
+  display: block;
+  height: fit-content;
+  opacity: 1;
+  visibility: visible;
+}

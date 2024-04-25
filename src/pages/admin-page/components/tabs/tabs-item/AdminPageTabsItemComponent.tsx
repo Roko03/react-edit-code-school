@@ -1,4 +1,5 @@
 import AdminPageInstructorListComponent from "../../instructor-list/AdminPageInstructorListComponent";
+import AdminPageOrganizationListComponent from "../../organization-list/AdminPageOrganizationListComponent";
 import AdminPageWorkshopListComponent from "../../workshop-list/AdminPageWorkshopListComponent";
 import styles from "./AdminPageTabsItemComponent.module.scss";
 
@@ -16,7 +17,7 @@ const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
       case "instructors":
         return <AdminPageInstructorListComponent />;
       case "organizations":
-        return <p>Organizacije</p>;
+        return <AdminPageOrganizationListComponent />;
     }
   };
 

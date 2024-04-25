@@ -54,6 +54,21 @@
     }
   }
 
+  &__organization_info {
+    width: 100%;
+    min-height: rem(90);
+    display: grid;
+    grid-template-rows: 0.3fr 1fr;
+    gap: rem(32);
+    padding: rem(8) rem(12) rem(18);
+    font-size: rem(16);
+
+    @include breakpoint(large) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 0.2fr 1fr;
+    }
+  }
+
   &__buttons {
     position: absolute;
     right: rem(16);

@@ -18,3 +18,9 @@ type Instructor = {
     biography: string;
     organization: string;
 }
+
+type Organization = {
+    id: string;
+    name: string;
+    info: string;
+}

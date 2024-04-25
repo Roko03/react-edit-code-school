@@ -28,6 +28,13 @@
       "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
       "name": "Predavac 1",
       "imageUrl": "/",
+      "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil doloremque exercitationem vel, ab quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil",
+      "organization": ["organizacija_1"]
+    },
+    {
+      "id": "1b55a8c6-138c-4eb0-1266-67872642bca9",
+      "name": "Predavac 1",
+      "imageUrl": "/",
       "biography": "Biografija predavaca 1",
       "organization": ["organizacija_1"]
     }

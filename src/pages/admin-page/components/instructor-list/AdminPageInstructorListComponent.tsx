@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./AdminPageInstructorListComponent.module.scss";
 import getInstructors from "../../../../lib/getInstructors";
-import AdminPageInstructorListItemComponent from "./instructor-list-item/AdminPageInstructorListItemComponent";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
+import AdminPageListItemComponent from "../admin-list-item/AdminPageListItemComponent";
 
 const AdminPageInstructorListComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -29,8 +29,9 @@ const AdminPageInstructorListComponent = () => {
         <div className={styles.instructor_list}>
           {instructorList.map((instructor) => {
             return (
-              <AdminPageInstructorListItemComponent
-                instructor={instructor}
+              <AdminPageListItemComponent
+                variant={"instructor"}
+                data={instructor}
                 key={instructor.id}
               />
             );

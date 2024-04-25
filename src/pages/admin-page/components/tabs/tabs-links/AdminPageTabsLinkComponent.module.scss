@@ -1,6 +1,7 @@
 @import "../../../../../styles/main.scss";
 
 .admin_tabs_links {
+  padding: rem(60) 0;
   display: none;
 
   @include breakpoint(large) {
@@ -30,6 +31,7 @@
 }
 
 .admin_tabs_select {
+  margin: rem(32) 0;
   display: block;
 
   @include breakpoint(large) {

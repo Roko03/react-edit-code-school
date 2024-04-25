@@ -11,7 +11,7 @@ const AdminPageWorkshopListItemComponent: React.FC<
   return (
     <div className={styles.workshop_item}>
       <div className={styles.workshop_item__image}>
-        <img src={"/background-banner.png"} alt={`${workshop.name}-image`} />
+        <img src={workshop.imageUrl} alt={`${workshop.name}-image`} />
         <div className={styles.workshop_item__buttons}>
           <ButtonComponent variant={"adminEdit"}>
             <img src={"/pencil.svg"} alt="edit" />
@@ -29,24 +29,22 @@ const AdminPageWorkshopListItemComponent: React.FC<
       </div>
       <div className={styles.workshop_item__info}>
         <div className={styles.workshop_item__info__top}>
-          <h2>Ime radionice</h2>
-          <span>Predavač</span>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque,
-            quasi!
-          </p>
+          <h2>{workshop.name}</h2>
+          <span>{workshop.instructor}</span>
+          <p>{workshop.info}</p>
           <span className={styles.workshop_item__info__top__partners}>
-            Partneri
+            {workshop.level}
           </span>
         </div>
         <div className={styles.workshop_item__info__bottom}>
           <span className={styles.workshop_item__info__bottom__counter}>
             <img src={"/people.svg"} alt="people" width={28} height={28} />
-            <p>46</p>
+            <p>{workshop.numOfEntry}</p>
           </span>
           <ul className={styles.workshop_item__info__bottom__tags}>
-            <li>React</li>
-            <li>Next.JS</li>
+            {workshop.tags.map((tag, index) => {
+              return <li key={index}>{tag}</li>;
+            })}
           </ul>
         </div>
       </div>

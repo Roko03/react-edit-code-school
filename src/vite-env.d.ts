@@ -7,6 +7,7 @@ type WorkShop = {
     date: string;
     instructor: string;
     info: string;
+    level: string;
     numOfEntry: number;
     tags: string[]
 }

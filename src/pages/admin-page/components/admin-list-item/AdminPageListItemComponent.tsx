@@ -22,7 +22,7 @@ const AdminPageListItemComponent: React.FC<AdminPageListItemComponentProps> = ({
           <>
             <div className={styles.list_item__image}>
               <img
-                src={"/background-banner.png"}
+                src={instructorData.imageUrl}
                 alt={`${instructorData.name}-photo`}
               />
             </div>

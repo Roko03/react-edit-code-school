@@ -8,6 +8,7 @@
       "instructorId": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
       "instructor": "predavac 1",
       "info": "Kratki opis radionice 1",
+      "level": "Middle",
       "numOfEntry": 0,
       "tags": ["React","Expresss"]
     },
@@ -19,6 +20,7 @@
       "instructorId": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
       "instructor": "predavac 1",
       "info": "Kratki opis radionice 1",
+      "level": "Junior",
       "numOfEntry": 0,
       "tags": ["React","Next"]
     }

@@ -1,5 +1,5 @@
-import AdminPageInstructorListComponent from "../../instructor-list/AdminPageInstructorListComponent";
-import AdminPageOrganizationListComponent from "../../organization-list/AdminPageOrganizationListComponent";
+import AdminPageInstructorListComponent from "../../instructor-tab/AdminPageInstructorListComponent";
+import { AdminPageOrganizationTabComponent } from "../../organization-tab/AdminPageOrganizationTabComponent";
 import AdminPageWorkshopListComponent from "../../workshop-list/AdminPageWorkshopListComponent";
 import styles from "./AdminPageTabsItemComponent.module.scss";
 
@@ -35,7 +35,7 @@ const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
             : ""
         }`}
       >
-        <AdminPageOrganizationListComponent />
+        <AdminPageOrganizationTabComponent />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import BannerComponent from "../../components/banner/BannerComponent";
 import styles from "./AdminPageSection.module.scss";
 import AdminPageTabsLinkComponent from "./components/tabs/tabs-links/AdminPageTabsLinkComponent";
-import AdminPageTabsItemComponent from "./components/tabs/tabs-item/AdminPageTabsItemComponent";
+import AdminPageTabsItemComponent from "./components/tabs/tabs-item-list/AdminPageTabsItemComponent";
 import { useSearchParams } from "react-router-dom";
 
 const AdminPageSection = () => {

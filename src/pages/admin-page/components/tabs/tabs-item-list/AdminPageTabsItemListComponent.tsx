@@ -1,15 +1,15 @@
 import AdminPageInstructorTabComponent from "../../instructor-tab/AdminPageInstructorTabComponent";
 import { AdminPageOrganizationTabComponent } from "../../organization-tab/AdminPageOrganizationTabComponent";
 import AdminPageWorkshopTabComponent from "../../workshop-tab/AdminPageWorkshopTabComponent";
-import styles from "./AdminPageTabsItemComponent.module.scss";
+import styles from "./AdminPageTabsItemListComponent.module.scss";
 
-interface AdminPageTabsItemComponentProps {
+interface AdminPageTabsItemListComponentProps {
   tabsActiveLink: "workshops" | "instructors" | "organizations";
 }
 
-const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
-  tabsActiveLink,
-}) => {
+const AdminPageTabsItemListComponent: React.FC<
+  AdminPageTabsItemListComponentProps
+> = ({ tabsActiveLink }) => {
   return (
     <div className={styles.tab_item_list}>
       <div
@@ -41,4 +41,4 @@ const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
   );
 };
 
-export default AdminPageTabsItemComponent;
+export default AdminPageTabsItemListComponent;

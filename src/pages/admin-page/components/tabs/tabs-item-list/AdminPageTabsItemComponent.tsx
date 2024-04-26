@@ -1,6 +1,6 @@
 import AdminPageInstructorTabComponent from "../../instructor-tab/AdminPageInstructorTabComponent";
 import { AdminPageOrganizationTabComponent } from "../../organization-tab/AdminPageOrganizationTabComponent";
-import AdminPageWorkshopListComponent from "../../workshop-list/AdminPageWorkshopListComponent";
+import AdminPageWorkshopTabComponent from "../../workshop-tab/AdminPageWorkshopTabComponent";
 import styles from "./AdminPageTabsItemComponent.module.scss";
 
 interface AdminPageTabsItemComponentProps {
@@ -17,7 +17,7 @@ const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
           tabsActiveLink == "workshops" ? styles.tab_item_list_item_active : ""
         }`}
       >
-        <AdminPageWorkshopListComponent />
+        <AdminPageWorkshopTabComponent />
       </div>
       <div
         className={`${styles.tab_item_list__item} ${

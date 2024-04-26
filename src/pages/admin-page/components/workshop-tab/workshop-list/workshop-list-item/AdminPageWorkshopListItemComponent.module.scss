@@ -1,11 +1,8 @@
-@import "../../../../../styles/main.scss";
+@import "../../../../../../styles/main.scss";
 
 .workshop_item {
   width: 100%;
-  /*max-width: rem(280);*/
   max-width: rem(365.01);
-  //   @include breakpoint(large) {
-  //   }
 
   &__image {
     position: relative;

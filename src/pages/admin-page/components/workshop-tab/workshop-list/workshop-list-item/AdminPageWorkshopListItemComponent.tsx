@@ -1,4 +1,4 @@
-import ButtonComponent from "../../../../../components/button/ButtonComponent";
+import ButtonComponent from "../../../../../../components/button/ButtonComponent";
 import styles from "./AdminPageWorkshopListItemComponent.module.scss";
 
 interface AdminPageWorkshopListItemComponentProps {

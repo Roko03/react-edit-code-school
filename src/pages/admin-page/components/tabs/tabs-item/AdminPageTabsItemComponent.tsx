@@ -1,4 +1,4 @@
-import AdminPageInstructorListComponent from "../../instructor-tab/AdminPageInstructorListComponent";
+import AdminPageInstructorTabComponent from "../../instructor-tab/AdminPageInstructorTabComponent";
 import { AdminPageOrganizationTabComponent } from "../../organization-tab/AdminPageOrganizationTabComponent";
 import AdminPageWorkshopListComponent from "../../workshop-list/AdminPageWorkshopListComponent";
 import styles from "./AdminPageTabsItemComponent.module.scss";
@@ -26,7 +26,7 @@ const AdminPageTabsItemComponent: React.FC<AdminPageTabsItemComponentProps> = ({
             : ""
         }`}
       >
-        <AdminPageInstructorListComponent />
+        <AdminPageInstructorTabComponent />
       </div>
       <div
         className={`${styles.tab_item_list__item} ${

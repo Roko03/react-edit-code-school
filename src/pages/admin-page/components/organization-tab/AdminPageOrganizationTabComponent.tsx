@@ -3,7 +3,6 @@ import styles from "./AdminPageOrganizationTabComponent.module.scss";
 import getOrganizations from "../../../../lib/getOrganizations";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
-import AdminPageListItemComponent from "../admin-list-item/AdminPageListItemComponent";
 import AdminPageOrganizationListComponent from "./organization-list/AdminPageOrganizationListComponent";
 
 export const AdminPageOrganizationTabComponent = () => {

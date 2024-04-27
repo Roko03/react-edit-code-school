@@ -37,7 +37,7 @@ const DialogComponent: React.FC<DialogComponentProps> = ({
   }, [isOpen]);
 
   return (
-    <div className={styles.dialog}>
+    <div className={`${styles.dialog} ${isOpen ? styles.dialog_open : ""}`}>
       <div ref={dialogRef} className={styles.dialog__box}>
         {children}
       </div>

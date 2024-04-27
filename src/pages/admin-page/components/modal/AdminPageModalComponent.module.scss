@@ -3,9 +3,10 @@
 .modal,
 .modal_add,
 .modal_edit {
-  width: 60vw;
+  width: 70vw;
   height: 80vh;
   background-color: $white;
+  border-radius: rem(8);
 }
 
 .modal_delete {

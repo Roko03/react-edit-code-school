@@ -1,0 +1,15 @@
+@import "../../../../styles/main.scss";
+
+.modal,
+.modal_add,
+.modal_edit {
+  width: 60vw;
+  height: 80vh;
+  background-color: $white;
+}
+
+.modal_delete {
+  width: 50vw;
+  height: 50vh;
+  background-color: $white;
+}

@@ -3,23 +3,25 @@ import styles from "./AdminPageWorkshopListItemComponent.module.scss";
 
 interface AdminPageWorkshopListItemComponentProps {
   workshop: WorkShop;
+  openEditModal: () => void;
+  openDeleteModal: () => void;
 }
 
 const AdminPageWorkshopListItemComponent: React.FC<
   AdminPageWorkshopListItemComponentProps
-> = ({ workshop }) => {
+> = ({ workshop, openEditModal, openDeleteModal }) => {
   return (
     <div className={styles.workshop_item}>
       <div className={styles.workshop_item__image}>
         <img src={workshop.imageUrl} alt={`${workshop.name}-image`} />
         <div className={styles.workshop_item__buttons}>
-          <ButtonComponent variant={"adminEdit"}>
+          <ButtonComponent variant={"adminEdit"} onClick={openEditModal}>
             <img src={"/pencil.svg"} alt="edit" />
             <span>
               <p>Edit</p>
             </span>
           </ButtonComponent>
-          <ButtonComponent variant={"adminTrash"}>
+          <ButtonComponent variant={"adminTrash"} onClick={openDeleteModal}>
             <img src={"/trash.svg"} alt="trash" />
             <span>
               <p>Trash</p>

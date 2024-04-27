@@ -3,11 +3,13 @@ import AdminPageWorkshopListItemComponent from "./workshop-list-item/AdminPageWo
 
 interface AdminPageWorkshopListComponentProps {
   workshopList: WorkShop[];
+  openEditModal: () => void;
+  openDeleteModal: () => void;
 }
 
 const AdminPageWorkshopListComponent: React.FC<
   AdminPageWorkshopListComponentProps
-> = ({ workshopList }) => {
+> = ({ workshopList, openEditModal, openDeleteModal }) => {
   return (
     <>
       {workshopList.length > 0 ? (
@@ -15,7 +17,12 @@ const AdminPageWorkshopListComponent: React.FC<
           <div className={styles.workshop_list}>
             {workshopList.map((el) => {
               return (
-                <AdminPageWorkshopListItemComponent workshop={el} key={el.id} />
+                <AdminPageWorkshopListItemComponent
+                  workshop={el}
+                  key={el.id}
+                  openEditModal={openEditModal}
+                  openDeleteModal={openDeleteModal}
+                />
               );
             })}
           </div>

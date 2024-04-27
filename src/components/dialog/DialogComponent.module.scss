@@ -16,8 +16,10 @@
   transition: opacity 0.31s ease-in-out;
 
   &__box {
-    width: 70%;
-    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 

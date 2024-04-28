@@ -35,9 +35,9 @@
     },
     {
       "id": "1b55a8c6-138c-4eb0-1266-67872642bca9",
-      "name": "Predavac 1",
+      "name": "Predavac 2",
       "imageUrl": "/",
-      "biography": "Biografija predavaca 1",
+      "biography": "Biografija predavaca 2",
       "organization": ["organizacija_1"]
     }
   ],

@@ -1,7 +1,13 @@
 @import "../../../../../../styles/main.scss";
 
 .add_form {
+  height: 100%;
   padding: rem(32);
+  display: flex;
+  flex-direction: column;
+  gap: rem(14);
+  overflow: auto;
+
   input,
   select,
   textarea {
@@ -15,6 +21,10 @@
     padding: rem(10);
   }
 
+  select option {
+    text-transform: capitalize;
+  }
+
   textarea {
     resize: none;
     height: rem(160);
@@ -23,5 +33,9 @@
   &__error {
     margin-top: rem(8);
     color: $red;
+  }
+
+  button {
+    margin-top: auto;
   }
 }

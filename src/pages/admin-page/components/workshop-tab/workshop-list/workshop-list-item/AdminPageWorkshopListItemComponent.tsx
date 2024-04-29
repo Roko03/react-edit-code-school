@@ -34,7 +34,7 @@ const AdminPageWorkshopListItemComponent: React.FC<
           <h2>{workshop.name}</h2>
           <span>{workshop.instructor}</span>
           <p>{workshop.info}</p>
-          <span className={styles.workshop_item__info__top__partners}>
+          <span className={styles.workshop_item__info__top__level}>
             {workshop.level}
           </span>
         </div>

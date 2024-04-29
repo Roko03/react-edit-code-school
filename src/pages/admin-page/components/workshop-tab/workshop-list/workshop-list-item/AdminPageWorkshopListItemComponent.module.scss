@@ -44,8 +44,9 @@
         color: rgba($black, 0.5);
       }
 
-      &__partners {
+      &__level {
         margin-top: auto;
+        text-transform: capitalize;
       }
     }
 
@@ -73,6 +74,7 @@
       &__subject {
         font-family: Roboto;
         font-weight: 600;
+        text-transform: capitalize;
       }
     }
   }

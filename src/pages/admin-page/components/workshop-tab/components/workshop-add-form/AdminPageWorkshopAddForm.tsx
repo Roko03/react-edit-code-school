@@ -10,6 +10,7 @@ import getInstructors from "../../../../../../lib/getInstructors";
 import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
 
 const difficultyArray = provideDefaultDifficultyData();
+const subjectsArray = provideDefaultSubjectData();
 
 const addWorkshopScehma = z.object({
   name: z.string().min(1, { message: "Unesite ime radionice" }),
@@ -21,6 +22,9 @@ const addWorkshopScehma = z.object({
     .max(350, { message: "Ne smije imati poviše 350 znakova" }),
   level: z.enum(difficultyArray, {
     errorMap: () => ({ message: "Molimo odaberite težinu" }),
+  }),
+  subject: z.enum(subjectsArray, {
+    errorMap: () => ({ message: "Molimo odaberite temu" }),
   }),
 });
 
@@ -40,8 +44,6 @@ const AdminPageWorkshopAddForm = () => {
   const [imageUploaded, setImageUploaded] = useState<string>("");
   const [isImageUploading, setIsImageUploading] = useState<boolean>(false);
   const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
-
-  const subjectsArray: string[] = provideDefaultSubjectData();
 
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
     null
@@ -166,6 +168,21 @@ const AdminPageWorkshopAddForm = () => {
             return (
               <option key={index} value={difficulty}>
                 {difficulty}
+              </option>
+            );
+          })}
+        </select>
+        {errors.level && (
+          <p className={styles.add_form__error}>{`${errors.level.message}`}</p>
+        )}
+      </label>
+      <label>
+        <select {...register("level")}>
+          <option value="">Odaberite temu</option>
+          {subjectsArray.map((subject, index) => {
+            return (
+              <option key={index} value={subject}>
+                {subject}
               </option>
             );
           })}

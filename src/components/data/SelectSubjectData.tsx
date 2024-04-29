@@ -1,5 +1,5 @@
 const provideDefaultSubjectData = () => {
-  return ["react", "express", "next.js"];
+  return ["react", "express", "next.js"] as const;
 };
 
 export default provideDefaultSubjectData;

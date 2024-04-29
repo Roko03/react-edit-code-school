@@ -70,15 +70,9 @@
         }
       }
 
-      &__tags {
-        display: flex;
-        flex-direction: row;
-        gap: rem(12);
-
-        li {
-          font-family: Roboto;
-          font-weight: 600;
-        }
+      &__subject {
+        font-family: Roboto;
+        font-weight: 600;
       }
     }
   }

@@ -43,11 +43,9 @@ const AdminPageWorkshopListItemComponent: React.FC<
             <img src={"/people.svg"} alt="people" width={28} height={28} />
             <p>{workshop.numOfEntry}</p>
           </span>
-          <ul className={styles.workshop_item__info__bottom__tags}>
-            {workshop.tags.map((tag, index) => {
-              return <li key={index}>{tag}</li>;
-            })}
-          </ul>
+          <p className={styles.workshop_item__info__bottom__subject}>
+            {workshop.subject}
+          </p>
         </div>
       </div>
     </div>

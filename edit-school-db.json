@@ -10,7 +10,7 @@
       "info": "Kratki opis radionice 1",
       "level": "Middle",
       "numOfEntry": 0,
-      "tags": ["React","Expresss"]
+      "subject": "React"
     },
     {
       "id": "abgc1235-24d5-4e1d-891f-ea228b632ea1",
@@ -22,7 +22,7 @@
       "info": "Kratki opis radionice 1",
       "level": "Junior",
       "numOfEntry": 0,
-      "tags": ["React","Next"]
+      "subject": "Next.js"
     }
   ],
   "predavaci": [

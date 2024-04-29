@@ -3,13 +3,13 @@
 type WorkShop = {
     id: string;
     name: string;
-    imageUrl: string;
     date: string;
+    imageUrl: string;
     instructor: string;
     info: string;
     level: string;
+    subject: string
     numOfEntry: number;
-    tags: string[]
 }
 
 type Instructor = {

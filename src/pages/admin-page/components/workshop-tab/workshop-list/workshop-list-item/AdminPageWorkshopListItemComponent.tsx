@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import ButtonComponent from "../../../../../../components/button/ButtonComponent";
 import styles from "./AdminPageWorkshopListItemComponent.module.scss";
+import getInstructorById from "../../../../../../lib/getInstructorById";
 
 interface AdminPageWorkshopListItemComponentProps {
   workshop: WorkShop;
@@ -10,6 +12,18 @@ interface AdminPageWorkshopListItemComponentProps {
 const AdminPageWorkshopListItemComponent: React.FC<
   AdminPageWorkshopListItemComponentProps
 > = ({ workshop, openEditModal, openDeleteModal }) => {
+  const [instructorName, setInstructorName] = useState<Instructor | null>();
+
+  const fetchInstructorById = async () => {
+    const response = await getInstructorById(workshop.instructor);
+
+    setInstructorName(response);
+  };
+
+  useEffect(() => {
+    fetchInstructorById();
+  }, []);
+
   return (
     <div className={styles.workshop_item}>
       <div className={styles.workshop_item__image}>
@@ -32,7 +46,7 @@ const AdminPageWorkshopListItemComponent: React.FC<
       <div className={styles.workshop_item__info}>
         <div className={styles.workshop_item__info__top}>
           <h2>{workshop.name}</h2>
-          <span>{workshop.instructor}</span>
+          <span>{instructorName?.name}</span>
           <p>{workshop.info}</p>
           <span className={styles.workshop_item__info__top__level}>
             {workshop.level}

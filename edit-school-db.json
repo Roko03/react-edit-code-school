@@ -1,17 +1,5 @@
 {
-  "radionice": [
-    {
-      "id": "a4d8b577-290f-4930-9709-3249efb36526",
-      "name": "Roko",
-      "date": "2024-04-25",
-      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "info": "Najbolja radionica",
-      "level": "junior",
-      "subject": "express",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fserving-dish.pngc77c691b-8f9d-40ed-ae72-7586eace3bf9?alt=media&token=e0c12581-b1f7-4faf-81c0-d7f73163550c",
-      "numOfEntry": 0
-    }
-  ],
+  "radionice": [],
   "predavaci": [
     {
       "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",

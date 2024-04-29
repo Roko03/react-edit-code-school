@@ -7,7 +7,7 @@ import provideDefaultDifficultyData from "../../../../../../components/data/Sele
 import provideDefaultSubjectData from "../../../../../../components/data/SelectSubjectData";
 import { useEffect, useState } from "react";
 import getInstructors from "../../../../../../lib/getInstructors";
-import uploadImage from "../../../../../../lib/uploadImage";
+import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
 
 const difficultyArray = provideDefaultDifficultyData();
 
@@ -61,7 +61,7 @@ const AdminPageWorkshopAddForm = () => {
     }
 
     setIsImageUploading(true);
-    const response = await uploadImage(file);
+    const response = await uploadWorkshopImage(file);
 
     if (response.success) {
       if (response.imageUrl) {

@@ -3,8 +3,8 @@ import { storage } from "./firebaseConfig";
 import { v4 } from 'uuid'
 
 
-export default async function uploadImage(data: File) {
-    const imageRef = ref(storage, `images/${data.name + v4()}`)
+export default async function uploadWorkshopImage(data: File) {
+    const imageRef = ref(storage, `radionice/${data.name + v4()}`)
 
     try {
         await uploadBytes(imageRef, data)

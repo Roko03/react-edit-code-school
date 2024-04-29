@@ -63,7 +63,7 @@ const AdminPageWorkshopTabComponent = () => {
       >
         <AdminPageModalComponent actionType={modalType}>
           {modalType == "add" ? (
-            <AdminPageWorkshopAddForm />
+            <AdminPageWorkshopAddForm fetchWorkshops={fetchWorkshops} />
           ) : modalType == "delete" ? (
             <p>Izbrisi</p>
           ) : (

@@ -1,44 +1,23 @@
 {
-  "radionice": [
-    {
-      "id": "addc0798-24d5-4e1d-891f-ea228b632ea1",
-      "name": "Radionica 1",
-      "imageUrl": "/",
-      "date": "01.01.2025",
-      "instructorId": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "instructor": "predavac 1",
-      "info": "Kratki opis radionice 1",
-      "level": "Middle",
-      "numOfEntry": 0,
-      "subject": "React"
-    },
-    {
-      "id": "abgc1235-24d5-4e1d-891f-ea228b632ea1",
-      "name": "Radionica 2",
-      "imageUrl": "/",
-      "date": "01.01.2025",
-      "instructorId": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "instructor": "predavac 1",
-      "info": "Kratki opis radionice 1",
-      "level": "Junior",
-      "numOfEntry": 0,
-      "subject": "Next.js"
-    }
-  ],
+  "radionice": [],
   "predavaci": [
     {
       "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
       "name": "Predavac 1",
       "imageUrl": "/",
       "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil doloremque exercitationem vel, ab quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil",
-      "organization": ["organizacija_1"]
+      "organization": [
+        "organizacija_1"
+      ]
     },
     {
       "id": "1b55a8c6-138c-4eb0-1266-67872642bca9",
       "name": "Predavac 2",
       "imageUrl": "/",
       "biography": "Biografija predavaca 2",
-      "organization": ["organizacija_1"]
+      "organization": [
+        "organizacija_1"
+      ]
     }
   ],
   "organizacije": [

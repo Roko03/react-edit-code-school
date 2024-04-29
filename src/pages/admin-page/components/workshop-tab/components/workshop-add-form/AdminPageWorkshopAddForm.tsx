@@ -8,6 +8,8 @@ import provideDefaultSubjectData from "../../../../../../components/data/SelectS
 import { useEffect, useState } from "react";
 import getInstructors from "../../../../../../lib/getInstructors";
 import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
+import uuidv4 from "../../../../../../util/uuidv4";
+import makeWorkshop from "../../../../../../lib/makeWorkshop";
 
 const difficultyArray = provideDefaultDifficultyData();
 const subjectsArray = provideDefaultSubjectData();
@@ -30,7 +32,13 @@ const addWorkshopScehma = z.object({
 
 type TAddWorkshopSchema = z.infer<typeof addWorkshopScehma>;
 
-const AdminPageWorkshopAddForm = () => {
+interface AdminPageWorkshopAddFormProps {
+  fetchWorkshops: () => void;
+}
+
+const AdminPageWorkshopAddForm: React.FC<AdminPageWorkshopAddFormProps> = ({
+  fetchWorkshops,
+}) => {
   const {
     register,
     handleSubmit,
@@ -73,15 +81,24 @@ const AdminPageWorkshopAddForm = () => {
     setIsImageUploading(false);
   };
 
-  const onSubmit = (data: TAddWorkshopSchema) => {
+  const onSubmit = async (data: TAddWorkshopSchema) => {
     if (imageUploaded == "") {
       setUploadImageError(true);
       return;
     }
 
+    const workshopObject: WorkShop = {
+      id: uuidv4(),
+      ...data,
+      imageUrl: imageUploaded,
+      numOfEntry: 0,
+    };
+
+    const response = await makeWorkshop(workshopObject);
+
+    fetchWorkshops();
     reset();
     setUploadImageError(false);
-    console.log({ ...data, imageUrl: imageUploaded });
   };
 
   useEffect(() => {
@@ -177,7 +194,7 @@ const AdminPageWorkshopAddForm = () => {
         )}
       </label>
       <label>
-        <select {...register("level")}>
+        <select {...register("subject")}>
           <option value="">Odaberite temu</option>
           {subjectsArray.map((subject, index) => {
             return (
@@ -187,8 +204,10 @@ const AdminPageWorkshopAddForm = () => {
             );
           })}
         </select>
-        {errors.level && (
-          <p className={styles.add_form__error}>{`${errors.level.message}`}</p>
+        {errors.subject && (
+          <p
+            className={styles.add_form__error}
+          >{`${errors.subject.message}`}</p>
         )}
       </label>
       <ButtonComponent

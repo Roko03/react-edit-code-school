@@ -7,6 +7,7 @@ import provideDefaultDifficultyData from "../../../../../../components/data/Sele
 import provideDefaultSubjectData from "../../../../../../components/data/SelectSubjectData";
 import { useEffect, useState } from "react";
 import getInstructors from "../../../../../../lib/getInstructors";
+import uploadImage from "../../../../../../lib/uploadImage";
 
 const difficultyArray = provideDefaultDifficultyData();
 
@@ -35,6 +36,11 @@ const AdminPageWorkshopAddForm = () => {
     resolver: zodResolver(addWorkshopScehma),
   });
 
+  const [upladImageError, setUploadImageError] = useState<boolean>(false);
+  const [imageUploaded, setImageUploaded] = useState<string>("");
+  const [isImageUploading, setIsImageUploading] = useState<boolean>(false);
+  const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
+
   const subjectsArray: string[] = provideDefaultSubjectData();
 
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -47,14 +53,43 @@ const AdminPageWorkshopAddForm = () => {
     setInstructorList(response);
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    setIsImageUploading(true);
+    const response = await uploadImage(file);
+
+    if (response.success) {
+      if (response.imageUrl) {
+        setImageUploaded(response.imageUrl);
+      }
+    }
+    setIsImageUploading(false);
+  };
+
   const onSubmit = (data: TAddWorkshopSchema) => {
+    if (imageUploaded == "") {
+      setUploadImageError(true);
+      return;
+    }
+
     reset();
-    console.log(data);
+    setUploadImageError(false);
+    console.log({ ...data, imageUrl: imageUploaded });
   };
 
   useEffect(() => {
     fetchInstructor();
   }, []);
+
+  useEffect(() => {
+    const isEnabled = isImageUploading || isSubmitting;
+    setIsButtonEnabled(isEnabled);
+  }, [isImageUploading, isSubmitting]);
 
   if (instructorList == null) {
     return <p>Problem sa bazom</p>;
@@ -80,6 +115,16 @@ const AdminPageWorkshopAddForm = () => {
         />
         {errors.date && (
           <p className={styles.add_form__error}>{`${errors.date.message}`}</p>
+        )}
+      </label>
+      <label>
+        <input
+          type="file"
+          onChange={(e) => handleFileChange(e)}
+          accept="image/*"
+        />
+        {upladImageError && (
+          <p className={styles.add_form__error}>Odaberi sliku</p>
         )}
       </label>
       <label>
@@ -130,7 +175,7 @@ const AdminPageWorkshopAddForm = () => {
         )}
       </label>
       <ButtonComponent
-        enabled={isSubmitting}
+        enabled={isButtonEnabled}
         variant={"add"}
         onClick={handleSubmit(onSubmit)}
       >

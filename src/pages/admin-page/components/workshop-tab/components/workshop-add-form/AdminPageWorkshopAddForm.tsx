@@ -34,10 +34,16 @@ type TAddWorkshopSchema = z.infer<typeof addWorkshopScehma>;
 
 interface AdminPageWorkshopAddFormProps {
   fetchWorkshops: () => void;
+  openSuccessSnackBar: (message: string) => void;
+  openErrorSnackBar: (message: string) => void;
+  closeModal: () => void;
 }
 
 const AdminPageWorkshopAddForm: React.FC<AdminPageWorkshopAddFormProps> = ({
   fetchWorkshops,
+  openSuccessSnackBar,
+  openErrorSnackBar,
+  closeModal,
 }) => {
   const {
     register,
@@ -73,11 +79,17 @@ const AdminPageWorkshopAddForm: React.FC<AdminPageWorkshopAddFormProps> = ({
     setIsImageUploading(true);
     const response = await uploadWorkshopImage(file);
 
-    if (response.success) {
-      if (response.imageUrl) {
-        setImageUploaded(response.imageUrl);
-      }
+    if (!response.success) {
+      openErrorSnackBar(response.message);
+      setIsImageUploading(false);
+      return;
     }
+
+    if (response.imageUrl) {
+      setImageUploaded(response.imageUrl);
+    }
+
+    openSuccessSnackBar(response.message);
     setIsImageUploading(false);
   };
 
@@ -96,6 +108,14 @@ const AdminPageWorkshopAddForm: React.FC<AdminPageWorkshopAddFormProps> = ({
 
     const response = await makeWorkshop(workshopObject);
 
+    if (!response.success) {
+      closeModal();
+      openErrorSnackBar(response.message);
+      return;
+    }
+
+    closeModal();
+    openSuccessSnackBar(response.message);
     fetchWorkshops();
     reset();
     setUploadImageError(false);

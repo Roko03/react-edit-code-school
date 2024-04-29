@@ -7,6 +7,7 @@ import AdminPageWorkshopListComponent from "./workshop-list/AdminPageWorkshopLis
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageWorkshopAddForm from "./components/workshop-add-form/AdminPageWorkshopAddForm";
+import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 
 const AdminPageWorkshopTabComponent = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);
@@ -16,12 +17,25 @@ const AdminPageWorkshopTabComponent = () => {
     null
   );
 
+  const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null);
+  const [snackBarMessage, setSnackBarMessage] = useState<string>("");
+
   const fetchWorkshops = async () => {
     setIsLoading(true);
     const response = await getWorkshops();
 
     setWorkshopList(response);
     setIsLoading(false);
+  };
+
+  const openSuccessSnackBar = (message: string) => {
+    setIsSuccessful(true);
+    setSnackBarMessage(message);
+  };
+
+  const openErrorSnackBar = (message: string) => {
+    setIsSuccessful(false);
+    setSnackBarMessage(message);
   };
 
   useEffect(() => {
@@ -63,7 +77,16 @@ const AdminPageWorkshopTabComponent = () => {
       >
         <AdminPageModalComponent actionType={modalType}>
           {modalType == "add" ? (
-            <AdminPageWorkshopAddForm fetchWorkshops={fetchWorkshops} />
+            <AdminPageWorkshopAddForm
+              fetchWorkshops={fetchWorkshops}
+              openSuccessSnackBar={(message: string) =>
+                openSuccessSnackBar(message)
+              }
+              openErrorSnackBar={(message: string) =>
+                openErrorSnackBar(message)
+              }
+              closeModal={() => setIsModalOpen(false)}
+            />
           ) : modalType == "delete" ? (
             <p>Izbrisi</p>
           ) : (
@@ -71,6 +94,23 @@ const AdminPageWorkshopTabComponent = () => {
           )}
         </AdminPageModalComponent>
       </DialogComponent>
+      {isSuccessful == null ? (
+        <></>
+      ) : isSuccessful ? (
+        <SnackBarComponent
+          variant={"successful"}
+          onClick={() => setIsSuccessful(null)}
+        >
+          <p>{snackBarMessage}</p>
+        </SnackBarComponent>
+      ) : (
+        <SnackBarComponent
+          variant={"error"}
+          onClick={() => setIsSuccessful(null)}
+        >
+          <p>{snackBarMessage}</p>
+        </SnackBarComponent>
+      )}
     </>
   );
 };

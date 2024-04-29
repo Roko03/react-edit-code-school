@@ -7,7 +7,7 @@ export default async function makeWorkshop(data: WorkShop) {
         body: JSON.stringify(data)
     })
 
-    if (!response.ok) throw new Error(`Can't make workshop`)
+    if (!response.ok) return { success: false, message: "Greška prilikom kreiranja radionice" }
 
-    return await response.json()
+    return { success: true, message: "Uspješno ste kreirali radionicu" }
 }

@@ -12,7 +12,7 @@ const AdminPageTabsLinkComponent: React.FC<AdminPageTabsLinkComponentProps> = ({
   tabActiveLink,
   setTabActiveLink,
 }) => {
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [, setSearchParams] = useSearchParams();
   return (
     <>
       <ul className={styles.admin_tabs_links}>

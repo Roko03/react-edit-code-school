@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from "./AdminPageWorkshopTabComponent.module.scss";
 import getWorkshops from "../../../../lib/getWorkShops";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
 import ButtonComponent from "../../../../components/button/ButtonComponent";

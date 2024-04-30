@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from "./AdminPageOrganizationTabComponent.module.scss";
 import getOrganizations from "../../../../lib/getOrganizations";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";

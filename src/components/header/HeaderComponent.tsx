@@ -11,7 +11,7 @@ const HeaderComponent = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const roleManager = userRoleManager();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     if (isAdmin) {

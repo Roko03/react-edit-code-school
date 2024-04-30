@@ -10,6 +10,7 @@ import AdminPageWorkshopAddForm from "./components/workshop-add-form/AdminPageWo
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageWorkshopEditForm from "./components/workshop-edit-form/AdminPageWorkshopEditForm";
 import getWorkshopById from "../../../../lib/getWorkshopById";
+import AdminPageWorkshopDeleteForm from "./components/workshop-delete-form/AdminPageWorkshopDeleteForm";
 
 const AdminPageWorkshopTabComponent = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);
@@ -111,7 +112,7 @@ const AdminPageWorkshopTabComponent = () => {
               closeModal={() => setIsModalOpen(false)}
             />
           ) : modalType == "delete" ? (
-            <p>Izbrisi</p>
+            <AdminPageWorkshopDeleteForm />
           ) : (
             <AdminPageWorkshopEditForm
               workshopItem={targetWorkShop}

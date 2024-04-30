@@ -10,7 +10,13 @@
 }
 
 .modal_delete {
-  width: 50vw;
+  width: 70vw;
+  max-width: rem(460);
   height: 50vh;
+  max-height: rem(360);
+  @include breakpoint(medium) {
+    max-height: rem(260);
+  }
   background-color: $white;
+  border-radius: rem(8);
 }

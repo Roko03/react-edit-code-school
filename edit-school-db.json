@@ -1,13 +1,25 @@
 {
   "radionice": [
     {
-      "id": "addc0798-24d5-4e1d-891f-ea228b632ea1",
+      "id": "b1d86ea1-d1a0-4fea-ae44-9e21c74d767b",
       "name": "Radionica 1",
-      "imageUrl": "/",
-      "date": "01.01.2025",
-      "instructorId": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "instructor": "predavac 1",
-      "info": "Kratki opis radionice 1",
+      "date": "2024-04-10",
+      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
+      "info": "Radionica o Reactu",
+      "level": "junior",
+      "subject": "react",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpg9b7829a1-ca7c-4c05-8d93-065ad459fc2c?alt=media&token=c8337c7a-84d5-49ff-9bb3-f93fe89dcdef",
+      "numOfEntry": 0
+    },
+    {
+      "id": "40f07b33-718b-43ad-b844-79c8b0be712c",
+      "name": "Radionica 2",
+      "date": "2024-04-17",
+      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
+      "info": "Radionica o Expresu",
+      "level": "junior",
+      "subject": "express",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika3.jpg45afaf5e-8837-4bd6-ab62-6ad2a11c8e6a?alt=media&token=fe0fed06-7fcd-45b9-a4cb-712a85fb5cd8",
       "numOfEntry": 0
     }
   ],
@@ -16,8 +28,19 @@
       "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
       "name": "Predavac 1",
       "imageUrl": "/",
-      "biography": "Biografija predavaca 1",
-      "organization": ["organizacija_1"]
+      "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil doloremque exercitationem vel, ab quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil",
+      "organization": [
+        "organizacija_1"
+      ]
+    },
+    {
+      "id": "1b55a8c6-138c-4eb0-1266-67872642bca9",
+      "name": "Predavac 2",
+      "imageUrl": "/",
+      "biography": "Biografija predavaca 2",
+      "organization": [
+        "organizacija_1"
+      ]
     }
   ],
   "organizacije": [
@@ -25,34 +48,6 @@
       "id": "af7fae8d-45b8-4233-b2f0-4c6736ecefa6",
       "name": "Organizacija 1",
       "info": "Opis organizacije 1"
-    }
-  ],
-  "tezine": [
-    {
-      "id": "bb96b595-e7eb-4476-8d0b-18487991e2f1",
-      "name": "Junior"
-    },
-    {
-      "id": "7a5f8891-9a50-4376-8086-188ebc0f1751",
-      "name": "Mid"
-    },
-    {
-      "id": "85a1bb53-4a48-45fd-9eb1-87730f64adc5",
-      "name": "Senior"
-    }
-  ],
-  "teme": [
-    {
-      "id": "b6e08c07-fa8d-4297-91cd-fd8122a50430",
-      "name": "React"
-    },
-    {
-      "id": "c5710cec-842f-4f2a-a0d6-19cd8696496d",
-      "name": "Express"
-    },
-    {
-      "id": "6d0cf2f5-6818-4cb5-811e-2a2a41c92393",
-      "name": "Next.js"
     }
   ]
 }

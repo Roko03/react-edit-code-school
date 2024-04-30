@@ -1,0 +1,51 @@
+@import "../../../../../styles/main.scss";
+
+.admin_tabs_links {
+  padding: rem(48) 0 rem(18);
+  display: none;
+
+  @include breakpoint(large) {
+    display: flex;
+  }
+
+  flex-direction: row;
+  gap: rem(32);
+  font-family: Poppins;
+  font-size: rem(24);
+  font-weight: 700;
+  color: rgba($black, 0.5);
+
+  .tab_active {
+    color: $black;
+    text-decoration: underline;
+  }
+
+  li {
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+
+  li:hover {
+    color: $black;
+  }
+}
+
+.admin_tabs_select {
+  margin: rem(32) 0 rem(12);
+  display: block;
+
+  @include breakpoint(large) {
+    display: none;
+  }
+
+  width: 100%;
+  font-size: rem(18);
+  padding: rem(10) rem(20);
+  background-color: #f8f8f8;
+  border: 1px solid $grey;
+  border-radius: rem(6);
+  color: $black;
+  cursor: pointer;
+  font-family: Poppins;
+  outline: none;
+}

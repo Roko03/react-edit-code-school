@@ -1,0 +1,19 @@
+@import "../../../../../../styles/main.scss";
+
+.delete_box {
+  border-radius: rem(14);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    text-align: center;
+    font-size: rem(24);
+  }
+
+  button {
+    margin: rem(28) auto 0;
+  }
+}

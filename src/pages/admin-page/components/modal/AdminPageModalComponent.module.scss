@@ -1,0 +1,22 @@
+@import "../../../../styles/main.scss";
+
+.modal,
+.modal_add,
+.modal_edit {
+  width: 70vw;
+  height: 80vh;
+  background-color: $white;
+  border-radius: rem(8);
+}
+
+.modal_delete {
+  width: 70vw;
+  max-width: rem(460);
+  height: 50vh;
+  max-height: rem(360);
+  @include breakpoint(medium) {
+    max-height: rem(260);
+  }
+  background-color: $white;
+  border-radius: rem(8);
+}

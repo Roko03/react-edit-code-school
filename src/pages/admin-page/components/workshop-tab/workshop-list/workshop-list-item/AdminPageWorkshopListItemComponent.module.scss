@@ -1,0 +1,104 @@
+@import "../../../../../../styles/main.scss";
+
+.workshop_item {
+  width: 100%;
+  max-width: rem(365.01);
+
+  &__image {
+    position: relative;
+    height: rem(242);
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__info {
+    border: 1px solid $grey;
+    border-top: none;
+    color: $black;
+
+    &__top {
+      padding: rem(20) rem(18);
+      height: rem(160);
+      display: flex;
+      flex-direction: column;
+      gap: rem(8);
+
+      h2 {
+        font-family: Roboto;
+        font-size: rem(18);
+        font-weight: 500;
+      }
+
+      p {
+        font-size: rem(14);
+      }
+
+      span {
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: rem(16);
+        color: rgba($black, 0.5);
+      }
+
+      &__level {
+        margin-top: auto;
+        text-transform: capitalize;
+      }
+    }
+
+    &__bottom {
+      padding: 0 rem(18);
+      height: rem(60);
+      border-top: 1px solid $grey;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      &__counter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: rem(8);
+
+        p {
+          font-weight: 500;
+          font-size: rem(21);
+        }
+      }
+
+      &__subject {
+        font-family: Roboto;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &__buttons {
+    position: absolute;
+    bottom: rem(18);
+    right: rem(18);
+
+    display: flex;
+    flex-direction: row;
+    gap: rem(12);
+
+    img {
+      object-fit: none !important;
+    }
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 378ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.workshop_item:hover .workshop_item__buttons {
+  opacity: 1;
+  visibility: visible;
+}

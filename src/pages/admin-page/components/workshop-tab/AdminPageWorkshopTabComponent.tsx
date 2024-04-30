@@ -11,6 +11,7 @@ import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponen
 import AdminPageWorkshopEditForm from "./components/workshop-edit-form/AdminPageWorkshopEditForm";
 import getWorkshopById from "../../../../lib/getWorkshopById";
 import AdminPageWorkshopDeleteForm from "./components/workshop-delete-form/AdminPageWorkshopDeleteForm";
+import deleteWorkshop from "../../../../lib/deleteWorkshop";
 
 const AdminPageWorkshopTabComponent = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);
@@ -42,6 +43,22 @@ const AdminPageWorkshopTabComponent = () => {
     const response = await getWorkshopById(targetWorkShopId);
 
     setTargetWorkshop(response);
+  };
+
+  const deleteWorkshopById = async () => {
+    if (targetWorkShopId != null) {
+      const response = await deleteWorkshop(targetWorkShopId);
+
+      if (!response.success) {
+        setIsModalOpen(false);
+        openErrorSnackBar(response.message);
+        return;
+      }
+
+      fetchWorkshops();
+      setIsModalOpen(false);
+      openSuccessSnackBar(response.message);
+    }
   };
 
   const openSuccessSnackBar = (message: string) => {
@@ -86,9 +103,10 @@ const AdminPageWorkshopTabComponent = () => {
             setModalType("edit");
             setTargetWorkshopId(id);
           }}
-          openDeleteModal={() => {
+          openDeleteModal={(id: string) => {
             setIsModalOpen(true);
             setModalType("delete");
+            setTargetWorkshopId(id);
           }}
         />
       )}
@@ -112,7 +130,9 @@ const AdminPageWorkshopTabComponent = () => {
               closeModal={() => setIsModalOpen(false)}
             />
           ) : modalType == "delete" ? (
-            <AdminPageWorkshopDeleteForm />
+            <AdminPageWorkshopDeleteForm
+              deleteWorkshopById={() => deleteWorkshopById()}
+            />
           ) : (
             <AdminPageWorkshopEditForm
               workshopItem={targetWorkShop}

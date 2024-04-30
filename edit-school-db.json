@@ -1,14 +1,25 @@
 {
   "radionice": [
     {
-      "id": "b57818ab-b8b3-40d7-a66d-e44efbcb96c2",
+      "id": "b1d86ea1-d1a0-4fea-ae44-9e21c74d767b",
       "name": "Radionica 1",
-      "date": "2024-04-24",
+      "date": "2024-04-10",
       "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "info": "Ovo je najbolja radionica na svitu",
+      "info": "Radionica o Reactu",
       "level": "junior",
       "subject": "react",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika2.jpgb866be74-d9e8-4318-90fa-093c6601ac96?alt=media&token=b2cc3260-440e-4419-a120-e76eee22320b",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpg9b7829a1-ca7c-4c05-8d93-065ad459fc2c?alt=media&token=c8337c7a-84d5-49ff-9bb3-f93fe89dcdef",
+      "numOfEntry": 0
+    },
+    {
+      "id": "40f07b33-718b-43ad-b844-79c8b0be712c",
+      "name": "Radionica 2",
+      "date": "2024-04-17",
+      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
+      "info": "Radionica o Expresu",
+      "level": "junior",
+      "subject": "express",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika3.jpg45afaf5e-8837-4bd6-ab62-6ad2a11c8e6a?alt=media&token=fe0fed06-7fcd-45b9-a4cb-712a85fb5cd8",
       "numOfEntry": 0
     }
   ],

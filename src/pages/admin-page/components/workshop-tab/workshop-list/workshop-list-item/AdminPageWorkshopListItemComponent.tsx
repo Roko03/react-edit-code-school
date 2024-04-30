@@ -6,7 +6,7 @@ import getInstructorById from "../../../../../../lib/getInstructorById";
 interface AdminPageWorkshopListItemComponentProps {
   workshop: WorkShop;
   openEditModal: (id: string) => void;
-  openDeleteModal: () => void;
+  openDeleteModal: (id: string) => void;
 }
 
 const AdminPageWorkshopListItemComponent: React.FC<
@@ -38,7 +38,10 @@ const AdminPageWorkshopListItemComponent: React.FC<
               <p>Edit</p>
             </span>
           </ButtonComponent>
-          <ButtonComponent variant={"adminTrash"} onClick={openDeleteModal}>
+          <ButtonComponent
+            variant={"adminTrash"}
+            onClick={() => openDeleteModal(workshop.id)}
+          >
             <img src={"/trash.svg"} alt="trash" />
             <span>
               <p>Trash</p>

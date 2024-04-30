@@ -4,7 +4,7 @@ import AdminPageWorkshopListItemComponent from "./workshop-list-item/AdminPageWo
 interface AdminPageWorkshopListComponentProps {
   workshopList: WorkShop[];
   openEditModal: (id: string) => void;
-  openDeleteModal: () => void;
+  openDeleteModal: (id: string) => void;
 }
 
 const AdminPageWorkshopListComponent: React.FC<
@@ -21,7 +21,7 @@ const AdminPageWorkshopListComponent: React.FC<
                   workshop={el}
                   key={el.id}
                   openEditModal={(id: string) => openEditModal(id)}
-                  openDeleteModal={openDeleteModal}
+                  openDeleteModal={(id: string) => openDeleteModal(id)}
                 />
               );
             })}

@@ -6,6 +6,7 @@ import AdminPageInstructorListComponent from "./instructor-list/AdminPageInstruc
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
+import AdminPageInstructorAddForm from "./components/instructor-add-form/AdminPageInstructorAddForm";
 
 const AdminPageInstructorTabComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -59,7 +60,7 @@ const AdminPageInstructorTabComponent = () => {
       >
         <AdminPageModalComponent actionType={modalType}>
           {modalType == "add" ? (
-            <p>Add</p>
+            <AdminPageInstructorAddForm />
           ) : modalType == "delete" ? (
             <p>Delete</p>
           ) : (

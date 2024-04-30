@@ -5,7 +5,7 @@ import getInstructorById from "../../../../../../lib/getInstructorById";
 
 interface AdminPageWorkshopListItemComponentProps {
   workshop: WorkShop;
-  openEditModal: () => void;
+  openEditModal: (id: string) => void;
   openDeleteModal: () => void;
 }
 
@@ -29,7 +29,10 @@ const AdminPageWorkshopListItemComponent: React.FC<
       <div className={styles.workshop_item__image}>
         <img src={workshop.imageUrl} alt={`${workshop.name}-image`} />
         <div className={styles.workshop_item__buttons}>
-          <ButtonComponent variant={"adminEdit"} onClick={openEditModal}>
+          <ButtonComponent
+            variant={"adminEdit"}
+            onClick={() => openEditModal(workshop.id)}
+          >
             <img src={"/pencil.svg"} alt="edit" />
             <span>
               <p>Edit</p>

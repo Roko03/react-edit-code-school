@@ -8,6 +8,8 @@ import provideDefaultSubjectData from "../../../../../../components/data/SelectS
 import { useEffect, useState } from "react";
 import getInstructors from "../../../../../../lib/getInstructors";
 import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
+import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
+import editWorkshop from "../../../../../../lib/editWorkshop";
 
 const difficultyArray = provideDefaultDifficultyData();
 const subjectsArray = provideDefaultSubjectData();
@@ -20,23 +22,23 @@ const editWorkshopScehma = z.object({
     .string()
     .min(5, { message: "Morate unijeti informacije o radionici" })
     .max(350, { message: "Ne smije imati poviše 350 znakova" }),
-  level: z.enum(difficultyArray, {
-    errorMap: () => ({ message: "Molimo odaberite težinu" }),
-  }),
-  subject: z.enum(subjectsArray, {
-    errorMap: () => ({ message: "Molimo odaberite temu" }),
-  }),
+  level: z.string().min(1, { message: "Odaberite težinu" }),
+  subject: z.string().min(1, { message: "Odaberite temu" }),
 });
 
 type TEditWorkshopSchema = z.infer<typeof editWorkshopScehma>;
 
 interface AdminPageWorkshopEditFormProps {
+  workshopItem: WorkShop | null;
+  fetchWorkshops: () => void;
   openSuccessSnackBar: (message: string) => void;
   openErrorSnackBar: (message: string) => void;
   closeModal: () => void;
 }
 
 const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
+  workshopItem,
+  fetchWorkshops,
   openSuccessSnackBar,
   openErrorSnackBar,
   closeModal,
@@ -50,7 +52,6 @@ const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
     resolver: zodResolver(editWorkshopScehma),
   });
 
-  const [upladImageError, setUploadImageError] = useState<boolean>(false);
   const [imageUploaded, setImageUploaded] = useState<string>("");
   const [isImageUploading, setIsImageUploading] = useState<boolean>(false);
   const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
@@ -89,19 +90,58 @@ const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
     setIsImageUploading(false);
   };
 
-  const onSubmit = async () => {
-    if (imageUploaded == "") {
-      setUploadImageError(true);
-      return;
-    }
+  const onSubmit = async (data: TEditWorkshopSchema) => {
+    if (workshopItem) {
+      let dataItem: WorkShop;
 
-    reset();
-    setUploadImageError(false);
+      if (imageUploaded == "") {
+        dataItem = {
+          id: workshopItem.id,
+          ...data,
+          imageUrl: workshopItem.imageUrl,
+          numOfEntry: 0,
+        };
+      } else {
+        dataItem = {
+          id: workshopItem.id,
+          ...data,
+          imageUrl: imageUploaded,
+          numOfEntry: 0,
+        };
+      }
+
+      const response = await editWorkshop(workshopItem.id, dataItem);
+
+      if (!response.success) {
+        closeModal();
+        openErrorSnackBar(response.message);
+        return;
+      }
+
+      reset();
+      closeModal();
+      openSuccessSnackBar(response.message);
+      fetchWorkshops();
+    }
   };
 
   useEffect(() => {
     fetchInstructor();
   }, []);
+
+  useEffect(() => {
+    if (workshopItem != null) {
+      const formData: TEditWorkshopSchema = {
+        name: workshopItem.name,
+        date: workshopItem.date,
+        instructor: workshopItem.instructor,
+        info: workshopItem.info,
+        level: workshopItem.level,
+        subject: workshopItem.subject,
+      };
+      reset(formData);
+    }
+  }, [workshopItem]);
 
   useEffect(() => {
     const isEnabled = isImageUploading || isSubmitting;
@@ -110,6 +150,10 @@ const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
 
   if (instructorList == null) {
     return <p>Problem sa bazom</p>;
+  }
+
+  if (workshopItem == null) {
+    return <CircularProgressComponent />;
   }
 
   return (
@@ -128,7 +172,7 @@ const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
         <input
           type="date"
           {...register("date")}
-          placeholder="Upiši ime radionice"
+          placeholder="Upiši datum radionice"
         />
         {errors.date && (
           <p className={styles.edit_form__error}>{`${errors.date.message}`}</p>
@@ -140,9 +184,6 @@ const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
           onChange={(e) => handleFileChange(e)}
           accept="image/*"
         />
-        {upladImageError && (
-          <p className={styles.edit_form__error}>Odaberi sliku</p>
-        )}
       </label>
       <label>
         <select {...register("instructor")}>
@@ -188,7 +229,7 @@ const AdminPageWorkshopEditForm: React.FC<AdminPageWorkshopEditFormProps> = ({
           })}
         </select>
         {errors.level && (
-          <p className={styles.edit_form_error}>{`${errors.level.message}`}</p>
+          <p className={styles.edit_form__error}>{`${errors.level.message}`}</p>
         )}
       </label>
       <label>

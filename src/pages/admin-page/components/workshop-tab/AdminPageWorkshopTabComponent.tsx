@@ -8,6 +8,7 @@ import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageWorkshopAddForm from "./components/workshop-add-form/AdminPageWorkshopAddForm";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
+import AdminPageWorkshopEditForm from "./components/workshop-edit-form/AdminPageWorkshopEditForm";
 
 const AdminPageWorkshopTabComponent = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);
@@ -90,7 +91,7 @@ const AdminPageWorkshopTabComponent = () => {
           ) : modalType == "delete" ? (
             <p>Izbrisi</p>
           ) : (
-            <p>Uredi</p>
+            <AdminPageWorkshopEditForm />
           )}
         </AdminPageModalComponent>
       </DialogComponent>

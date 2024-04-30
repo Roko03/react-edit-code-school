@@ -1,5 +1,17 @@
 {
-  "radionice": [],
+  "radionice": [
+    {
+      "id": "b57818ab-b8b3-40d7-a66d-e44efbcb96c2",
+      "name": "Radionica 1",
+      "date": "2024-04-24",
+      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
+      "info": "Ovo je najbolja radionica na svitu",
+      "level": "junior",
+      "subject": "react",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpg33ccb077-1bdb-44f8-8338-8712975808a0?alt=media&token=ccde9fc9-99c0-41b6-b2c0-6014863c83f5",
+      "numOfEntry": 0
+    }
+  ],
   "predavaci": [
     {
       "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",

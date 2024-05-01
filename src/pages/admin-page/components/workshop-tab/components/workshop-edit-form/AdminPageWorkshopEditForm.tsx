@@ -7,7 +7,7 @@ import provideDefaultDifficultyData from "../../../../../../components/data/Sele
 import provideDefaultSubjectData from "../../../../../../components/data/SelectSubjectData";
 import { useEffect, useState } from "react";
 import getInstructors from "../../../../../../lib/instructor/getInstructors";
-import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
+import uploadWorkshopImage from "../../../../../../lib/upload-image/uploadWorkshopImage";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
 import editWorkshop from "../../../../../../lib/workshop/editWorkshop";
 

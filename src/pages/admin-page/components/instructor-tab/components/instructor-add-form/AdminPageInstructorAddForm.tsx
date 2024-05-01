@@ -6,7 +6,7 @@ import ButtonComponent from "../../../../../../components/button/ButtonComponent
 import { useEffect, useState } from "react";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
 import getOrganizations from "../../../../../../lib/organization/getOrganizations";
-import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
+import uploadInstructorImage from "../../../../../../lib/upload-image/uploadInstructorImage";
 import uuidv4 from "../../../../../../util/uuidv4";
 import makeInstructor from "../../../../../../lib/instructor/makeInstructor";
 

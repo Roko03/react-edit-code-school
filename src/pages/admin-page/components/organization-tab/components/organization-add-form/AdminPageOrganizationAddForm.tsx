@@ -51,7 +51,7 @@ const AdminPageOrganizationAddForm = () => {
         enabled={isSubmitting}
         onClick={handleSubmit(onSubmit)}
       >
-        <p>Dodaj organizacije</p>
+        <p>Dodaj organizaciju</p>
       </ButtonComponent>
     </form>
   );

@@ -5,11 +5,12 @@ import styles from "./HomePageWorkshopListItemComponent.module.scss";
 
 interface HomePageWorkshopListItemComponentProps {
   workshopData: WorkShop;
+  openEntryModal: (id: string) => void;
 }
 
 const HomePageWorkshopListItemComponent: React.FC<
   HomePageWorkshopListItemComponentProps
-> = ({ workshopData }) => {
+> = ({ workshopData, openEntryModal }) => {
   const [workshopInstructor, setWorkshopInstructor] =
     useState<Instructor | null>(null);
 
@@ -45,7 +46,10 @@ const HomePageWorkshopListItemComponent: React.FC<
         </div>
       </div>
       <div className={styles.workshop_list_item__overlay}>
-        <ButtonComponent variant={"entry"}>
+        <ButtonComponent
+          variant={"entry"}
+          onClick={() => openEntryModal(workshopData.id)}
+        >
           <p>Prijavi se</p>
         </ButtonComponent>
       </div>

@@ -3,11 +3,12 @@ import HomePageWorkshopListItemComponent from "./workshop-item/HomePageWorkshopL
 
 interface HomePageWorkShopListComponentProps {
   workshopList: WorkShop[];
+  openEntryModal: (id: string) => void;
 }
 
 const HomePageWorkShopListComponent: React.FC<
   HomePageWorkShopListComponentProps
-> = ({ workshopList }) => {
+> = ({ workshopList, openEntryModal }) => {
   return (
     <div className={styles.workshop_list}>
       {workshopList.map((workshop) => {
@@ -15,6 +16,7 @@ const HomePageWorkShopListComponent: React.FC<
           <HomePageWorkshopListItemComponent
             key={workshop.id}
             workshopData={workshop}
+            openEntryModal={(id: string) => openEntryModal(id)}
           />
         );
       })}

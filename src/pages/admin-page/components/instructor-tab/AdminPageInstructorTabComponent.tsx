@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import getInstructors from "../../../../lib/getInstructors";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
-import AdminPageInstructorListComponent from "./instructor-list/AdminPageInstructorListComponent";
+import AdminPageInstructorListComponent from "./components/instructor-list/AdminPageInstructorListComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";

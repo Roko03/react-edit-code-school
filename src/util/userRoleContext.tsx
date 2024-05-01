@@ -20,7 +20,9 @@ export const UserRoleManagerProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [role, setRole] = useState<"user" | "admin">("user");
+  const [role, setRole] = useState<"user" | "admin">(
+    window.location.pathname == "/admin" ? "admin" : "user"
+  );
 
   return (
     <RoleManagerContext.Provider value={{ role, setRole }}>

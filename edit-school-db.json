@@ -1,5 +1,23 @@
 {
-  "radionice": [],
-  "predavaci": [],
-  "organizacije": []
+  "radionice": [
+  ],
+  "predavaci": [
+  ],
+  "organizacije": [
+    {
+      "id": "47c6bd7e-868c-4007-8943-bca459bdb36f",
+      "name": "Organizacija 1",
+      "info": "Opis Organizacije 1"
+    },
+    {
+      "id": "d80f22d7-94da-4a34-a7dd-9d79e654e238",
+      "name": "Organizacija 2",
+      "info": "Opis organizacije 2"
+    },
+    {
+      "id": "bf9ba1d7-8c17-4699-9b37-535a56bcb8d1",
+      "name": "Organizacija 3",
+      "info": "Opis organizacije 3"
+    }
+  ]
 }

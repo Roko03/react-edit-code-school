@@ -1,6 +1,26 @@
 {
-  "radionice": [],
-  "predavaci": [],
+  "radionice": [
+    {
+      "id": "a646dbbb-5974-4f83-b355-af942e978c69",
+      "name": "Radionica 1",
+      "date": "2024-05-10",
+      "instructor": "a234cb24-b25e-40bf-b58a-86bdc995c546",
+      "info": "Opis radionice 1",
+      "level": "junior",
+      "subject": "react",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpgbcfeb0cd-bdc3-480c-b4bb-fce3bb5c74d1?alt=media&token=14ff76ef-c6df-4472-8f2a-20d93c02a12e",
+      "numOfEntry": 0
+    }
+  ],
+  "predavaci": [
+    {
+      "id": "a234cb24-b25e-40bf-b58a-86bdc995c546",
+      "name": "Predavac 2",
+      "biography": "Predavac 2 opis",
+      "organization": "Organizacija 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/predavaci%2Fslika2.jpgfb419765-a0ee-4f15-9b0c-b9d952ab7007?alt=media&token=80ba0058-6867-4aaf-8474-193017627036"
+    }
+  ],
   "organizacije": [
     {
       "id": "af7fae8d-45b8-4233-b2f0-4c6736ecefa6",

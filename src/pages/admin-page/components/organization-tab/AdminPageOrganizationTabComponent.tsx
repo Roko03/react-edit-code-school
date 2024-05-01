@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import getOrganizations from "../../../../lib/getOrganizations";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
-import AdminPageOrganizationListComponent from "./organization-list/AdminPageOrganizationListComponent";
+import AdminPageOrganizationListComponent from "./components/organization-list/AdminPageOrganizationListComponent";
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageOrganizationAddForm from "./components/organization-add-form/AdminPageOrganizationAddForm";

@@ -1,5 +1,5 @@
 import styles from "./AdminPageOrganizationListComponent.module.scss";
-import AdminPageListItemComponent from "../../admin-list-item/AdminPageListItemComponent";
+import AdminPageListItemComponent from "../../../admin-list-item/AdminPageListItemComponent";
 
 interface AdminPageOrganizationListComponentProps {
   organizationList: Organization[];

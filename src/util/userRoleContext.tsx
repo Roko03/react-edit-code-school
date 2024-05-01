@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const RoleManagerContext = createContext<{
   role: string;
@@ -20,7 +21,9 @@ export const UserRoleManagerProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [role, setRole] = useState<"user" | "admin">("user");
+  const [role, setRole] = useState<"user" | "admin">(
+    window.location.pathname == "/admin" ? "admin" : "user"
+  );
 
   return (
     <RoleManagerContext.Provider value={{ role, setRole }}>

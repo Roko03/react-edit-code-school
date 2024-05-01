@@ -9,7 +9,9 @@ import { userRoleManager } from "../../util/userRoleContext";
 
 const HeaderComponent = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(
+    window.location.pathname == "/admin"
+  );
   const roleManager = userRoleManager();
   const navigate = useNavigate();
 

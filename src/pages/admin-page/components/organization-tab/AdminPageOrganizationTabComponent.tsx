@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getOrganizations from "../../../../lib/getOrganizations";
+import getOrganizations from "../../../../lib/organization/getOrganizations";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
 import AdminPageOrganizationListComponent from "./components/organization-list/AdminPageOrganizationListComponent";
@@ -8,9 +8,9 @@ import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageOrganizationAddForm from "./components/organization-add-form/AdminPageOrganizationAddForm";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageOrganizationEditForm from "./components/organization-edit-form/AdminPageOrganizationEditForm";
-import getOrganizationById from "../../../../lib/getOrganizationById";
+import getOrganizationById from "../../../../lib/organization/getOrganizationById";
 import AdminPageOrganizationDeleteForm from "./components/organization-delete-form/AdminPageOrganizationDeleteForm";
-import deleteOrganization from "../../../../lib/deleteOrganization";
+import deleteOrganization from "../../../../lib/organization/deleteOrganization";
 
 export const AdminPageOrganizationTabComponent = () => {
   const [organizationList, setOrganizationList] = useState<

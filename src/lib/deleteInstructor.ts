@@ -1,5 +1,5 @@
 export default async function deleteInstructor(id: string) {
-    const response = await fetch(`${import.meta.env.VITE_PUBLIC_BACK_BASE_URL}/predavac/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_PUBLIC_BACK_BASE_URL}/predavaci/${id}`, {
         method: 'DELETE'
     })
 

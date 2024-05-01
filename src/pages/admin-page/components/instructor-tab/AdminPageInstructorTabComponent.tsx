@@ -10,6 +10,7 @@ import AdminPageInstructorAddForm from "./components/instructor-add-form/AdminPa
 import AdminPageInstructorEditForm from "./components/instructor-edit-form/AdminPageInstructorEditForm";
 import getInstructorById from "../../../../lib/getInstructorById";
 import AdminPageInstructorDeleteForm from "./components/instructor-delete-form/AdminPageInstructorDeleteForm";
+import deleteInstructor from "../../../../lib/deleteInstructor";
 
 const AdminPageInstructorTabComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -48,10 +49,19 @@ const AdminPageInstructorTabComponent = () => {
     setTargetInstructor(null);
   };
 
-  const deleteInstructorFunction = () => {
+  const deleteInstructorFunction = async () => {
+    const response = await deleteInstructor(targetInstructorId);
+
     setModalType(null);
     setIsModalOpen(false);
-    console.log(targetInstructorId);
+
+    if (!response.success) {
+      openErrorSnackBar(response.message);
+      return;
+    }
+
+    openSuccessSnackBar(response.message);
+    fetchInstructors();
   };
 
   const openSuccessSnackBar = (message: string) => {

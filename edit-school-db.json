@@ -26,6 +26,11 @@
       "id": "af7fae8d-45b8-4233-b2f0-4c6736ecefa6",
       "name": "Organizacija 1",
       "info": "Opis organizacije 1"
+    },
+    {
+      "id": "ef60860e-924e-4e11-ada0-36531bac3a39",
+      "name": "Organizacija 2",
+      "info": "Opis organizacije 2"
     }
   ]
 }

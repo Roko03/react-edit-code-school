@@ -3,6 +3,8 @@ import styles from "./AdminPageOrganizationAddForm.module.scss";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonComponent from "../../../../../../components/button/ButtonComponent";
+import uuidv4 from "../../../../../../util/uuidv4";
+import makeOrganization from "../../../../../../lib/makeOrganization";
 
 const addOrganizationSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime organizacije" }),
@@ -14,7 +16,21 @@ const addOrganizationSchema = z.object({
 
 type TAddOrganizationSchema = z.infer<typeof addOrganizationSchema>;
 
-const AdminPageOrganizationAddForm = () => {
+interface AdminPageOrganizationAddFormProps {
+  fetchOrganization: () => void;
+  closeModal: () => void;
+  openSuccessSnackBar: (message: string) => void;
+  openErrorSnackBar: (message: string) => void;
+}
+
+const AdminPageOrganizationAddForm: React.FC<
+  AdminPageOrganizationAddFormProps
+> = ({
+  fetchOrganization,
+  closeModal,
+  openSuccessSnackBar,
+  openErrorSnackBar,
+}) => {
   const {
     register,
     handleSubmit,
@@ -25,8 +41,23 @@ const AdminPageOrganizationAddForm = () => {
   });
 
   const onSubmit = async (data: TAddOrganizationSchema) => {
+    const organizationObject: Organization = {
+      id: uuidv4(),
+      ...data,
+    };
+
+    const response = await makeOrganization(organizationObject);
+
+    closeModal();
+
+    if (!response.success) {
+      openErrorSnackBar(response.messsage);
+      return;
+    }
+
     reset();
-    console.log(data);
+    openSuccessSnackBar(response.messsage);
+    fetchOrganization();
   };
 
   return (

@@ -6,6 +6,7 @@ import AdminPageOrganizationListComponent from "./organization-list/AdminPageOrg
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageOrganizationAddForm from "./components/organization-add-form/AdminPageOrganizationAddForm";
+import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 
 export const AdminPageOrganizationTabComponent = () => {
   const [organizationList, setOrganizationList] = useState<
@@ -17,12 +18,25 @@ export const AdminPageOrganizationTabComponent = () => {
     null
   );
 
+  const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null);
+  const [snackBarMessage, setSnackBarMessage] = useState<string>("");
+
   const fetchOrganization = async () => {
     setIsLoading(true);
     const response = await getOrganizations();
 
     setOrganizationList(response);
     setIsLoading(false);
+  };
+
+  const openSuccessSnackBar = (message: string) => {
+    setIsSuccessful(true);
+    setSnackBarMessage(message);
+  };
+
+  const openErrorSnackBar = (message: string) => {
+    setIsSuccessful(false);
+    setSnackBarMessage(message);
   };
 
   useEffect(() => {
@@ -59,7 +73,19 @@ export const AdminPageOrganizationTabComponent = () => {
       >
         <AdminPageModalComponent actionType={modalType}>
           {modalType == "add" ? (
-            <AdminPageOrganizationAddForm />
+            <AdminPageOrganizationAddForm
+              fetchOrganization={fetchOrganization}
+              closeModal={() => {
+                setIsModalOpen(false);
+                setModalType(null);
+              }}
+              openSuccessSnackBar={(message: string) =>
+                openSuccessSnackBar(message)
+              }
+              openErrorSnackBar={(message: string) =>
+                openErrorSnackBar(message)
+              }
+            />
           ) : modalType == "delete" ? (
             <p>Delete</p>
           ) : (
@@ -67,6 +93,23 @@ export const AdminPageOrganizationTabComponent = () => {
           )}
         </AdminPageModalComponent>
       </DialogComponent>
+      {isSuccessful == null ? (
+        <></>
+      ) : isSuccessful ? (
+        <SnackBarComponent
+          variant={"successful"}
+          onClick={() => setIsSuccessful(null)}
+        >
+          <p>{snackBarMessage}</p>
+        </SnackBarComponent>
+      ) : (
+        <SnackBarComponent
+          variant={"error"}
+          onClick={() => setIsSuccessful(null)}
+        >
+          <p>{snackBarMessage}</p>
+        </SnackBarComponent>
+      )}
     </>
   );
 };

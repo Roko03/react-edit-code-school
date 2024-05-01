@@ -9,6 +9,8 @@ import AdminPageOrganizationAddForm from "./components/organization-add-form/Adm
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageOrganizationEditForm from "./components/organization-edit-form/AdminPageOrganizationEditForm";
 import getOrganizationById from "../../../../lib/getOrganizationById";
+import AdminPageOrganizationDeleteForm from "./components/organization-delete-form/AdminPageOrganizationDeleteForm";
+import deleteOrganization from "../../../../lib/deleteOrganization";
 
 export const AdminPageOrganizationTabComponent = () => {
   const [organizationList, setOrganizationList] = useState<
@@ -36,9 +38,28 @@ export const AdminPageOrganizationTabComponent = () => {
   };
 
   const fetchOrganizationById = async () => {
-    const response = await getOrganizationById(targetOrganizationId);
+    if (targetOrganizationId != "") {
+      const response = await getOrganizationById(targetOrganizationId);
 
-    setTargetOrganization(response);
+      setTargetOrganization(response);
+      return;
+    }
+    setTargetOrganization(null);
+  };
+
+  const deleteOrganizationFunction = async () => {
+    const response = await deleteOrganization(targetOrganizationId);
+
+    setModalType(null);
+    setIsModalOpen(false);
+
+    if (!response.success) {
+      openErrorSnackBar(response.message);
+      return;
+    }
+
+    openSuccessSnackBar(response.message);
+    fetchOrganization();
   };
 
   const openSuccessSnackBar = (message: string) => {
@@ -56,12 +77,8 @@ export const AdminPageOrganizationTabComponent = () => {
   }, []);
 
   useEffect(() => {
-    if (targetOrganizationId != "") {
-      fetchOrganizationById();
-    }
+    fetchOrganizationById();
   }, [targetOrganizationId]);
-
-  console.log(targetOrganization);
 
   if (isLoading) {
     return <CircularProgressComponent />;
@@ -117,7 +134,9 @@ export const AdminPageOrganizationTabComponent = () => {
               }
             />
           ) : modalType == "delete" ? (
-            <p>Delete</p>
+            <AdminPageOrganizationDeleteForm
+              deleteOrganizationFunction={deleteOrganizationFunction}
+            />
           ) : (
             <AdminPageOrganizationEditForm
               fetchOrganization={fetchOrganization}

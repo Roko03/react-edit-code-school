@@ -23,13 +23,8 @@
   ],
   "organizacije": [
     {
-      "id": "af7fae8d-45b8-4233-b2f0-4c6736ecefa6",
+      "id": "fe95e50b-f1f9-47fb-8b8b-f4d224108d68",
       "name": "Organizacija 1",
-      "info": "Opis organizacije 1"
-    },
-    {
-      "id": "ef60860e-924e-4e11-ada0-36531bac3a39",
-      "name": "Organizacija 3",
       "info": "Opis organizacije 2"
     }
   ]

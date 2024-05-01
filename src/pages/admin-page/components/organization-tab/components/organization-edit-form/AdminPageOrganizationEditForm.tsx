@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import styles from "./AdminPageOrganizationEditForm.module.scss";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import uuidv4 from "../../../../../../util/uuidv4";
 import ButtonComponent from "../../../../../../components/button/ButtonComponent";
 import { useEffect } from "react";
 import editOrganization from "../../../../../../lib/editOrganization";

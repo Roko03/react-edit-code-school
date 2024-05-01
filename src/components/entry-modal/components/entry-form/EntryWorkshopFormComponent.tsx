@@ -3,6 +3,7 @@ import styles from "./EntryWorkshopFormComponent.module.scss";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonComponent from "../../../button/ButtonComponent";
+import entryWorkshop from "../../../../lib/workshop/entryWorkshop";
 
 const entryWorkshopSchema = z.object({
   name: z.string().min(1, { message: "Molimo unesite ime" }),
@@ -33,11 +34,19 @@ const EntryWorkshopFormComponent: React.FC<EntryWorkshopFormComponentProps> = ({
   });
 
   const onSubmit = async (data: TEntryWorkshopSchema) => {
-    reset();
-    console.log(data);
-  };
+    if (targetWorkshop) {
+      const numOfEntry: number = targetWorkshop.numOfEntry + 1;
+      const response = await entryWorkshop(
+        targetWorkshop.id,
+        numOfEntry,
+        `${data.name} ${data.surname}`
+      );
 
-  console.log(targetWorkshop);
+      console.log(response);
+    }
+
+    reset();
+  };
 
   return (
     <form className={styles.entry_form} onSubmit={handleSubmit(onSubmit)}>

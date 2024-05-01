@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import getWorkshops from "../../../../lib/getWorkShops";
+import getWorkshops from "../../../../lib/workshop/getWorkShops";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
-import AdminPageWorkshopListComponent from "./workshop-list/AdminPageWorkshopListComponent";
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageWorkshopAddForm from "./components/workshop-add-form/AdminPageWorkshopAddForm";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageWorkshopEditForm from "./components/workshop-edit-form/AdminPageWorkshopEditForm";
-import getWorkshopById from "../../../../lib/getWorkshopById";
+import getWorkshopById from "../../../../lib/workshop/getWorkshopById";
 import AdminPageWorkshopDeleteForm from "./components/workshop-delete-form/AdminPageWorkshopDeleteForm";
-import deleteWorkshop from "../../../../lib/deleteWorkshop";
+import deleteWorkshop from "../../../../lib/workshop/deleteWorkshop";
+import AdminPageWorkshopListComponent from "./components/workshop-list/AdminPageWorkshopListComponent";
 
 const AdminPageWorkshopTabComponent = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);

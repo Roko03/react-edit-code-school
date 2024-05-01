@@ -1,4 +1,4 @@
-@import "../../../../../styles/main.scss";
+@import "../../../../../../styles/main.scss";
 
 .workshop_list {
   margin: rem(38) 0;
@@ -10,4 +10,8 @@
   @media only screen and (min-width: rem(900)) {
     justify-content: flex-start;
   }
+}
+
+.workshop_list_none {
+  margin-top: rem(36);
 }

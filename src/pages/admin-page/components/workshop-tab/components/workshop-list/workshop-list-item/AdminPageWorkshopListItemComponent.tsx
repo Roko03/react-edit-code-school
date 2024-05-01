@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ButtonComponent from "../../../../../../components/button/ButtonComponent";
 import styles from "./AdminPageWorkshopListItemComponent.module.scss";
-import getInstructorById from "../../../../../../lib/getInstructorById";
+import getInstructorById from "../../../../../../../lib/instructor/getInstructorById";
+import ButtonComponent from "../../../../../../../components/button/ButtonComponent";
 
 interface AdminPageWorkshopListItemComponentProps {
   workshop: WorkShop;

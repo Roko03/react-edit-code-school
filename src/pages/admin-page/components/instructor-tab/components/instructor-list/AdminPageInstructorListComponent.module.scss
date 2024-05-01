@@ -1,6 +1,6 @@
-@import "../../../../../styles/main.scss";
+@import "../../../../../../styles/main.scss";
 
-.organization_header {
+.instructor_header {
   display: none;
   padding: rem(36) 0 rem(16);
 
@@ -12,16 +12,20 @@
   width: 100%;
   gap: rem(24);
 
+  &__box {
+    min-width: rem(120);
+  }
+
   &__list {
     width: 100%;
     display: grid;
-    grid-template-rows: 0.3fr 1fr;
+    grid-template-rows: 0.4fr 1fr 0.4fr;
     gap: rem(32);
     padding: 0 rem(12);
 
     @include breakpoint(large) {
       grid-template-rows: 1fr;
-      grid-template-columns: 0.2fr 1fr;
+      grid-template-columns: 0.2fr 1fr 0.4fr;
     }
 
     font-size: rem(16);
@@ -29,7 +33,7 @@
   }
 }
 
-.organization_list {
+.instructor_list {
   margin-top: rem(36);
 
   @include breakpoint(large) {
@@ -38,4 +42,8 @@
   display: flex;
   flex-direction: column;
   gap: rem(24);
+}
+
+.instructor_list_none {
+  margin-top: rem(36);
 }

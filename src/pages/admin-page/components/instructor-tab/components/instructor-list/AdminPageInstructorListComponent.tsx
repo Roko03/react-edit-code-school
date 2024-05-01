@@ -1,5 +1,5 @@
 import styles from "./AdminPageInstructorListComponent.module.scss";
-import AdminPageListItemComponent from "../../admin-list-item/AdminPageListItemComponent";
+import AdminPageListItemComponent from "../../../admin-list-item/AdminPageListItemComponent";
 
 interface AdminPageInstructorListComponentProps {
   instructorList: Instructor[];
@@ -37,7 +37,9 @@ const AdminPageInstructorListComponent: React.FC<
           </div>
         </>
       ) : (
-        <h2>Nema predavača</h2>
+        <div className={styles.instructor_list_none}>
+          <h2>Nema predavača</h2>
+        </div>
       )}
     </>
   );

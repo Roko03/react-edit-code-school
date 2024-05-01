@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonComponent from "../../../../../../components/button/ButtonComponent";
 import { useEffect } from "react";
-import editOrganization from "../../../../../../lib/editOrganization";
+import editOrganization from "../../../../../../lib/organization/editOrganization";
 
 const editOrganizationSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime organizacije" }),

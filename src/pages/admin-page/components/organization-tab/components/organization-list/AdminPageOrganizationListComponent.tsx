@@ -1,5 +1,5 @@
 import styles from "./AdminPageOrganizationListComponent.module.scss";
-import AdminPageListItemComponent from "../../admin-list-item/AdminPageListItemComponent";
+import AdminPageListItemComponent from "../../../admin-list-item/AdminPageListItemComponent";
 
 interface AdminPageOrganizationListComponentProps {
   organizationList: Organization[];
@@ -35,7 +35,9 @@ const AdminPageOrganizationListComponent: React.FC<
           </div>
         </>
       ) : (
-        <h2>Nema organizacija</h2>
+        <div className={styles.organization_list_none}>
+          <h2>Nema organizacija</h2>
+        </div>
       )}
     </>
   );

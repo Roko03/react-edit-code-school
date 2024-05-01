@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ButtonComponent from "../../../../../../components/button/ButtonComponent";
 import uuidv4 from "../../../../../../util/uuidv4";
-import makeOrganization from "../../../../../../lib/makeOrganization";
+import makeOrganization from "../../../../../../lib/organization/makeOrganization";
 
 const addOrganizationSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime organizacije" }),

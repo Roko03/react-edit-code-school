@@ -8,6 +8,7 @@ import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageOrganizationAddForm from "./components/organization-add-form/AdminPageOrganizationAddForm";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageOrganizationEditForm from "./components/organization-edit-form/AdminPageOrganizationEditForm";
+import getOrganizationById from "../../../../lib/getOrganizationById";
 
 export const AdminPageOrganizationTabComponent = () => {
   const [organizationList, setOrganizationList] = useState<
@@ -22,12 +23,22 @@ export const AdminPageOrganizationTabComponent = () => {
   const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null);
   const [snackBarMessage, setSnackBarMessage] = useState<string>("");
 
+  const [targetOrganizationId, setTargetOrganizationId] = useState<string>("");
+  const [targetOrganization, setTargetOrganization] =
+    useState<Organization | null>(null);
+
   const fetchOrganization = async () => {
     setIsLoading(true);
     const response = await getOrganizations();
 
     setOrganizationList(response);
     setIsLoading(false);
+  };
+
+  const fetchOrganizationById = async () => {
+    const response = await getOrganizationById(targetOrganizationId);
+
+    setTargetOrganization(response);
   };
 
   const openSuccessSnackBar = (message: string) => {
@@ -43,6 +54,14 @@ export const AdminPageOrganizationTabComponent = () => {
   useEffect(() => {
     fetchOrganization();
   }, []);
+
+  useEffect(() => {
+    if (targetOrganizationId != "") {
+      fetchOrganizationById();
+    }
+  }, [targetOrganizationId]);
+
+  console.log(targetOrganization);
 
   if (isLoading) {
     return <CircularProgressComponent />;
@@ -66,10 +85,12 @@ export const AdminPageOrganizationTabComponent = () => {
           openEditModal={(id: string) => {
             setIsModalOpen(true);
             setModalType("edit");
+            setTargetOrganizationId(id);
           }}
           openDeleteModal={(id: string) => {
             setIsModalOpen(true);
             setModalType("delete");
+            setTargetOrganizationId(id);
           }}
         />
       )}
@@ -100,6 +121,7 @@ export const AdminPageOrganizationTabComponent = () => {
           ) : (
             <AdminPageOrganizationEditForm
               fetchOrganization={fetchOrganization}
+              targetOrganization={targetOrganization}
               closeModal={() => {
                 setIsModalOpen(false);
                 setModalType(null);

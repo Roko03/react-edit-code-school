@@ -4,8 +4,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import uuidv4 from "../../../../../../util/uuidv4";
 import ButtonComponent from "../../../../../../components/button/ButtonComponent";
+import { useEffect } from "react";
+import editOrganization from "../../../../../../lib/editOrganization";
 
-const addOrganizationSchema = z.object({
+const editOrganizationSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime organizacije" }),
   info: z
     .string()
@@ -13,10 +15,11 @@ const addOrganizationSchema = z.object({
     .max(350, { message: "Ne smije imati poviše 350 znakova" }),
 });
 
-type TAddOrganizationSchema = z.infer<typeof addOrganizationSchema>;
+type TEditOrganizationSchema = z.infer<typeof editOrganizationSchema>;
 
 interface AdminPageOrganizationEditFormProps {
   fetchOrganization: () => void;
+  targetOrganization: Organization | null;
   closeModal: () => void;
   openSuccessSnackBar: (message: string) => void;
   openErrorSnackBar: (message: string) => void;
@@ -26,6 +29,7 @@ const AdminPageOrganizationEditForm: React.FC<
   AdminPageOrganizationEditFormProps
 > = ({
   fetchOrganization,
+  targetOrganization,
   closeModal,
   openSuccessSnackBar,
   openErrorSnackBar,
@@ -35,29 +39,45 @@ const AdminPageOrganizationEditForm: React.FC<
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<TAddOrganizationSchema>({
-    resolver: zodResolver(addOrganizationSchema),
+  } = useForm<TEditOrganizationSchema>({
+    resolver: zodResolver(editOrganizationSchema),
   });
 
-  const onSubmit = async (data: TAddOrganizationSchema) => {
-    const organizationObject: Organization = {
-      id: uuidv4(),
-      ...data,
-    };
+  const onSubmit = async (data: TEditOrganizationSchema) => {
+    if (targetOrganization != null) {
+      const organizationObject: Organization = {
+        id: targetOrganization.id,
+        ...data,
+      };
 
-    // const response;
+      const response = await editOrganization(
+        targetOrganization.id,
+        organizationObject
+      );
 
-    // closeModal();
+      closeModal();
 
-    // if (!response.success) {
-    //   openErrorSnackBar(response.messsage);
-    //   return;
-    // }
+      if (!response.success) {
+        openErrorSnackBar(response.message);
+        return;
+      }
 
-    reset();
-    //openSuccessSnackBar(response.messsage);
-    fetchOrganization();
+      reset();
+      openSuccessSnackBar(response.message);
+      fetchOrganization();
+    }
   };
+
+  useEffect(() => {
+    if (targetOrganization != null) {
+      const organizationFormData: TEditOrganizationSchema = {
+        name: targetOrganization.name,
+        info: targetOrganization.info,
+      };
+      reset(organizationFormData);
+    }
+  }, [targetOrganization]);
+
   return (
     <form className={styles.edit_form} onSubmit={handleSubmit(onSubmit)}>
       <label>

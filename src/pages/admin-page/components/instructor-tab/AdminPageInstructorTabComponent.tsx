@@ -71,6 +71,8 @@ const AdminPageInstructorTabComponent = () => {
         <AdminPageModalComponent actionType={modalType}>
           {modalType == "add" ? (
             <AdminPageInstructorAddForm
+              fetchInstructor={() => fetchInstructors()}
+              closeModal={() => setIsModalOpen(false)}
               openErrorSnackBar={openErrorSnackBar}
               openSuccessSnackBar={openSuccessSnackBar}
             />

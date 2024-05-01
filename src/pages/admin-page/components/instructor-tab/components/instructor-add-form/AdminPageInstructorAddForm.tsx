@@ -8,6 +8,7 @@ import CircularProgressComponent from "../../../../../../components/circular-pro
 import getOrganizations from "../../../../../../lib/getOrganizations";
 import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
 import uuidv4 from "../../../../../../util/uuidv4";
+import makeInstructor from "../../../../../../lib/makeInstructor";
 
 const addInstructorSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime" }),
@@ -21,11 +22,15 @@ const addInstructorSchema = z.object({
 type TAddInstructorSchema = z.infer<typeof addInstructorSchema>;
 
 interface AdminPageInstructorAddFormProps {
+  fetchInstructor: () => void;
+  closeModal: () => void;
   openSuccessSnackBar: (message: string) => void;
   openErrorSnackBar: (message: string) => void;
 }
 
 const AdminPageInstructorAddForm: React.FC<AdminPageInstructorAddFormProps> = ({
+  fetchInstructor,
+  closeModal,
   openErrorSnackBar,
   openSuccessSnackBar,
 }) => {
@@ -78,7 +83,7 @@ const AdminPageInstructorAddForm: React.FC<AdminPageInstructorAddFormProps> = ({
     setIsImageUploading(false);
   };
 
-  const onSubmit = (data: TAddInstructorSchema) => {
+  const onSubmit = async (data: TAddInstructorSchema) => {
     if (imageUpload == "") {
       setUploadImageError(true);
       return;
@@ -90,10 +95,20 @@ const AdminPageInstructorAddForm: React.FC<AdminPageInstructorAddFormProps> = ({
       imageUrl: imageUpload,
     };
 
+    const response = await makeInstructor(instructorObject);
+
+    if (!response.success) {
+      closeModal();
+      openErrorSnackBar(response.messsage);
+      return;
+    }
+
     reset();
+    closeModal();
     setUploadImageError(false);
     setImageUpload("");
-    console.log(instructorObject);
+    openSuccessSnackBar(response.messsage);
+    fetchInstructor();
   };
 
   useEffect(() => {

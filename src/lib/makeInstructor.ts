@@ -9,5 +9,5 @@ export default async function makeInstructor(data: Instructor) {
 
     if (!response.ok) return { success: false, messsage: `Greška prilikom kreiranja predavača` }
 
-    return { success: true, message: `Uspiješno ste kreirali predavača` }
+    return { success: true, messsage: `Uspiješno ste kreirali predavača` }
 }

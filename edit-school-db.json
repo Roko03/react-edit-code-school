@@ -41,6 +41,13 @@
       "organization": [
         "organizacija_1"
       ]
+    },
+    {
+      "id": "78f2c932-a75e-4338-927f-3ab95329d70d",
+      "name": "Predavač 1",
+      "biography": "Ovaj predavač dolazi iz elektrotehničke škole u Splitu",
+      "organization": "af7fae8d-45b8-4233-b2f0-4c6736ecefa6",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/predavaci%2Fslika2.jpg55d243fa-e1ab-4e97-8091-0ee09f7ff8c6?alt=media&token=5ede015d-a076-4554-9d02-e62babf27467"
     }
   ],
   "organizacije": [

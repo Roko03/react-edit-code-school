@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BurgerMenuComponent from "../burger-menu/BurgerMenuComponent";
 import styles from "./HeaderComponent.module.scss";
 import RoleSwitcherComponent from "../role-switcher/RoleSwitcherComponent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MenuComponent from "./menu/MenuComponent";
 import LinkListComponent from "../link-list/LinkListComponent";
 import { userRoleManager } from "../../util/userRoleContext";
@@ -11,15 +11,15 @@ const HeaderComponent = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const roleManager = userRoleManager();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAdmin) {
       roleManager.setRole("admin");
-      //navigate("/admin");
+      navigate("/admin");
     } else {
       roleManager.setRole("user");
-      //navigate("/");
+      navigate("/");
     }
   }, [isAdmin]);
 

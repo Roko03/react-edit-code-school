@@ -35,7 +35,9 @@ const AdminPageOrganizationListComponent: React.FC<
           </div>
         </>
       ) : (
-        <h2>Nema organizacija</h2>
+        <div className={styles.organization_list_none}>
+          <h2>Nema organizacija</h2>
+        </div>
       )}
     </>
   );

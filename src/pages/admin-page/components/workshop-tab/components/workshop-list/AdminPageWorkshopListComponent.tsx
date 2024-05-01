@@ -28,7 +28,9 @@ const AdminPageWorkshopListComponent: React.FC<
           </div>
         </>
       ) : (
-        <h2>Nema radionica</h2>
+        <div className={styles.workshop_list_none}>
+          <h2>Nema radionica</h2>
+        </div>
       )}
     </>
   );

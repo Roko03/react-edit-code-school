@@ -37,7 +37,9 @@ const AdminPageInstructorListComponent: React.FC<
           </div>
         </>
       ) : (
-        <h2>Nema predavača</h2>
+        <div className={styles.instructor_list_none}>
+          <h2>Nema predavača</h2>
+        </div>
       )}
     </>
   );

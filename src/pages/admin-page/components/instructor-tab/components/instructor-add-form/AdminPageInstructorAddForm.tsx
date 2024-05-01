@@ -1,4 +1,4 @@
-import { string, z } from "zod";
+import { z } from "zod";
 import styles from "./AdminPageInstructorAddForm.module.scss";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

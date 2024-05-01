@@ -1,1 +1,10 @@
 @import "../../styles/main.scss";
+
+.entry_modal_box {
+  width: 80vw;
+  height: 80vw;
+
+  max-width: rem(800);
+  background-color: $white;
+  border-radius: rem(8);
+}

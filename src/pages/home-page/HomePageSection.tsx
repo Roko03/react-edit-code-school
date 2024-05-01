@@ -6,6 +6,7 @@ import HomePageWorkShopListComponent from "./components/workshop-list/HomePageWo
 import getWorkshops from "../../lib/workshop/getWorkShops";
 import getInstructors from "../../lib/instructor/getInstructors";
 import EntryWorkshopModalComponent from "../../components/entry-modal/EntryWorkshopModalComponent";
+import getWorkshopById from "../../lib/workshop/getWorkshopById";
 
 const HomePageSection = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[]>([]);
@@ -14,11 +15,23 @@ const HomePageSection = () => {
   const [isEntryModalOpen, setIsEntryModalOpen] = useState<boolean>(false);
 
   const [targetWorkshopId, setTargetWorkshopId] = useState<string>("");
+  const [targetWorkshop, setTargetWorkshop] = useState<WorkShop | null>(null);
 
   const fetchWorkshops = async () => {
     const response = await getWorkshops();
 
     setWorkshopList(response);
+  };
+
+  const fetchWorkshopById = async () => {
+    if (targetWorkshopId != "") {
+      const response = await getWorkshopById(targetWorkshopId);
+
+      setTargetWorkshop(response);
+      return;
+    }
+
+    setTargetWorkshop(null);
   };
 
   const fetchInstructors = async () => {
@@ -32,7 +45,9 @@ const HomePageSection = () => {
     fetchInstructors();
   }, []);
 
-  console.log(targetWorkshopId);
+  useEffect(() => {
+    fetchWorkshopById();
+  }, [targetWorkshopId]);
 
   return (
     <>
@@ -73,6 +88,7 @@ const HomePageSection = () => {
       <EntryWorkshopModalComponent
         isModalOpen={isEntryModalOpen}
         closeModal={() => setIsEntryModalOpen(false)}
+        targetWorkshop={targetWorkshop}
       />
     </>
   );

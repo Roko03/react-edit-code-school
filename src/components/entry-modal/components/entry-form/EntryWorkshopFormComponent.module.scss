@@ -1,0 +1,41 @@
+@import "../../../../styles/main.scss";
+
+.entry_form {
+  height: 100%;
+  padding: rem(32);
+  display: flex;
+  flex-direction: column;
+  gap: rem(14);
+  overflow: auto;
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    border: 1px solid rgba(#010101, 0.2);
+    border-radius: rem(4);
+    font-family: "Poppins";
+    font-size: rem(16);
+    padding: rem(10);
+  }
+
+  select option {
+    text-transform: capitalize;
+  }
+
+  textarea {
+    resize: none;
+    height: rem(160);
+  }
+
+  &__error {
+    margin-top: rem(8);
+    color: $red;
+  }
+
+  button {
+    margin-top: auto;
+  }
+}

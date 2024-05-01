@@ -10,6 +10,8 @@ export const AdminPageOrganizationTabComponent = () => {
   >(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const fetchOrganization = async () => {
     setIsLoading(true);
     const response = await getOrganizations();
@@ -28,7 +30,12 @@ export const AdminPageOrganizationTabComponent = () => {
 
   return (
     <>
-      <ButtonComponent variant={"add"}>
+      <ButtonComponent
+        variant={"add"}
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
+      >
         <img src={"/plus.svg"} alt="plus" />
         <p>Dodaj organizacije</p>
       </ButtonComponent>

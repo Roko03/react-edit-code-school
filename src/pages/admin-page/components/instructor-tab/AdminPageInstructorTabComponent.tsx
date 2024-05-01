@@ -29,6 +29,16 @@ const AdminPageInstructorTabComponent = () => {
     setIsLoading(false);
   };
 
+  const openSuccessSnackBar = (message: string) => {
+    setSnackBarMessage(message);
+    setIsSuccessful(true);
+  };
+
+  const openErrorSnackBar = (message: string) => {
+    setSnackBarMessage(message);
+    setIsSuccessful(false);
+  };
+
   useEffect(() => {
     fetchInstructors();
   }, []);
@@ -60,7 +70,10 @@ const AdminPageInstructorTabComponent = () => {
       >
         <AdminPageModalComponent actionType={modalType}>
           {modalType == "add" ? (
-            <AdminPageInstructorAddForm />
+            <AdminPageInstructorAddForm
+              openErrorSnackBar={openErrorSnackBar}
+              openSuccessSnackBar={openSuccessSnackBar}
+            />
           ) : modalType == "delete" ? (
             <p>Delete</p>
           ) : (

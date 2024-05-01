@@ -20,7 +20,15 @@ const addInstructorSchema = z.object({
 
 type TAddInstructorSchema = z.infer<typeof addInstructorSchema>;
 
-const AdminPageInstructorAddForm = () => {
+interface AdminPageInstructorAddFormProps {
+  openSuccessSnackBar: (message: string) => void;
+  openErrorSnackBar: (message: string) => void;
+}
+
+const AdminPageInstructorAddForm: React.FC<AdminPageInstructorAddFormProps> = ({
+  openErrorSnackBar,
+  openSuccessSnackBar,
+}) => {
   const {
     register,
     handleSubmit,
@@ -59,12 +67,14 @@ const AdminPageInstructorAddForm = () => {
 
     if (!response.success) {
       setIsImageUploading(false);
+      openErrorSnackBar(response.message);
       return;
     }
 
     if (response.imageUrl) {
       setImageUpload(response.imageUrl);
     }
+    openSuccessSnackBar(response.message);
     setIsImageUploading(false);
   };
 

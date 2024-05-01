@@ -6,6 +6,8 @@ import ButtonComponent from "../../../../../../components/button/ButtonComponent
 import { useEffect, useState } from "react";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
 import getOrganizations from "../../../../../../lib/getOrganizations";
+import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
+import uuidv4 from "../../../../../../util/uuidv4";
 
 const addInstructorSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime" }),
@@ -32,20 +34,66 @@ const AdminPageInstructorAddForm = () => {
     Organization[] | null
   >(null);
 
+  const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
+
+  const [imageUpload, setImageUpload] = useState<string>("");
+  const [isImageUploading, setIsImageUploading] = useState<boolean>(false);
+  const [uploadImageError, setUploadImageError] = useState<boolean>(false);
+
   const fetchOrganizations = async () => {
     const response = await getOrganizations();
 
     setOrganizationList(response);
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    setIsImageUploading(true);
+
+    const response = await uploadInstructorImage(file);
+
+    if (!response.success) {
+      setIsImageUploading(false);
+      return;
+    }
+
+    if (response.imageUrl) {
+      setImageUpload(response.imageUrl);
+    }
+    setIsImageUploading(false);
+  };
+
   const onSubmit = (data: TAddInstructorSchema) => {
+    if (imageUpload == "") {
+      setUploadImageError(true);
+      return;
+    }
+
+    const instructorObject: Instructor = {
+      id: uuidv4(),
+      ...data,
+      imageUrl: imageUpload,
+    };
+
     reset();
-    console.log(data);
+    setUploadImageError(false);
+    setImageUpload("");
+    console.log(instructorObject);
   };
 
   useEffect(() => {
     fetchOrganizations();
   }, []);
+
+  useEffect(() => {
+    const enable = isSubmitting || isImageUploading;
+    setIsButtonEnabled(enable);
+  }, [isSubmitting, isImageUploading]);
 
   if (organizationList == null) return <CircularProgressComponent />;
 
@@ -58,7 +106,14 @@ const AdminPageInstructorAddForm = () => {
         )}
       </label>
       <label>
-        <input type="file" accept="image/*" />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handleFileChange(e)}
+        />
+        {uploadImageError && (
+          <p className={styles.add_form__error}>Odaberite sliku</p>
+        )}
       </label>
       <label>
         <textarea {...register("biography")} placeholder="Unesite podatke" />
@@ -90,7 +145,11 @@ const AdminPageInstructorAddForm = () => {
           >{`${errors.organization.message}`}</p>
         )}
       </div>
-      <ButtonComponent variant={"add"} onClick={handleSubmit(onSubmit)}>
+      <ButtonComponent
+        variant={"add"}
+        onClick={handleSubmit(onSubmit)}
+        enabled={isButtonEnabled}
+      >
         <p>Napravi predavača</p>
       </ButtonComponent>
     </form>

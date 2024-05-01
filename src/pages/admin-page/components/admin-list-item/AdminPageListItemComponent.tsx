@@ -33,7 +33,15 @@ const AdminPageListItemComponent: React.FC<AdminPageListItemComponentProps> = ({
             <div className={styles.list_item__instructor_info}>
               <p>{instructorData.name}</p>
               <p>{instructorData.biography}</p>
-              <p>{instructorData.organization}</p>
+              {typeof instructorData.organization != "string" ? (
+                <div>
+                  {instructorData.organization.map((org, index) => {
+                    return <p key={index}>{org}</p>;
+                  })}
+                </div>
+              ) : (
+                <p>{instructorData.organization}</p>
+              )}
             </div>
           </>
         );

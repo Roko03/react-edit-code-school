@@ -1,53 +1,12 @@
 {
-  "radionice": [
-    {
-      "id": "b1d86ea1-d1a0-4fea-ae44-9e21c74d767b",
-      "name": "Radionica 1",
-      "date": "2024-04-10",
-      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "info": "Radionica o Reactu",
-      "level": "junior",
-      "subject": "react",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpg9b7829a1-ca7c-4c05-8d93-065ad459fc2c?alt=media&token=c8337c7a-84d5-49ff-9bb3-f93fe89dcdef",
-      "numOfEntry": 0
-    },
-    {
-      "id": "40f07b33-718b-43ad-b844-79c8b0be712c",
-      "name": "Radionica 2",
-      "date": "2024-04-17",
-      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "info": "Radionica o Expresu",
-      "level": "junior",
-      "subject": "express",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika3.jpg45afaf5e-8837-4bd6-ab62-6ad2a11c8e6a?alt=media&token=fe0fed06-7fcd-45b9-a4cb-712a85fb5cd8",
-      "numOfEntry": 0
-    }
-  ],
+  "radionice": [],
   "predavaci": [
     {
-      "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "name": "Predavac 1",
-      "imageUrl": "/",
-      "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil doloremque exercitationem vel, ab quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil",
-      "organization": [
-        "organizacija_1"
-      ]
-    },
-    {
-      "id": "1b55a8c6-138c-4eb0-1266-67872642bca9",
-      "name": "Predavac 2",
-      "imageUrl": "/",
-      "biography": "Biografija predavaca 2",
-      "organization": [
-        "organizacija_1"
-      ]
-    },
-    {
-      "id": "78f2c932-a75e-4338-927f-3ab95329d70d",
-      "name": "Predavač 1",
-      "biography": "Ovaj predavač dolazi iz elektrotehničke škole u Splitu",
-      "organization": "af7fae8d-45b8-4233-b2f0-4c6736ecefa6",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/predavaci%2Fslika2.jpg55d243fa-e1ab-4e97-8091-0ee09f7ff8c6?alt=media&token=5ede015d-a076-4554-9d02-e62babf27467"
+      "id": "55fa5995-0eb3-41db-b728-9f59f0b511fb",
+      "name": "Jakov",
+      "biography": "Jakov je predavac",
+      "organization": "Organizacija 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/predavaci%2Fslika3.jpg77f97c7c-b5e4-4b8e-b223-b1b76ec7ca4a?alt=media&token=c12f7aee-c474-4548-8440-c8e68ed91ecf"
     }
   ],
   "organizacije": [

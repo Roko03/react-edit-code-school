@@ -3,11 +3,13 @@ import AdminPageListItemComponent from "../../admin-list-item/AdminPageListItemC
 
 interface AdminPageInstructorListComponentProps {
   instructorList: Instructor[];
+  openEditModal: (id: string) => void;
+  openDeleteModal: (id: string) => void;
 }
 
 const AdminPageInstructorListComponent: React.FC<
   AdminPageInstructorListComponentProps
-> = ({ instructorList }) => {
+> = ({ instructorList, openEditModal, openDeleteModal }) => {
   return (
     <>
       {instructorList.length > 0 ? (
@@ -27,6 +29,8 @@ const AdminPageInstructorListComponent: React.FC<
                   variant={"instructor"}
                   data={instructor}
                   key={instructor.id}
+                  deleteFunction={(id: string) => openDeleteModal(id)}
+                  editFunction={(id: string) => openEditModal(id)}
                 />
               );
             })}

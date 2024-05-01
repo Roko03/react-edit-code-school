@@ -7,6 +7,7 @@ import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageInstructorAddForm from "./components/instructor-add-form/AdminPageInstructorAddForm";
+import AdminPageInstructorEditForm from "./components/instructor-edit-form/AdminPageInstructorEditForm";
 
 const AdminPageInstructorTabComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -20,6 +21,11 @@ const AdminPageInstructorTabComponent = () => {
 
   const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null);
   const [snackBarMessage, setSnackBarMessage] = useState<string>("");
+
+  const [targetInstructorId, setTargetInstructorId] = useState<string>("");
+  const [targetInstructor, setTargetInstructor] = useState<Instructor | null>(
+    null
+  );
 
   const fetchInstructors = async () => {
     setIsLoading(true);
@@ -47,6 +53,8 @@ const AdminPageInstructorTabComponent = () => {
     return <CircularProgressComponent />;
   }
 
+  console.log(targetInstructorId);
+
   return (
     <>
       <ButtonComponent
@@ -60,12 +68,25 @@ const AdminPageInstructorTabComponent = () => {
         <p>Dodaj predavača</p>
       </ButtonComponent>
       {instructorList != null && (
-        <AdminPageInstructorListComponent instructorList={instructorList} />
+        <AdminPageInstructorListComponent
+          instructorList={instructorList}
+          openEditModal={(id: string) => {
+            setIsModalOpen(true);
+            setModalType("edit");
+            setTargetInstructorId(id);
+          }}
+          openDeleteModal={(id: string) => {
+            setIsModalOpen(true);
+            setModalType("delete");
+            setTargetInstructorId(id);
+          }}
+        />
       )}
       <DialogComponent
         isOpen={isModalOpen}
         closeDialog={() => {
           setIsModalOpen(false);
+          setTargetInstructorId("");
         }}
       >
         <AdminPageModalComponent actionType={modalType}>
@@ -79,7 +100,13 @@ const AdminPageInstructorTabComponent = () => {
           ) : modalType == "delete" ? (
             <p>Delete</p>
           ) : (
-            <p>Edit</p>
+            <AdminPageInstructorEditForm
+              targetInstructor={targetInstructor}
+              fetchInstructor={() => fetchInstructors()}
+              closeModal={() => setIsModalOpen(false)}
+              openErrorSnackBar={openErrorSnackBar}
+              openSuccessSnackBar={openSuccessSnackBar}
+            />
           )}
         </AdminPageModalComponent>
       </DialogComponent>

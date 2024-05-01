@@ -9,6 +9,7 @@ import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponen
 import AdminPageInstructorAddForm from "./components/instructor-add-form/AdminPageInstructorAddForm";
 import AdminPageInstructorEditForm from "./components/instructor-edit-form/AdminPageInstructorEditForm";
 import getInstructorById from "../../../../lib/getInstructorById";
+import AdminPageInstructorDeleteForm from "./components/instructor-delete-form/AdminPageInstructorDeleteForm";
 
 const AdminPageInstructorTabComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -45,6 +46,12 @@ const AdminPageInstructorTabComponent = () => {
     }
 
     setTargetInstructor(null);
+  };
+
+  const deleteInstructorFunction = () => {
+    setModalType(null);
+    setIsModalOpen(false);
+    console.log(targetInstructorId);
   };
 
   const openSuccessSnackBar = (message: string) => {
@@ -112,7 +119,9 @@ const AdminPageInstructorTabComponent = () => {
               openSuccessSnackBar={openSuccessSnackBar}
             />
           ) : modalType == "delete" ? (
-            <p>Delete</p>
+            <AdminPageInstructorDeleteForm
+              deleteInstructor={deleteInstructorFunction}
+            />
           ) : (
             <AdminPageInstructorEditForm
               targetInstructor={targetInstructor}

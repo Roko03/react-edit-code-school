@@ -1,7 +1,28 @@
 {
   "radionice": [
+    {
+      "id": "d8239b0b-8b73-4b87-b614-ccbccca90664",
+      "name": "Radionica 1",
+      "date": "2024-05-08",
+      "instructor": "19f1f2d4-9a10-449c-8898-92978ba5a09c",
+      "info": "Opis radionice",
+      "level": "junior",
+      "subject": "express",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpgd8342593-ed52-46f2-a497-3d03ae26847c?alt=media&token=fca952e4-545c-4e8d-bdf1-c878309be2b7",
+      "numOfEntry": 0
+    }
   ],
   "predavaci": [
+    {
+      "id": "19f1f2d4-9a10-449c-8898-92978ba5a09c",
+      "name": "Predavac 1",
+      "biography": "Prevadav 1 opis",
+      "organization": [
+        "Organizacija 1",
+        "Organizacija 2"
+      ],
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/predavaci%2Fslika2.jpg40a2dfa9-4cc8-466b-a800-ec16042d9c15?alt=media&token=b580520e-f00f-4363-85f8-775ae0f69765"
+    }
   ],
   "organizacije": [
     {

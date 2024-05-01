@@ -12,13 +12,23 @@ const HomePageInstructorSlideComponent: React.FC<
   return (
     <div className={styles.instructor_slide}>
       <div className={styles.instructor_slide__image}>
-        <img src={"/background-banner.png"} alt="instructor-image" />
+        <img src={instructor.imageUrl} alt="instructor-image" />
       </div>
       <div className={styles.instructor_slide__info}>
         <h2 className={styles.instructor_slide__info__name}>
           {instructor.name}
         </h2>
-        <span>{instructor.organization}</span>
+        {typeof instructor.organization == "string" ? (
+          <span className={styles.instructor_slide__info__organization}>
+            {instructor.organization}
+          </span>
+        ) : (
+          <div className={styles.instructor_slide__info__organization}>
+            {instructor.organization.map((org, index) => {
+              return <span key={index}>{org}</span>;
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

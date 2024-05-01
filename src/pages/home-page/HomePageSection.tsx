@@ -4,9 +4,11 @@ import styles from "./HomePageSection.module.scss";
 import HomePageInstructorSliderComponent from "./components/instructors-slider/HomePageInstructorSliderComponent";
 import HomePageWorkShopListComponent from "./components/workshop-list/HomePageWorkshopListComponent";
 import getWorkshops from "../../lib/workshop/getWorkShops";
+import getInstructors from "../../lib/instructor/getInstructors";
 
 const HomePageSection = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[]>([]);
+  const [instructorList, setInstructorList] = useState<Instructor[]>([]);
 
   const fetchWorkshops = async () => {
     const response = await getWorkshops();
@@ -14,8 +16,15 @@ const HomePageSection = () => {
     setWorkshopList(response);
   };
 
+  const fetchInstructors = async () => {
+    const response = await getInstructors();
+
+    setInstructorList(response);
+  };
+
   useEffect(() => {
     fetchWorkshops();
+    fetchInstructors();
   }, []);
 
   return (
@@ -35,11 +44,17 @@ const HomePageSection = () => {
               <HomePageWorkShopListComponent workshopList={workshopList} />
             </div>
           )}
-          <div className={styles.home_section__box}>
-            <span className={styles.home_section__small_title}>PREDAVAČI</span>
-            <h1>Pogledaj Naše Predavače</h1>
-            <HomePageInstructorSliderComponent />
-          </div>
+          {instructorList.length > 0 && (
+            <div className={styles.home_section__box}>
+              <span className={styles.home_section__small_title}>
+                PREDAVAČI
+              </span>
+              <h1>Pogledaj Naše Predavače</h1>
+              <HomePageInstructorSliderComponent
+                instructorList={instructorList}
+              />
+            </div>
+          )}
         </section>
       </div>
     </>

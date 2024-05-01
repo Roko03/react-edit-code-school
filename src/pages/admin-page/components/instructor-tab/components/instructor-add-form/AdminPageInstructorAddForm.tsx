@@ -155,7 +155,7 @@ const AdminPageInstructorAddForm: React.FC<AdminPageInstructorAddFormProps> = ({
               <input
                 type="checkbox"
                 id={`${organizationItem.id}`}
-                value={organizationItem.id}
+                value={organizationItem.name}
                 {...register("organization")}
               />
               <label htmlFor={`${organizationItem.id}`}>

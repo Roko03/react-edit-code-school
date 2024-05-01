@@ -3,11 +3,13 @@ import AdminPageListItemComponent from "../../admin-list-item/AdminPageListItemC
 
 interface AdminPageOrganizationListComponentProps {
   organizationList: Organization[];
+  openEditModal: (id: string) => void;
+  openDeleteModal: (id: string) => void;
 }
 
 const AdminPageOrganizationListComponent: React.FC<
   AdminPageOrganizationListComponentProps
-> = ({ organizationList }) => {
+> = ({ organizationList, openEditModal, openDeleteModal }) => {
   return (
     <>
       {organizationList.length > 0 ? (
@@ -25,8 +27,8 @@ const AdminPageOrganizationListComponent: React.FC<
                   variant={"organization"}
                   data={organization}
                   key={organization.id}
-                  editFunction={() => {}}
-                  deleteFunction={() => {}}
+                  editFunction={(id: string) => openEditModal(id)}
+                  deleteFunction={(id: string) => openDeleteModal(id)}
                 />
               );
             })}

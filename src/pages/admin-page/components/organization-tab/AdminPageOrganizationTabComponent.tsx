@@ -7,6 +7,7 @@ import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageOrganizationAddForm from "./components/organization-add-form/AdminPageOrganizationAddForm";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
+import AdminPageOrganizationEditForm from "./components/organization-edit-form/AdminPageOrganizationEditForm";
 
 export const AdminPageOrganizationTabComponent = () => {
   const [organizationList, setOrganizationList] = useState<
@@ -62,6 +63,14 @@ export const AdminPageOrganizationTabComponent = () => {
       {organizationList != null && (
         <AdminPageOrganizationListComponent
           organizationList={organizationList}
+          openEditModal={(id: string) => {
+            setIsModalOpen(true);
+            setModalType("edit");
+          }}
+          openDeleteModal={(id: string) => {
+            setIsModalOpen(true);
+            setModalType("delete");
+          }}
         />
       )}
       <DialogComponent
@@ -89,7 +98,19 @@ export const AdminPageOrganizationTabComponent = () => {
           ) : modalType == "delete" ? (
             <p>Delete</p>
           ) : (
-            <p>Edit</p>
+            <AdminPageOrganizationEditForm
+              fetchOrganization={fetchOrganization}
+              closeModal={() => {
+                setIsModalOpen(false);
+                setModalType(null);
+              }}
+              openSuccessSnackBar={(message: string) =>
+                openSuccessSnackBar(message)
+              }
+              openErrorSnackBar={(message: string) =>
+                openErrorSnackBar(message)
+              }
+            />
           )}
         </AdminPageModalComponent>
       </DialogComponent>

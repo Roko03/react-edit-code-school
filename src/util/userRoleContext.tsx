@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const RoleManagerContext = createContext<{
   role: string;

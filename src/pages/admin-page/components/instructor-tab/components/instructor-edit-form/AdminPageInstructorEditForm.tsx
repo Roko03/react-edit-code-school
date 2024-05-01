@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
 import getOrganizations from "../../../../../../lib/getOrganizations";
 import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
-import editInstructor from "../../../../../../lib/editInstructor";
+import editInstructor from "../../../../../../lib/instructor/editInstructor";
 
 const editInstructorSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime" }),

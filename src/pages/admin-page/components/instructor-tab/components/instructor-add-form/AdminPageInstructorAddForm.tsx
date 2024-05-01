@@ -8,7 +8,7 @@ import CircularProgressComponent from "../../../../../../components/circular-pro
 import getOrganizations from "../../../../../../lib/getOrganizations";
 import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
 import uuidv4 from "../../../../../../util/uuidv4";
-import makeInstructor from "../../../../../../lib/makeInstructor";
+import makeInstructor from "../../../../../../lib/instructor/makeInstructor";
 
 const addInstructorSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime" }),

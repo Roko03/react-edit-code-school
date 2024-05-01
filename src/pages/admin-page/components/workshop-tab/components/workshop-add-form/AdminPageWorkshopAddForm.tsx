@@ -6,7 +6,7 @@ import ButtonComponent from "../../../../../../components/button/ButtonComponent
 import provideDefaultDifficultyData from "../../../../../../components/data/SelectDifficultyData";
 import provideDefaultSubjectData from "../../../../../../components/data/SelectSubjectData";
 import { useEffect, useState } from "react";
-import getInstructors from "../../../../../../lib/getInstructors";
+import getInstructors from "../../../../../../lib/instructor/getInstructors";
 import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
 import uuidv4 from "../../../../../../util/uuidv4";
 import makeWorkshop from "../../../../../../lib/makeWorkshop";

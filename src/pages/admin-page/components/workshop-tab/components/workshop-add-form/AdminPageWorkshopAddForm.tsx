@@ -118,6 +118,7 @@ const AdminPageWorkshopAddForm: React.FC<AdminPageWorkshopAddFormProps> = ({
     openSuccessSnackBar(response.message);
     fetchWorkshops();
     reset();
+    setImageUploaded("");
     setUploadImageError(false);
   };
 

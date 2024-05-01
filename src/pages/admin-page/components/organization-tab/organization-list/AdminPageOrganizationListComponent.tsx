@@ -25,6 +25,8 @@ const AdminPageOrganizationListComponent: React.FC<
                   variant={"organization"}
                   data={organization}
                   key={organization.id}
+                  editFunction={() => {}}
+                  deleteFunction={() => {}}
                 />
               );
             })}

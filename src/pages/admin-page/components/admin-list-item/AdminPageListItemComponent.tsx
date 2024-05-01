@@ -4,20 +4,24 @@ import styles from "./AdminPageListItemComponent.module.scss";
 interface AdminPageListItemComponentProps {
   variant: "instructor" | "organization";
   data: Instructor | Organization;
-  deleteFunction?: () => void;
-  editFunction?: () => void;
+  deleteFunction: (id: string) => void;
+  editFunction: (id: string) => void;
 }
 
 const AdminPageListItemComponent: React.FC<AdminPageListItemComponentProps> = ({
   variant,
   data,
+  deleteFunction,
+  editFunction,
 }) => {
   let itemData;
+  let targetId: string;
 
   switch (variant) {
     case "instructor":
       itemData = () => {
         let instructorData: Instructor = data as Instructor;
+        targetId = instructorData.id;
         return (
           <>
             <div className={styles.list_item__image}>
@@ -29,7 +33,15 @@ const AdminPageListItemComponent: React.FC<AdminPageListItemComponentProps> = ({
             <div className={styles.list_item__instructor_info}>
               <p>{instructorData.name}</p>
               <p>{instructorData.biography}</p>
-              <p>{instructorData.organization}</p>
+              {typeof instructorData.organization != "string" ? (
+                <div>
+                  {instructorData.organization.map((org, index) => {
+                    return <p key={index}>{org}</p>;
+                  })}
+                </div>
+              ) : (
+                <p>{instructorData.organization}</p>
+              )}
             </div>
           </>
         );
@@ -38,6 +50,7 @@ const AdminPageListItemComponent: React.FC<AdminPageListItemComponentProps> = ({
     case "organization":
       itemData = () => {
         let organizationData: Organization = data as Organization;
+        targetId = organizationData.id;
         return (
           <>
             <div className={styles.list_item__organization_info}>
@@ -54,13 +67,19 @@ const AdminPageListItemComponent: React.FC<AdminPageListItemComponentProps> = ({
     <div className={styles.list_item}>
       {itemData()}
       <div className={styles.list_item__buttons}>
-        <ButtonComponent variant={"adminEdit"}>
+        <ButtonComponent
+          variant={"adminEdit"}
+          onClick={() => editFunction(targetId)}
+        >
           <img src={"/pencil.svg"} alt="edit" />
           <span>
             <p>Edit</p>
           </span>
         </ButtonComponent>
-        <ButtonComponent variant={"adminTrash"}>
+        <ButtonComponent
+          variant={"adminTrash"}
+          onClick={() => deleteFunction(targetId)}
+        >
           <img src={"/trash.svg"} alt="trash" />
           <span>
             <p>Trash</p>

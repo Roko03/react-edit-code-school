@@ -17,7 +17,7 @@ type Instructor = {
     name: string;
     imageUrl: string;
     biography: string;
-    organization: string;
+    organization: string | string[];
 }
 
 type Organization = {

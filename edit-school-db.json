@@ -1,46 +1,24 @@
 {
   "radionice": [
     {
-      "id": "b1d86ea1-d1a0-4fea-ae44-9e21c74d767b",
+      "id": "a646dbbb-5974-4f83-b355-af942e978c69",
       "name": "Radionica 1",
-      "date": "2024-04-10",
-      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "info": "Radionica o Reactu",
+      "date": "2024-05-10",
+      "instructor": "a234cb24-b25e-40bf-b58a-86bdc995c546",
+      "info": "Opis radionice 1",
       "level": "junior",
       "subject": "react",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpg9b7829a1-ca7c-4c05-8d93-065ad459fc2c?alt=media&token=c8337c7a-84d5-49ff-9bb3-f93fe89dcdef",
-      "numOfEntry": 0
-    },
-    {
-      "id": "40f07b33-718b-43ad-b844-79c8b0be712c",
-      "name": "Radionica 2",
-      "date": "2024-04-17",
-      "instructor": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "info": "Radionica o Expresu",
-      "level": "junior",
-      "subject": "express",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika3.jpg45afaf5e-8837-4bd6-ab62-6ad2a11c8e6a?alt=media&token=fe0fed06-7fcd-45b9-a4cb-712a85fb5cd8",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/radionice%2Fslika1.jpgbcfeb0cd-bdc3-480c-b4bb-fce3bb5c74d1?alt=media&token=14ff76ef-c6df-4472-8f2a-20d93c02a12e",
       "numOfEntry": 0
     }
   ],
   "predavaci": [
     {
-      "id": "4a95a8c6-138c-4eb0-8808-43972642bc6a",
-      "name": "Predavac 1",
-      "imageUrl": "/",
-      "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil doloremque exercitationem vel, ab quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cupiditate voluptatem quaerat ducimus quibusdam nihil",
-      "organization": [
-        "organizacija_1"
-      ]
-    },
-    {
-      "id": "1b55a8c6-138c-4eb0-1266-67872642bca9",
+      "id": "a234cb24-b25e-40bf-b58a-86bdc995c546",
       "name": "Predavac 2",
-      "imageUrl": "/",
-      "biography": "Biografija predavaca 2",
-      "organization": [
-        "organizacija_1"
-      ]
+      "biography": "Predavac 2 opis",
+      "organization": "Organizacija 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/edit-code-school-image.appspot.com/o/predavaci%2Fslika2.jpgfb419765-a0ee-4f15-9b0c-b9d952ab7007?alt=media&token=80ba0058-6867-4aaf-8474-193017627036"
     }
   ],
   "organizacije": [

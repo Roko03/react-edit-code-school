@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import getWorkshops from "../../../../lib/getWorkShops";
 import CircularProgressComponent from "../../../../components/circular-progress/CircularProgressComponent";
 import ButtonComponent from "../../../../components/button/ButtonComponent";
-import AdminPageWorkshopListComponent from "./workshop-list/AdminPageWorkshopListComponent";
 import DialogComponent from "../../../../components/dialog/DialogComponent";
 import AdminPageModalComponent from "../modal/AdminPageModalComponent";
 import AdminPageWorkshopAddForm from "./components/workshop-add-form/AdminPageWorkshopAddForm";
@@ -11,6 +10,7 @@ import AdminPageWorkshopEditForm from "./components/workshop-edit-form/AdminPage
 import getWorkshopById from "../../../../lib/getWorkshopById";
 import AdminPageWorkshopDeleteForm from "./components/workshop-delete-form/AdminPageWorkshopDeleteForm";
 import deleteWorkshop from "../../../../lib/deleteWorkshop";
+import AdminPageWorkshopListComponent from "./components/workshop-list/AdminPageWorkshopListComponent";
 
 const AdminPageWorkshopTabComponent = () => {
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);

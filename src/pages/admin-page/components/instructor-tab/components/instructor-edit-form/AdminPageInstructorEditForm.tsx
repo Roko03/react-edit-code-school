@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
 import getOrganizations from "../../../../../../lib/getOrganizations";
 import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
-import uuidv4 from "../../../../../../util/uuidv4";
-import makeInstructor from "../../../../../../lib/makeInstructor";
 
 const editInstructorSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime" }),
@@ -87,28 +85,43 @@ const AdminPageInstructorEditForm: React.FC<
   };
 
   const onSubmit = async (data: TEditInstructorSchema) => {
-    let instructorObject: Instructor;
+    if (targetInstructor) {
+      let instructorObject: Instructor;
 
-    if (imageUpload == "") {
-      instructorObject = {
-        id: uuidv4(),
-        ...data,
-        imageUrl: imageUpload,
-      };
-    } else {
-      instructorObject = {
-        id: uuidv4(),
-        ...data,
-        imageUrl: imageUpload,
-      };
+      if (imageUpload == "") {
+        instructorObject = {
+          id: targetInstructor.id,
+          ...data,
+          imageUrl: targetInstructor.imageUrl,
+        };
+      } else {
+        instructorObject = {
+          id: targetInstructor.id,
+          ...data,
+          imageUrl: imageUpload,
+        };
+      }
+
+      console.log(instructorObject);
+      fetchInstructor();
+      closeModal();
     }
-
-    console.log(instructorObject);
   };
 
   useEffect(() => {
     fetchOrganizations();
   }, []);
+
+  useEffect(() => {
+    if (targetInstructor != null) {
+      const instructorFormData: TEditInstructorSchema = {
+        name: targetInstructor.name,
+        biography: targetInstructor.biography,
+        organization: targetInstructor.organization,
+      };
+      reset(instructorFormData);
+    }
+  }, [targetInstructor]);
 
   useEffect(() => {
     const enable = isSubmitting || isImageUploading;

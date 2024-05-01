@@ -8,6 +8,7 @@ import DialogComponent from "../../../../components/dialog/DialogComponent";
 import SnackBarComponent from "../../../../components/snack-bar/SnackBarComponent";
 import AdminPageInstructorAddForm from "./components/instructor-add-form/AdminPageInstructorAddForm";
 import AdminPageInstructorEditForm from "./components/instructor-edit-form/AdminPageInstructorEditForm";
+import getInstructorById from "../../../../lib/getInstructorById";
 
 const AdminPageInstructorTabComponent = () => {
   const [instructorList, setInstructorList] = useState<Instructor[] | null>(
@@ -35,6 +36,17 @@ const AdminPageInstructorTabComponent = () => {
     setIsLoading(false);
   };
 
+  const fetchInstructorById = async () => {
+    if (targetInstructorId != "") {
+      const response = await getInstructorById(targetInstructorId);
+
+      setTargetInstructor(response);
+      return;
+    }
+
+    setTargetInstructor(null);
+  };
+
   const openSuccessSnackBar = (message: string) => {
     setSnackBarMessage(message);
     setIsSuccessful(true);
@@ -49,11 +61,13 @@ const AdminPageInstructorTabComponent = () => {
     fetchInstructors();
   }, []);
 
+  useEffect(() => {
+    fetchInstructorById();
+  }, [targetInstructorId]);
+
   if (isLoading) {
     return <CircularProgressComponent />;
   }
-
-  console.log(targetInstructorId);
 
   return (
     <>

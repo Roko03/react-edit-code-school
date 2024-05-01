@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
 import getOrganizations from "../../../../../../lib/getOrganizations";
 import uploadInstructorImage from "../../../../../../lib/uploadInstructorImage";
+import editInstructor from "../../../../../../lib/editInstructor";
 
 const editInstructorSchema = z.object({
   name: z.string().min(1, { message: "Unesite ime" }),
@@ -102,9 +103,21 @@ const AdminPageInstructorEditForm: React.FC<
         };
       }
 
-      console.log(instructorObject);
-      fetchInstructor();
+      const response = await editInstructor(
+        targetInstructor.id,
+        instructorObject
+      );
+
+      if (!response.success) {
+        closeModal();
+        openErrorSnackBar(response.message);
+        return;
+      }
+
+      reset();
       closeModal();
+      openSuccessSnackBar(response.message);
+      fetchInstructor();
     }
   };
 

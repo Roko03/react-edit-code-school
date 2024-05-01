@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import getInstructors from "../../../../../../lib/instructor/getInstructors";
 import uploadWorkshopImage from "../../../../../../lib/uploadWorkshopImage";
 import CircularProgressComponent from "../../../../../../components/circular-progress/CircularProgressComponent";
-import editWorkshop from "../../../../../../lib/editWorkshop";
+import editWorkshop from "../../../../../../lib/workshop/editWorkshop";
 
 const difficultyArray = provideDefaultDifficultyData();
 const subjectsArray = provideDefaultSubjectData();

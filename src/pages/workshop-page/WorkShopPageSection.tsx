@@ -26,16 +26,18 @@ const WorkShopPageSection = () => {
     <>
       <BannerComponent title={"Radionice"} variant={"secondary"} />
       <div className={styles.container}>
-        {isLoading && <CircularProgressComponent />}
-        {workshopList != null && (
-          <>
-            {workshopList.length > 0 ? (
-              <WorkShopPageList workshopList={workshopList} />
-            ) : (
-              <h2>Nemate radionica</h2>
-            )}
-          </>
-        )}
+        <section className={styles.workshop_section}>
+          {isLoading && <CircularProgressComponent />}
+          {workshopList != null && (
+            <>
+              {workshopList.length > 0 ? (
+                <WorkShopPageList workshopList={workshopList} />
+              ) : (
+                <h2>Nemate radionica</h2>
+              )}
+            </>
+          )}
+        </section>
       </div>
     </>
   );

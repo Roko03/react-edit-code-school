@@ -1,0 +1,55 @@
+@import "../../styles/main.scss";
+
+.filter_mobile {
+  display: flex;
+  flex-direction: row;
+  gap: rem(8);
+
+  @include breakpoint(large) {
+    display: none;
+  }
+
+  li {
+    background-color: transparent;
+    border-radius: rem(4);
+    border: 1px solid $grey;
+    color: $black;
+    font-family: Roboto;
+    font-size: rem(18);
+    padding: rem(12) rem(14);
+    cursor: pointer;
+  }
+
+  .item_active {
+    background-color: $grey;
+  }
+}
+
+.filter_desktop {
+  display: none;
+
+  @include breakpoint(large) {
+    display: block;
+  }
+
+  &__list {
+    color: $black;
+    h2 {
+      font-size: rem(24);
+      font-family: Poppins;
+      font-weight: 700;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+
+    li {
+      align-self: baseline;
+      margin-left: rem(12);
+      font-family: Roboto;
+      font-size: rem(18);
+      cursor: pointer;
+    }
+  }
+}

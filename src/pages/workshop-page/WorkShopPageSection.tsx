@@ -6,6 +6,7 @@ import CircularProgressComponent from "../../components/circular-progress/Circul
 import WorkShopPageList from "./components/workshop-list/WorkShopPageList";
 import provideDefaultSubjectData from "../../components/data/SelectSubjectData";
 import provideDefaultDifficultyData from "../../components/data/SelectDifficultyData";
+import FilterComponent from "../../components/filter/FilterComponent";
 
 const getSubjects = provideDefaultSubjectData();
 const getLevels = provideDefaultDifficultyData();
@@ -33,6 +34,7 @@ const WorkShopPageSection = () => {
       <BannerComponent title={"Radionice"} variant={"secondary"} />
       <div className={styles.container}>
         <section className={styles.workshop_section}>
+          <FilterComponent filterList={filterArray} />
           {isLoading && <CircularProgressComponent />}
           {workshopList != null && (
             <>

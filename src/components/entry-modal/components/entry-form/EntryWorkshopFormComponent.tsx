@@ -19,10 +19,14 @@ type TEntryWorkshopSchema = z.infer<typeof entryWorkshopSchema>;
 
 interface EntryWorkshopFormComponentProps {
   targetWorkshop: WorkShop | null;
+  setEntrySuccess: (message: string) => void;
+  setEntryError: (message: string) => void;
 }
 
 const EntryWorkshopFormComponent: React.FC<EntryWorkshopFormComponentProps> = ({
   targetWorkshop,
+  setEntrySuccess,
+  setEntryError,
 }) => {
   const {
     register,
@@ -42,7 +46,11 @@ const EntryWorkshopFormComponent: React.FC<EntryWorkshopFormComponentProps> = ({
         `${data.name} ${data.surname}`
       );
 
-      console.log(response);
+      if (!response.success) {
+        setEntryError(response.message);
+      }
+
+      setEntrySuccess(response.message);
     }
 
     reset();

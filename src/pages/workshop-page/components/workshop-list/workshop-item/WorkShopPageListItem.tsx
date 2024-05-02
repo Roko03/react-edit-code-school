@@ -29,14 +29,16 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
           <img src={workshop.imageUrl} alt={`${workshop.name}-image`} />
         </div>
         <div className={styles.workshop_item__accordion__main_info}>
-          <p>{workshop.name}</p>
-          <p>{workshop.instructor}</p>
-          <p>{formatDate(workshop.date)}</p>
+          <div className={styles.workshop_item__accordion__main_info__datas}>
+            <p>{workshop.name}</p>
+            <p>{workshop.instructor}</p>
+            <p>{formatDate(workshop.date)}</p>
+          </div>
+          <ButtonComponent variant={"entry"}>
+            <p>Prijavi se</p>
+          </ButtonComponent>
         </div>
       </div>
-      <ButtonComponent variant={"entry"}>
-        <p>Prijavi se</p>
-      </ButtonComponent>
       <div
         className={`${styles.workshop_item__accordion_item} ${
           workshopItemOpen == workshop.id

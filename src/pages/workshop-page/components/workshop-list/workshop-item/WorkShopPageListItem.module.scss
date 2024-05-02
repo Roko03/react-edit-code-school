@@ -18,8 +18,17 @@
   &__accordion {
     display: flex;
     flex-direction: column;
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+    }
+
     &__image {
       height: rem(160);
+
+      @include breakpoint(medium) {
+        height: rem(200);
+      }
 
       img {
         height: 100%;
@@ -29,19 +38,38 @@
     }
 
     &__main_info {
-      height: rem(120);
+      position: relative;
+      height: rem(160);
+
+      @include breakpoint(medium) {
+        height: rem(200);
+        padding: rem(16) rem(16) 0;
+      }
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: rem(16);
+
+      &__datas {
+        display: flex;
+        flex-direction: column;
+        gap: rem(8);
+      }
+
+      button {
+        width: calc(100% - 32px);
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        z-index: 99;
+      }
     }
   }
 
-  button {
-    margin: rem(16);
-  }
-
   &__accordion_item {
+    grid-area: item;
     max-height: 0;
     transition: all 1s ease-in-out;
 

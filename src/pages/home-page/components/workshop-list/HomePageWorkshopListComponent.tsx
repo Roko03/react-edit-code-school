@@ -10,8 +10,16 @@ interface HomePageWorkShopListComponentProps {
 const HomePageWorkShopListComponent: React.FC<
   HomePageWorkShopListComponentProps
 > = ({ workshopList, openEntryModal, entryWorkshopList }) => {
+  let listElement;
+  if (workshopList.length > 3) {
+    listElement = styles.workshop_list_less;
+  } else if (workshopList.length == 3) {
+    listElement = styles.workshop_list_more;
+  } else {
+    listElement = styles.workshop_list_less;
+  }
   return (
-    <div className={styles.workshop_list}>
+    <div className={`${styles.workshop_list} ${listElement}`}>
       {workshopList.map((workshop) => {
         return (
           <HomePageWorkshopListItemComponent

@@ -6,8 +6,15 @@
   flex-wrap: wrap;
   gap: rem(40);
   justify-content: center;
+}
 
+.workshop_list_more {
   @include breakpoint(large) {
     justify-content: space-between;
+  }
+}
+.workshop_list_less {
+  @include breakpoint(large) {
+    justify-content: flex-start;
   }
 }

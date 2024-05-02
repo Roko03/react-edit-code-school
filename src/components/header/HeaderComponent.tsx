@@ -21,7 +21,7 @@ const HeaderComponent = () => {
       navigate("/admin");
     } else {
       roleManager.setRole("user");
-      navigate("/");
+      //navigate("/");
     }
   }, [isAdmin]);
 

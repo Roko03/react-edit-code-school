@@ -1,5 +1,7 @@
+import WorkShopPageSection from "../pages/workshop-page/WorkShopPageSection";
+
 const WorkshopPage = () => {
-  return <div>WorkshopPage</div>;
+  return <WorkShopPageSection />;
 };
 
 export default WorkshopPage;

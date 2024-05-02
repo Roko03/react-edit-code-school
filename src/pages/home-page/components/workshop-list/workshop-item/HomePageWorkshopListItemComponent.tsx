@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ButtonComponent from "../../../../../components/button/ButtonComponent";
 import getInstructorById from "../../../../../lib/instructor/getInstructorById";
 import styles from "./HomePageWorkshopListItemComponent.module.scss";
+import formatDate from "../../../../../util/formatDate";
 
 interface HomePageWorkshopListItemComponentProps {
   workshopData: WorkShop;
@@ -54,7 +55,7 @@ const HomePageWorkshopListItemComponent: React.FC<
           )}
           <span>
             <img src={"/calendar.svg"} alt="profile" />
-            <p>{workshopData.date}</p>
+            <p>{formatDate(workshopData.date)}</p>
           </span>
         </div>
       </div>

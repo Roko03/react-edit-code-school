@@ -1,1 +1,7 @@
 @import "../../../../styles/main.scss";
+
+.workshop_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(24);
+}

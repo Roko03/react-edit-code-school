@@ -19,7 +19,7 @@ type TEntryWorkshopSchema = z.infer<typeof entryWorkshopSchema>;
 
 interface EntryWorkshopFormComponentProps {
   targetWorkshop: WorkShop | null;
-  setEntrySuccess: (message: string) => void;
+  setEntrySuccess: (message: string, id: string) => void;
   setEntryError: (message: string) => void;
 }
 
@@ -50,7 +50,7 @@ const EntryWorkshopFormComponent: React.FC<EntryWorkshopFormComponentProps> = ({
         setEntryError(response.message);
       }
 
-      setEntrySuccess(response.message);
+      setEntrySuccess(response.message, targetWorkshop.id);
     }
 
     reset();

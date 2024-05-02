@@ -6,13 +6,16 @@ import styles from "./HomePageWorkshopListItemComponent.module.scss";
 interface HomePageWorkshopListItemComponentProps {
   workshopData: WorkShop;
   openEntryModal: (id: string) => void;
+  entryWorkshopList: string[];
 }
 
 const HomePageWorkshopListItemComponent: React.FC<
   HomePageWorkshopListItemComponentProps
-> = ({ workshopData, openEntryModal }) => {
+> = ({ workshopData, openEntryModal, entryWorkshopList }) => {
   const [workshopInstructor, setWorkshopInstructor] =
     useState<Instructor | null>(null);
+
+  const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
   const fetchWorkshopInstructor = async () => {
     const response = await getInstructorById(workshopData.instructor);
@@ -20,9 +23,19 @@ const HomePageWorkshopListItemComponent: React.FC<
     setWorkshopInstructor(response);
   };
 
+  const setButtonDisabled = () => {
+    let enabled = entryWorkshopList.some((el) => el == workshopData.id);
+
+    setIsEnabled(enabled);
+  };
+
   useEffect(() => {
     fetchWorkshopInstructor();
   }, []);
+
+  useEffect(() => {
+    setButtonDisabled();
+  }, [entryWorkshopList]);
 
   return (
     <div className={styles.workshop_list_item}>
@@ -49,6 +62,7 @@ const HomePageWorkshopListItemComponent: React.FC<
         <ButtonComponent
           variant={"entry"}
           onClick={() => openEntryModal(workshopData.id)}
+          enabled={isEnabled}
         >
           <p>Prijavi se</p>
         </ButtonComponent>

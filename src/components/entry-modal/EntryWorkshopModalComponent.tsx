@@ -8,15 +8,17 @@ interface EntryWorkshopModalComponentProps {
   isModalOpen: boolean;
   closeModal: () => void;
   targetWorkshop: WorkShop | null;
+  setEntryWorkshopList: (id: string) => void;
 }
 
 const EntryWorkshopModalComponent: React.FC<
   EntryWorkshopModalComponentProps
-> = ({ isModalOpen, closeModal, targetWorkshop }) => {
+> = ({ isModalOpen, closeModal, targetWorkshop, setEntryWorkshopList }) => {
   const [isEntrySuccess, setIsEntrySuccess] = useState<boolean | null>(null);
   const [entryMessage, setEntryMessage] = useState<string>("");
 
-  const setEntrySuccess = (message: string) => {
+  const setEntrySuccess = (message: string, id: string) => {
+    setEntryWorkshopList(id);
     setIsEntrySuccess(true);
     setEntryMessage(message);
     closeModal();
@@ -33,7 +35,9 @@ const EntryWorkshopModalComponent: React.FC<
         <div className={styles.entry_modal_box}>
           <EntryWorkshopFormComponent
             targetWorkshop={targetWorkshop}
-            setEntrySuccess={(message: string) => setEntrySuccess(message)}
+            setEntrySuccess={(message: string, id: string) =>
+              setEntrySuccess(message, id)
+            }
             setEntryError={(message: string) => setEntryError(message)}
           />
         </div>

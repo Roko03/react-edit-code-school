@@ -17,6 +17,8 @@ const HomePageSection = () => {
   const [targetWorkshopId, setTargetWorkshopId] = useState<string>("");
   const [targetWorkshop, setTargetWorkshop] = useState<WorkShop | null>(null);
 
+  const [entryWorkshopList, setEntryWorkshopList] = useState<string[]>([]);
+
   const fetchWorkshops = async () => {
     const response = await getWorkshops();
 
@@ -69,6 +71,7 @@ const HomePageSection = () => {
                   setIsEntryModalOpen(true);
                   setTargetWorkshopId(id);
                 }}
+                entryWorkshopList={entryWorkshopList}
               />
             </div>
           )}
@@ -89,6 +92,9 @@ const HomePageSection = () => {
         isModalOpen={isEntryModalOpen}
         closeModal={() => setIsEntryModalOpen(false)}
         targetWorkshop={targetWorkshop}
+        setEntryWorkshopList={(id: string) =>
+          setEntryWorkshopList([...entryWorkshopList, id])
+        }
       />
     </>
   );

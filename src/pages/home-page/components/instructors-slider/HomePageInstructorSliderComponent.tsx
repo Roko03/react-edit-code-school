@@ -9,25 +9,15 @@ import "./HomePageInstructorSliderComponent.scss";
 import useScreenSize from "../../../../util/useScreenSize";
 import HomePageInstructorSlideComponent from "./slide/HomePageInstructorSlideComponent";
 
-const HomePageInstructorSliderComponent = () => {
+interface HomePageInstructorSliderComponentProps {
+  instructorList: Instructor[];
+}
+
+const HomePageInstructorSliderComponent: React.FC<
+  HomePageInstructorSliderComponentProps
+> = ({ instructorList }) => {
   const [slidesPerView, setSlidesPerView] = useState<number>(4);
   const screenSize = useScreenSize();
-  const arr: Instructor[] = [
-    {
-      id: "predavac_1",
-      name: "Predavac 1",
-      imageUrl: "/",
-      biography: "Biografija predavaca 1",
-      organization: "organizacija_1",
-    },
-    {
-      id: "predavac_2",
-      name: "Predavac 2",
-      imageUrl: "/",
-      biography: "Biografija predavaca 2",
-      organization: "organizacija_1",
-    },
-  ];
 
   useEffect(() => {
     if (screenSize.width < 500) {
@@ -50,7 +40,7 @@ const HomePageInstructorSliderComponent = () => {
         navigation={true}
         virtual
       >
-        {arr.map((instructor, index) => {
+        {instructorList.map((instructor, index) => {
           return (
             <SwiperSlide key={index} virtualIndex={index}>
               <HomePageInstructorSlideComponent instructor={instructor} />

@@ -3,6 +3,7 @@ import BannerComponent from "../../components/banner/BannerComponent";
 import styles from "./WorkShopPageSection.module.scss";
 import getWorkshops from "../../lib/workshop/getWorkShops";
 import CircularProgressComponent from "../../components/circular-progress/CircularProgressComponent";
+import WorkShopPageList from "./components/workshop-list/WorkShopPageList";
 
 const WorkShopPageSection = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,7 +28,13 @@ const WorkShopPageSection = () => {
       <div className={styles.container}>
         {isLoading && <CircularProgressComponent />}
         {workshopList != null && (
-          <>{workshopList.length < 0 ? <></> : <h2>Nemate radionica</h2>}</>
+          <>
+            {workshopList.length > 0 ? (
+              <WorkShopPageList workshopList={workshopList} />
+            ) : (
+              <h2>Nemate radionica</h2>
+            )}
+          </>
         )}
       </div>
     </>

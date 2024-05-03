@@ -19,9 +19,15 @@ const HeaderComponent = () => {
     if (isAdmin) {
       roleManager.setRole("admin");
       navigate("/admin");
+    } else if (!isAdmin && window.location.pathname == "/predavaci") {
+      roleManager.setRole("user");
+      navigate("/predavaci");
+    } else if (!isAdmin && window.location.pathname == "/radionice") {
+      roleManager.setRole("user");
+      navigate("/radionice");
     } else {
       roleManager.setRole("user");
-      //navigate("/");
+      navigate("/");
     }
   }, [isAdmin]);
 

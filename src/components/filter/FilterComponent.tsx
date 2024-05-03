@@ -34,7 +34,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   let filterListMobile: string[];
   let getDesktopFilters;
 
-  const inputFilterInArray = (value: string) => {
+  const putFilterInArray = (value: string) => {
     const isInArray = filters.some((filter) => filter == value);
 
     if (!isInArray) {
@@ -55,7 +55,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                   <FilterComponentItem
                     key={index}
                     filterItem={filter}
-                    setFilter={(value: string) => inputFilterInArray(value)}
+                    setFilter={(value: string) => putFilterInArray(value)}
+                    filters={filters}
                   />
                 );
               })}
@@ -67,7 +68,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                   <FilterComponentItem
                     key={index}
                     filterItem={filter}
-                    setFilter={(value: string) => inputFilterInArray(value)}
+                    setFilter={(value: string) => putFilterInArray(value)}
+                    filters={filters}
                   />
                 );
               })}
@@ -95,7 +97,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                   <FilterComponentItem
                     key={index}
                     filterItem={filter}
-                    setFilter={(value: string) => inputFilterInArray(value)}
+                    setFilter={(value: string) => putFilterInArray(value)}
+                    filters={filters}
                   />
                 );
               })}
@@ -107,7 +110,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                   <FilterComponentItem
                     key={index}
                     filterItem={filter}
-                    setFilter={(value: string) => inputFilterInArray(value)}
+                    setFilter={(value: string) => putFilterInArray(value)}
+                    filters={filters}
                   />
                 );
               })}
@@ -138,7 +142,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
                 <FilterComponentItem
                   key={index}
                   filterItem={filter}
-                  setFilter={(value: string) => inputFilterInArray(value)}
+                  setFilter={(value: string) => putFilterInArray(value)}
+                  filters={filters}
                 />
               </SwiperSlide>
             );
@@ -163,14 +168,21 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 interface FilterComponentItemProps {
   filterItem: string;
   setFilter: (value: string) => void;
+  filters: string[];
 }
 
 const FilterComponentItem: React.FC<FilterComponentItemProps> = ({
   filterItem,
   setFilter,
+  filters,
 }) => {
   return (
-    <li onClick={() => setFilter(filterItem)} className={`${styles.item}`}>
+    <li
+      onClick={() => setFilter(filterItem)}
+      className={`${styles.item} ${
+        filters.some((el) => el == filterItem) ? styles.item_active : ""
+      }`}
+    >
       {filterItem}
     </li>
   );

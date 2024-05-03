@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ButtonComponent from "../../../../../components/button/ButtonComponent";
 import formatDate from "../../../../../util/formatDate";
 import styles from "./WorkShopPageListItem.module.scss";
@@ -19,6 +19,8 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
   openEntryModal,
   entryWorkshopList,
 }) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   const [workshopInstructor, setWorkshopInstructor] =
     useState<Instructor | null>(null);
 
@@ -35,6 +37,16 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
     setWorkshopInstructor(respoonse);
   };
 
+  const handleAccordionClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    if (buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
+      if (workshopItemOpen == workshop.id) {
+        setWorkshopItemOpen("");
+      } else {
+        setWorkshopItemOpen(workshop.id);
+      }
+    }
+  };
+
   useEffect(() => {
     fetchInstructorById();
   }, []);
@@ -47,13 +59,7 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
     <div className={styles.workshop_item}>
       <div
         className={styles.workshop_item__accordion}
-        onClick={() => {
-          if (workshopItemOpen == workshop.id) {
-            setWorkshopItemOpen("");
-          } else {
-            setWorkshopItemOpen(workshop.id);
-          }
-        }}
+        onClick={handleAccordionClick}
       >
         <div className={styles.workshop_item__accordion__image}>
           <img src={workshop.imageUrl} alt={`${workshop.name}-image`} />
@@ -66,6 +72,7 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
             variant={"entry"}
             onClick={() => openEntryModal(workshop.id)}
             enabled={isEnabled}
+            buttonRef={buttonRef}
           >
             <p>Prijavi se</p>
           </ButtonComponent>

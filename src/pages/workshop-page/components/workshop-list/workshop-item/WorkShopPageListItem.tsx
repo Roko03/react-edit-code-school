@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import ButtonComponent from "../../../../../components/button/ButtonComponent";
 import formatDate from "../../../../../util/formatDate";
 import styles from "./WorkShopPageListItem.module.scss";
+import getInstructorById from "../../../../../lib/instructor/getInstructorById";
 
 interface WorkShopPageListItemProps {
   workshop: WorkShop;
@@ -13,6 +15,19 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
   workshopItemOpen,
   setWorkshopItemOpen,
 }) => {
+  const [workshopInstructor, setWorkshopInstructor] =
+    useState<Instructor | null>(null);
+
+  const fetchInstructorById = async () => {
+    const respoonse = await getInstructorById(workshop.instructor);
+
+    setWorkshopInstructor(respoonse);
+  };
+
+  useEffect(() => {
+    fetchInstructorById();
+  }, []);
+
   return (
     <div className={styles.workshop_item}>
       <div
@@ -30,7 +45,7 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
         </div>
         <div className={styles.workshop_item__accordion__main_info}>
           <p>{workshop.name}</p>
-          <p>{workshop.instructor}</p>
+          {workshopInstructor != null && <p>{workshopInstructor.name}</p>}
           <p>{formatDate(workshop.date)}</p>
           <ButtonComponent variant={"entry"}>
             <p>Prijavi se</p>

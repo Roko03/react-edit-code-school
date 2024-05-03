@@ -25,8 +25,6 @@ const WorkShopPageSection = () => {
     fetchWorkshop();
   }, []);
 
-  console.log(filters);
-
   return (
     <>
       <BannerComponent title={"Radionice"} variant={"secondary"} />

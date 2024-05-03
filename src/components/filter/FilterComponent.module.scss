@@ -77,10 +77,18 @@
   outline: none;
 
   @include breakpoint(large) {
+    opacity: 0;
+    visibility: hidden;
     margin-top: rem(12);
     border: none;
     padding: 0;
     color: $blue;
     text-decoration: underline;
+    transition: opacity 0.5s ease-in-out;
   }
+}
+
+.delete_filters_active {
+  opacity: 1;
+  visibility: visible;
 }

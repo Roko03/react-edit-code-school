@@ -11,6 +11,8 @@ const WorkShopPageSection = () => {
 
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);
 
+  const [filters, setFilters] = useState<string[]>([]);
+
   const fetchWorkshop = async () => {
     setIsLoading(true);
     const reponse = await getWorkshops();
@@ -23,12 +25,19 @@ const WorkShopPageSection = () => {
     fetchWorkshop();
   }, []);
 
+  console.log(filters);
+
   return (
     <>
       <BannerComponent title={"Radionice"} variant={"secondary"} />
       <div className={styles.container}>
         <section className={styles.workshop_section}>
-          <FilterComponent variant={"workshop"} />
+          <FilterComponent
+            variant={"workshop"}
+            filters={filters}
+            setFilters={(value: string) => setFilters([...filters, value])}
+            clearFilters={() => setFilters([])}
+          />
           {isLoading && <CircularProgressComponent />}
           {workshopList != null && (
             <>

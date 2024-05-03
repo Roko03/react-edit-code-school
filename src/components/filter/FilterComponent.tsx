@@ -5,16 +5,23 @@ import { useEffect, useState } from "react";
 import provideDefaultSubjectData from "../data/SelectSubjectData";
 import provideDefaultDifficultyData from "../data/SelectDifficultyData";
 import getOrganizations from "../../lib/organization/getOrganizations";
-import ButtonComponent from "../button/ButtonComponent";
 
 interface FilterComponentProps {
   variant: "workshop" | "instructor";
+  filters: string[];
+  setFilters: (value: string) => void;
+  clearFilters: () => void;
 }
 
 const getSubjects = provideDefaultSubjectData();
 const getLevels = provideDefaultDifficultyData();
 
-const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
+const FilterComponent: React.FC<FilterComponentProps> = ({
+  variant,
+  filters,
+  setFilters,
+  clearFilters,
+}) => {
   const [organizationsList, setOrganizationList] = useState<
     Organization[] | null
   >(null);
@@ -27,6 +34,14 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
   let filterListMobile: string[];
   let getDesktopFilters;
 
+  const inputFilterInArray = (value: string) => {
+    const isInArray = filters.some((filter) => filter == value);
+
+    if (!isInArray) {
+      setFilters(value);
+    }
+  };
+
   switch (variant) {
     case "workshop":
       filterListMobile = [...getSubjects, ...getLevels];
@@ -36,13 +51,25 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
             <ul className={styles.filter_desktop__list}>
               <h2>Teme</h2>
               {getSubjects.map((filter, index) => {
-                return <FilterComponentItem key={index} filterItem={filter} />;
+                return (
+                  <FilterComponentItem
+                    key={index}
+                    filterItem={filter}
+                    setFilter={(value: string) => inputFilterInArray(value)}
+                  />
+                );
               })}
             </ul>
             <ul className={styles.filter_desktop__list}>
               <h2>Težine</h2>
               {getLevels.map((filter, index) => {
-                return <FilterComponentItem key={index} filterItem={filter} />;
+                return (
+                  <FilterComponentItem
+                    key={index}
+                    filterItem={filter}
+                    setFilter={(value: string) => inputFilterInArray(value)}
+                  />
+                );
               })}
             </ul>
           </>
@@ -64,13 +91,25 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
             <h2>Teme</h2>
             <ul className={styles.filter_desktop__list}>
               {getSubjects.map((filter, index) => {
-                return <FilterComponentItem key={index} filterItem={filter} />;
+                return (
+                  <FilterComponentItem
+                    key={index}
+                    filterItem={filter}
+                    setFilter={(value: string) => inputFilterInArray(value)}
+                  />
+                );
               })}
             </ul>
             <h2>Organizacije</h2>
             <ul className={styles.filter_desktop__list}>
               {organizationsNames.map((filter, index) => {
-                return <FilterComponentItem key={index} filterItem={filter} />;
+                return (
+                  <FilterComponentItem
+                    key={index}
+                    filterItem={filter}
+                    setFilter={(value: string) => inputFilterInArray(value)}
+                  />
+                );
               })}
             </ul>
           </>
@@ -88,7 +127,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
       <div className={styles.filter_mobile}>
         <Swiper slidesPerView={"auto"} spaceBetween={20}>
           <SwiperSlide>
-            <button className={styles.delete_filters}>
+            <button className={styles.delete_filters} onClick={clearFilters}>
               <p>Izbriši filtere</p>
             </button>
           </SwiperSlide>
@@ -96,7 +135,11 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
           {filterListMobile.map((filter, index) => {
             return (
               <SwiperSlide key={index}>
-                <FilterComponentItem key={index} filterItem={filter} />
+                <FilterComponentItem
+                  key={index}
+                  filterItem={filter}
+                  setFilter={(value: string) => inputFilterInArray(value)}
+                />
               </SwiperSlide>
             );
           })}
@@ -104,7 +147,12 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
       </div>
       <div className={styles.filter_desktop}>
         {getDesktopFilters()}
-        <button className={styles.delete_filters}>
+        <button
+          className={`${styles.delete_filters} ${
+            filters.length > 0 ? styles.delete_filters_active : ""
+          }`}
+          onClick={clearFilters}
+        >
           <p>Izbriši filtere</p>
         </button>
       </div>
@@ -114,12 +162,18 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
 
 interface FilterComponentItemProps {
   filterItem: string;
+  setFilter: (value: string) => void;
 }
 
 const FilterComponentItem: React.FC<FilterComponentItemProps> = ({
   filterItem,
+  setFilter,
 }) => {
-  return <li className={`${styles.item}`}>{filterItem}</li>;
+  return (
+    <li onClick={() => setFilter(filterItem)} className={`${styles.item}`}>
+      {filterItem}
+    </li>
+  );
 };
 
 export default FilterComponent;

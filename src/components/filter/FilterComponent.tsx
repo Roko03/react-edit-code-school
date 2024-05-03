@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import provideDefaultSubjectData from "../data/SelectSubjectData";
 import provideDefaultDifficultyData from "../data/SelectDifficultyData";
 import getOrganizations from "../../lib/organization/getOrganizations";
+import { useSearchParams } from "react-router-dom";
 
 interface FilterComponentProps {
   variant: "workshop" | "instructor";
@@ -31,6 +32,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     setOrganizationList(response);
   };
 
+  const [, setSearchParams] = useSearchParams();
+
   let filterListMobile: string[];
   let getDesktopFilters;
 
@@ -39,6 +42,11 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 
     if (!isInArray) {
       setFilters(value);
+      let filtersArray = [...filters, value];
+
+      const stringFiltersArray = filtersArray.join(",");
+
+      setSearchParams({ filter: stringFiltersArray });
     }
   };
 
@@ -156,7 +164,10 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
           className={`${styles.delete_filters} ${
             filters.length > 0 ? styles.delete_filters_active : ""
           }`}
-          onClick={clearFilters}
+          onClick={() => {
+            clearFilters();
+            setSearchParams("");
+          }}
         >
           <p>Izbriši filtere</p>
         </button>

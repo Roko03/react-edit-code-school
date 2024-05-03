@@ -7,13 +7,26 @@ import WorkShopPageList from "./components/workshop-list/WorkShopPageList";
 import FilterComponent from "../../components/filter/FilterComponent";
 import getWorkshopById from "../../lib/workshop/getWorkshopById";
 import EntryWorkshopModalComponent from "../../components/entry-modal/EntryWorkshopModalComponent";
+import { useSearchParams } from "react-router-dom";
 
 const WorkShopPageSection = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [workshopList, setWorkshopList] = useState<WorkShop[] | null>(null);
 
-  const [filters, setFilters] = useState<string[]>([]);
+  const [searchParams] = useSearchParams();
+
+  const getFiltersByParams = () => {
+    const filters = searchParams.get("filter");
+
+    if (filters) {
+      return filters.split(",");
+    }
+
+    return [];
+  };
+
+  const [filters, setFilters] = useState<string[]>(getFiltersByParams());
 
   const [targetWorkshopId, setTargetWorkshopId] = useState<string>("");
   const [targetWorkshop, setTargetWorkshop] = useState<WorkShop | null>(null);

@@ -1,56 +1,101 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./FilterComponent.module.scss";
-import { Virtual } from "swiper/modules";
 import "./slider.scss";
-import useScreenSize from "../../util/useScreenSize";
 import { useEffect, useState } from "react";
+import provideDefaultSubjectData from "../data/SelectSubjectData";
+import provideDefaultDifficultyData from "../data/SelectDifficultyData";
+import getOrganizations from "../../lib/organization/getOrganizations";
 
 interface FilterComponentProps {
-  filterList: string[];
+  variant: "workshop" | "instructor";
 }
 
-const FilterComponent: React.FC<FilterComponentProps> = ({ filterList }) => {
-  const [slidesPerView, setSlidesPerView] = useState<number>(4);
-  const screenSize = useScreenSize();
+const getSubjects = provideDefaultSubjectData();
+const getLevels = provideDefaultDifficultyData();
+
+const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
+  const [organizationsList, setOrganizationList] = useState<
+    Organization[] | null
+  >(null);
+
+  const fetchOrganization = async () => {
+    const response = await getOrganizations();
+    setOrganizationList(response);
+  };
+
+  let filterListMobile: string[];
+  let getDesktopFilters;
+
+  switch (variant) {
+    case "workshop":
+      filterListMobile = [...getSubjects, ...getLevels];
+      getDesktopFilters = () => {
+        return (
+          <>
+            <ul className={styles.filter_desktop__list}>
+              <h2>Teme</h2>
+              {getSubjects.map((filter, index) => {
+                return <FilterComponentItem key={index} filterItem={filter} />;
+              })}
+            </ul>
+            <ul className={styles.filter_desktop__list}>
+              <h2>Težine</h2>
+              {getLevels.map((filter, index) => {
+                return <FilterComponentItem key={index} filterItem={filter} />;
+              })}
+            </ul>
+          </>
+        );
+      };
+      break;
+    case "instructor":
+      let organizationsNames: string[] = [];
+      if (organizationsList) {
+        organizationsNames = organizationsList.map((organization) => {
+          return organization.name;
+        });
+      }
+
+      filterListMobile = [...getSubjects, ...organizationsNames];
+      getDesktopFilters = () => {
+        return (
+          <>
+            <h2>Teme</h2>
+            <ul className={styles.filter_desktop__list}>
+              {getSubjects.map((filter, index) => {
+                return <FilterComponentItem key={index} filterItem={filter} />;
+              })}
+            </ul>
+            <h2>Organizacije</h2>
+            <ul className={styles.filter_desktop__list}>
+              {organizationsNames.map((filter, index) => {
+                return <FilterComponentItem key={index} filterItem={filter} />;
+              })}
+            </ul>
+          </>
+        );
+      };
+      break;
+  }
 
   useEffect(() => {
-    if (screenSize.width < 350) {
-      setSlidesPerView(3);
-    } else if (screenSize.width > 350 && screenSize.width < 550) {
-      setSlidesPerView(4);
-    } else if (screenSize.width > 550 && screenSize.width < 750) {
-      setSlidesPerView(5);
-    } else {
-      setSlidesPerView(6);
-    }
-  }, [screenSize]);
+    fetchOrganization();
+  }, []);
 
   return (
     <>
       <div className={styles.filter_mobile}>
-        <Swiper
-          modules={[Virtual]}
-          slidesPerView={slidesPerView}
-          spaceBetween={8}
-          virtual
-        >
-          {filterList.map((filter, index) => {
+        <Swiper slidesPerView={"auto"} spaceBetween={20}>
+          {filterListMobile.map((filter, index) => {
             return (
-              <SwiperSlide key={index} virtualIndex={index}>
+              <SwiperSlide key={index}>
                 <FilterComponentItem key={index} filterItem={filter} />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-      <div className={styles.filter_desktop}>
-        <ul className={styles.filter_desktop__list}>
-          <h2>Težine</h2>
-          {filterList.map((filter, index) => {
-            return <FilterComponentItem key={index} filterItem={filter} />;
-          })}
-        </ul>
-      </div>
+      <div className={styles.filter_desktop}>{getDesktopFilters()}</div>
     </>
   );
 };
@@ -62,7 +107,9 @@ interface FilterComponentItemProps {
 const FilterComponentItem: React.FC<FilterComponentItemProps> = ({
   filterItem,
 }) => {
-  return <li className={`${styles.item_active}`}>{filterItem}</li>;
+  return (
+    <li className={`${styles.item} ${styles.item_active}`}>{filterItem}</li>
+  );
 };
 
 export default FilterComponent;

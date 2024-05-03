@@ -8,15 +8,26 @@ interface WorkShopPageListItemProps {
   workshop: WorkShop;
   workshopItemOpen: string;
   setWorkshopItemOpen: (id: string) => void;
+  openEntryModal: (id: string) => void;
+  entryWorkshopList: string[];
 }
 
 const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
   workshop,
   workshopItemOpen,
   setWorkshopItemOpen,
+  openEntryModal,
+  entryWorkshopList,
 }) => {
   const [workshopInstructor, setWorkshopInstructor] =
     useState<Instructor | null>(null);
+
+  const [isEnabled, setIsEnabled] = useState<boolean>(false);
+  const setButtonDisabled = () => {
+    let enabled = entryWorkshopList.some((el) => el == workshop.id);
+
+    setIsEnabled(enabled);
+  };
 
   const fetchInstructorById = async () => {
     const respoonse = await getInstructorById(workshop.instructor);
@@ -27,6 +38,10 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
   useEffect(() => {
     fetchInstructorById();
   }, []);
+
+  useEffect(() => {
+    setButtonDisabled();
+  }, [entryWorkshopList]);
 
   return (
     <div className={styles.workshop_item}>
@@ -47,7 +62,11 @@ const WorkShopPageListItem: React.FC<WorkShopPageListItemProps> = ({
           <p>{workshop.name}</p>
           {workshopInstructor != null && <p>{workshopInstructor.name}</p>}
           <p>{formatDate(workshop.date)}</p>
-          <ButtonComponent variant={"entry"}>
+          <ButtonComponent
+            variant={"entry"}
+            onClick={() => openEntryModal(workshop.id)}
+            enabled={isEnabled}
+          >
             <p>Prijavi se</p>
           </ButtonComponent>
         </div>

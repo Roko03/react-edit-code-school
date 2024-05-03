@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import provideDefaultSubjectData from "../data/SelectSubjectData";
 import provideDefaultDifficultyData from "../data/SelectDifficultyData";
 import getOrganizations from "../../lib/organization/getOrganizations";
+import ButtonComponent from "../button/ButtonComponent";
 
 interface FilterComponentProps {
   variant: "workshop" | "instructor";
@@ -86,6 +87,12 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
     <>
       <div className={styles.filter_mobile}>
         <Swiper slidesPerView={"auto"} spaceBetween={20}>
+          <SwiperSlide>
+            <button className={styles.delete_filters}>
+              <p>Izbriši filtere</p>
+            </button>
+          </SwiperSlide>
+          ;
           {filterListMobile.map((filter, index) => {
             return (
               <SwiperSlide key={index}>
@@ -95,7 +102,12 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ variant }) => {
           })}
         </Swiper>
       </div>
-      <div className={styles.filter_desktop}>{getDesktopFilters()}</div>
+      <div className={styles.filter_desktop}>
+        {getDesktopFilters()}
+        <button className={styles.delete_filters}>
+          <p>Izbriši filtere</p>
+        </button>
+      </div>
     </>
   );
 };
@@ -107,9 +119,7 @@ interface FilterComponentItemProps {
 const FilterComponentItem: React.FC<FilterComponentItemProps> = ({
   filterItem,
 }) => {
-  return (
-    <li className={`${styles.item} ${styles.item_active}`}>{filterItem}</li>
-  );
+  return <li className={`${styles.item}`}>{filterItem}</li>;
 };
 
 export default FilterComponent;

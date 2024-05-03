@@ -18,6 +18,7 @@
     font-size: rem(18);
     padding: rem(12) rem(14);
     cursor: pointer;
+    text-transform: capitalize;
   }
 
   .item_active {
@@ -61,5 +62,25 @@
       font-weight: 600;
       text-decoration: underline;
     }
+  }
+}
+
+.delete_filters {
+  background-color: transparent;
+  border-radius: rem(4);
+  border: 1px solid $grey;
+  color: $black;
+  font-family: Roboto;
+  font-size: rem(18);
+  padding: rem(12) rem(14);
+  cursor: pointer;
+  outline: none;
+
+  @include breakpoint(large) {
+    margin-top: rem(12);
+    border: none;
+    padding: 0;
+    color: $blue;
+    text-decoration: underline;
   }
 }

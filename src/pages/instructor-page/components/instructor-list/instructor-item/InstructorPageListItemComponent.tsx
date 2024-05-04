@@ -21,8 +21,8 @@ const InstructorPageListItemComponent: React.FC<
             <span>{instructor.organization}</span>
           ) : (
             <>
-              {instructor.organization.map((organization) => (
-                <span>{organization}</span>
+              {instructor.organization.map((organization, index) => (
+                <span key={index}>{organization}</span>
               ))}
             </>
           )}

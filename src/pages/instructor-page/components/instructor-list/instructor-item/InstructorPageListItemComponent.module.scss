@@ -53,6 +53,10 @@
       flex-wrap: wrap;
       align-items: center;
       gap: rem(12);
+
+      span {
+        font-size: rem(12);
+      }
     }
 
     &__text {

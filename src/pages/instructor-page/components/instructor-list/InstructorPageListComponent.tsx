@@ -11,7 +11,12 @@ const InstructorPageListComponent: React.FC<
   return (
     <div className={styles.instructor_list}>
       {instructorList.map((instructor) => {
-        return <InstructorPageListItemComponent instructor={instructor} />;
+        return (
+          <InstructorPageListItemComponent
+            key={instructor.id}
+            instructor={instructor}
+          />
+        );
       })}
     </div>
   );

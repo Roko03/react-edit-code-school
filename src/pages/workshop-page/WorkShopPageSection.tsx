@@ -34,14 +34,6 @@ const WorkShopPageSection = () => {
   const [isEntryModalOpen, setIsEntryModalOpen] = useState<boolean>(false);
   const [entryWorkshopList, setEntryWorkshopList] = useState<string[]>([]);
 
-  const fetchWorkshop = async () => {
-    setIsLoading(true);
-    const reponse = await getWorkshops();
-
-    setWorkshopList(reponse);
-    setIsLoading(false);
-  };
-
   const fetchWorkshopById = async () => {
     if (targetWorkshopId != "") {
       const reponse = await getWorkshopById(targetWorkshopId);
@@ -50,9 +42,29 @@ const WorkShopPageSection = () => {
     }
   };
 
+  const fetchWorkshops = async () => {
+    setIsLoading(true);
+
+    try {
+      let workshops: WorkShop[] = await getWorkshops();
+
+      if (workshops && filters.length > 0) {
+        workshops = workshops.filter((workshop) =>
+          filters.some(
+            (filter) => filter === workshop.subject || filter === workshop.level
+          )
+        );
+      }
+
+      setWorkshopList(workshops || []);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchWorkshop();
-  }, []);
+    fetchWorkshops();
+  }, [filters]);
 
   useEffect(() => {
     fetchWorkshopById();

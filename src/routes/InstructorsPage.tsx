@@ -1,5 +1,7 @@
+import InstructorPageSection from "../pages/instructor-page/InstructorPageSection";
+
 const InstructorsPage = () => {
-  return <div>InstructorsPage</div>;
+  return <InstructorPageSection />;
 };
 
 export default InstructorsPage;

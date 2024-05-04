@@ -75,9 +75,9 @@
   padding: rem(12) rem(14);
   cursor: pointer;
   outline: none;
-  align-self: flex-start;
 
   @include breakpoint(large) {
+    align-self: flex-start;
     opacity: 0;
     visibility: hidden;
     margin-top: rem(12);

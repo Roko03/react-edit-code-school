@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BurgerMenuComponent from "../burger-menu/BurgerMenuComponent";
 import styles from "./HeaderComponent.module.scss";
 import RoleSwitcherComponent from "../role-switcher/RoleSwitcherComponent";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import MenuComponent from "./menu/MenuComponent";
 import LinkListComponent from "../link-list/LinkListComponent";
 import { userRoleManager } from "../../util/userRoleContext";
@@ -14,11 +14,26 @@ const HeaderComponent = () => {
   );
   const roleManager = userRoleManager();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (isAdmin) {
       roleManager.setRole("admin");
-      navigate("/admin");
+      if (searchParams.get("tab")) {
+        navigate(`/admin?tab=${searchParams.get("tab")}`);
+      } else {
+        navigate("/admin");
+      }
+    } else if (!isAdmin && window.location.pathname == "/predavaci") {
+      roleManager.setRole("user");
+      navigate("/predavaci");
+    } else if (!isAdmin && window.location.pathname == "/radionice") {
+      roleManager.setRole("user");
+      if (searchParams.get("filter")) {
+        navigate(`/radionice?filter=${searchParams.get("filter")}`);
+      } else {
+        navigate("/radionice");
+      }
     } else {
       roleManager.setRole("user");
       navigate("/");

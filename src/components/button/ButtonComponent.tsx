@@ -5,6 +5,7 @@ interface ButtonComponentProps {
   children: React.ReactNode;
   onClick?: () => void;
   enabled?: boolean;
+  buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 const ButtonComponent: React.FC<ButtonComponentProps> = ({
@@ -12,6 +13,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   children,
   onClick,
   enabled,
+  buttonRef,
 }) => {
   let buttonStyle;
 
@@ -37,6 +39,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
       className={`${styles.button} ${buttonStyle}`}
       onClick={onClick}
       disabled={enabled}
+      ref={buttonRef ? buttonRef : undefined}
     >
       {children}
     </button>

@@ -1,0 +1,94 @@
+@import "../../styles/main.scss";
+
+.filter_mobile {
+  display: flex;
+  flex-direction: row;
+  gap: rem(8);
+
+  @include breakpoint(large) {
+    display: none;
+  }
+
+  .item {
+    background-color: transparent;
+    border-radius: rem(4);
+    border: 1px solid $grey;
+    color: $black;
+    font-family: Roboto;
+    font-size: rem(18);
+    padding: rem(12) rem(14);
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+
+  .item_active {
+    background-color: $grey;
+  }
+}
+
+.filter_desktop {
+  display: none;
+
+  @include breakpoint(large) {
+    display: flex;
+  }
+
+  flex-direction: column;
+  gap: rem(24);
+
+  h2 {
+    font-size: rem(24);
+    font-family: Poppins;
+    font-weight: 700;
+    margin-bottom: rem(12);
+  }
+  &__list {
+    color: $black;
+
+    display: flex;
+    flex-direction: column;
+    gap: rem(14);
+
+    .item {
+      margin-left: rem(16);
+      align-self: baseline;
+      font-family: Roboto;
+      font-size: rem(18);
+      cursor: pointer;
+      text-transform: capitalize;
+    }
+
+    .item_active {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+}
+
+.delete_filters {
+  background-color: transparent;
+  border-radius: rem(4);
+  border: 1px solid $grey;
+  color: $black;
+  font-family: Roboto;
+  font-size: rem(18);
+  padding: rem(12) rem(14);
+  cursor: pointer;
+  outline: none;
+
+  @include breakpoint(large) {
+    opacity: 0;
+    visibility: hidden;
+    margin-top: rem(12);
+    border: none;
+    padding: 0;
+    color: $blue;
+    text-decoration: underline;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
+.delete_filters_active {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,16 @@
+@import "../../../../styles/main.scss";
+
+.workshop_list {
+  display: grid;
+  gap: rem(24);
+  width: 100%;
+
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  @include breakpoint(large) {
+    width: 80%;
+    justify-items: baseline;
+    grid-template-columns: 1fr 1fr;
+  }
+}

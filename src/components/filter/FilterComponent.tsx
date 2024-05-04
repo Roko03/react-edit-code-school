@@ -139,7 +139,13 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
       <div className={styles.filter_mobile}>
         <Swiper slidesPerView={"auto"} spaceBetween={20}>
           <SwiperSlide>
-            <button className={styles.delete_filters} onClick={clearFilters}>
+            <button
+              className={styles.delete_filters}
+              onClick={() => {
+                clearFilters();
+                setSearchParams("");
+              }}
+            >
               <p>Izbriši filtere</p>
             </button>
           </SwiperSlide>

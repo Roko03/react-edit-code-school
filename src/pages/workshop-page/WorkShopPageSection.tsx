@@ -79,6 +79,7 @@ const WorkShopPageSection = () => {
             variant={"workshop"}
             filters={filters}
             setFilters={(value: string) => setFilters([...filters, value])}
+            setFiltersArray={(array: string[]) => setFilters(array)}
             clearFilters={() => setFilters([])}
           />
           {isLoading && <CircularProgressComponent />}

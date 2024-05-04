@@ -11,6 +11,7 @@ interface FilterComponentProps {
   variant: "workshop" | "instructor";
   filters: string[];
   setFilters: (value: string) => void;
+  setFiltersArray: (array: string[]) => void;
   clearFilters: () => void;
 }
 
@@ -21,6 +22,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   variant,
   filters,
   setFilters,
+  setFiltersArray,
   clearFilters,
 }) => {
   const [organizationsList, setOrganizationList] = useState<
@@ -43,6 +45,14 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     if (!isInArray) {
       setFilters(value);
       let filtersArray = [...filters, value];
+
+      const stringFiltersArray = filtersArray.join(",");
+
+      setSearchParams({ filter: stringFiltersArray });
+    } else {
+      let filtersArray = filters.filter((filter) => filter != value);
+
+      setFiltersArray(filtersArray);
 
       const stringFiltersArray = filtersArray.join(",");
 

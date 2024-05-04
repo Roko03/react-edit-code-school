@@ -1,11 +1,18 @@
 import styles from "./InstructorPageListComponent.module.scss";
 import InstructorPageListItemComponent from "./instructor-item/InstructorPageListItemComponent";
 
-const InstructorPageListComponent = () => {
+interface InstructorPageListComponentProps {
+  instructorList: Instructor[];
+}
+
+const InstructorPageListComponent: React.FC<
+  InstructorPageListComponentProps
+> = ({ instructorList }) => {
   return (
     <div className={styles.instructor_list}>
-      <InstructorPageListItemComponent />
-      <InstructorPageListItemComponent />
+      {instructorList.map((instructor) => {
+        return <InstructorPageListItemComponent instructor={instructor} />;
+      })}
     </div>
   );
 };

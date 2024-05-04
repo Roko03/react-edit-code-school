@@ -1,20 +1,34 @@
 import styles from "./InstructorPageListItemComponent.module.scss";
 
-const InstructorPageListItemComponent = () => {
+interface InstructorPageListItemComponentProps {
+  instructor: Instructor;
+}
+
+const InstructorPageListItemComponent: React.FC<
+  InstructorPageListItemComponentProps
+> = ({ instructor }) => {
   return (
     <div className={styles.instructor_item}>
       <div className={styles.instructor_item__image}>
-        <img src={"/background-banner.png"} alt="instructor-image" />
+        <img src={instructor.imageUrl} alt="instructor-image" />
       </div>
       <div className={styles.instructor_item__info}>
-        <span className={styles.instructor_item__info__name}>Predavac 1</span>
+        <span className={styles.instructor_item__info__name}>
+          {instructor.name}
+        </span>
         <p className={styles.instructor_item__info__organization}>
-          <span>Organizacija</span>
-          <span>Organizacija</span>
+          {typeof instructor.organization == "string" ? (
+            <span>{instructor.organization}</span>
+          ) : (
+            <>
+              {instructor.organization.map((organization) => (
+                <span>{organization}</span>
+              ))}
+            </>
+          )}
         </p>
         <p className={styles.instructor_item__info__text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-          quibusdam?
+          {instructor.biography}
         </p>
       </div>
     </div>

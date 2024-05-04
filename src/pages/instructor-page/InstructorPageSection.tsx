@@ -4,8 +4,11 @@ import FilterComponent from "../../components/filter/FilterComponent";
 import styles from "./InstructorPageSection.module.scss";
 import { useSearchParams } from "react-router-dom";
 import InstructorPageListComponent from "./components/instructor-list/InstructorPageListComponent";
+import CircularProgressComponent from "../../components/circular-progress/CircularProgressComponent";
 
 const InstructorPageSection = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [searchParams] = useSearchParams();
 
   const getFiltersByParams = () => {
@@ -19,6 +22,10 @@ const InstructorPageSection = () => {
   };
   const [filters, setFilters] = useState<string[]>(getFiltersByParams());
 
+  const [instructorList, setInstructorList] = useState<Instructor[] | null>(
+    null
+  );
+
   return (
     <>
       <BannerComponent variant={"secondary"} title={"Predavači"} />
@@ -30,7 +37,16 @@ const InstructorPageSection = () => {
             setFiltersArray={(array: string[]) => setFilters(array)}
             clearFilters={() => setFilters([])}
           />
-          <InstructorPageListComponent />
+          {isLoading && <CircularProgressComponent />}
+          {instructorList != null && (
+            <>
+              {instructorList.length > 0 ? (
+                <InstructorPageListComponent instructorList={instructorList} />
+              ) : (
+                <h2>Nemate predavača</h2>
+              )}
+            </>
+          )}
         </section>
       </div>
     </>

@@ -10,7 +10,6 @@ import { useSearchParams } from "react-router-dom";
 interface FilterComponentProps {
   variant: "workshop" | "instructor";
   filters: string[];
-  setFilters: (value: string) => void;
   setFiltersArray: (array: string[]) => void;
   clearFilters: () => void;
 }
@@ -21,7 +20,6 @@ const getLevels = provideDefaultDifficultyData();
 const FilterComponent: React.FC<FilterComponentProps> = ({
   variant,
   filters,
-  setFilters,
   setFiltersArray,
   clearFilters,
 }) => {
@@ -43,8 +41,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
     const isInArray = filters.some((filter) => filter == value);
 
     if (!isInArray) {
-      setFilters(value);
       let filtersArray = [...filters, value];
+      setFiltersArray(filtersArray);
 
       const stringFiltersArray = filtersArray.join(",");
 

@@ -75,6 +75,7 @@
   padding: rem(12) rem(14);
   cursor: pointer;
   outline: none;
+  align-self: flex-start;
 
   @include breakpoint(large) {
     opacity: 0;

@@ -3,6 +3,7 @@ import BannerComponent from "../../components/banner/BannerComponent";
 import FilterComponent from "../../components/filter/FilterComponent";
 import styles from "./InstructorPageSection.module.scss";
 import { useSearchParams } from "react-router-dom";
+import InstructorPageListComponent from "./components/instructor-list/InstructorPageListComponent";
 
 const InstructorPageSection = () => {
   const [searchParams] = useSearchParams();
@@ -29,6 +30,7 @@ const InstructorPageSection = () => {
             setFiltersArray={(array: string[]) => setFilters(array)}
             clearFilters={() => setFilters([])}
           />
+          <InstructorPageListComponent />
         </section>
       </div>
     </>

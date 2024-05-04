@@ -1,0 +1,12 @@
+@import "../../../../styles/main.scss";
+
+.instructor_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: rem(40);
+
+  @media screen and (max-width: rem(635)) {
+    justify-content: center;
+  }
+}

@@ -35,7 +35,11 @@ const InstructorPageSection = () => {
 
       if (instructors && filters.length > 0) {
         instructors = instructors.filter((instructor) =>
-          filters.some((filter) => filter === instructor.organization)
+          typeof instructor.organization == "string"
+            ? filters.some((filter) => filter == instructor.organization)
+            : instructor.organization.some((organization) =>
+                filters.includes(organization)
+              )
         );
       }
 

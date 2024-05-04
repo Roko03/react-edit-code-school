@@ -5,6 +5,9 @@ const InstructorPageSection = () => {
   return (
     <>
       <BannerComponent variant={"secondary"} title={"Predavači"} />
+      <div className={styles.container}>
+        <section className={styles.instructor_section}></section>
+      </div>
     </>
   );
 };

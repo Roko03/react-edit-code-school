@@ -10,9 +10,13 @@
   align-items: center;
   padding: rem(14) rem(18);
   border-radius: rem(4);
+  gap: rem(12);
 
   @include breakpoint(large) {
     padding: rem(20) rem(32);
+    width: rem(300);
+    height: rem(400);
+    gap: rem(18);
   }
 
   &__image {
@@ -39,6 +43,10 @@
     gap: rem(12);
     justify-content: space-between;
 
+    @include breakpoint(large) {
+      gap: rem(16);
+    }
+
     &__name {
       color: $blue;
       font-family: "Poppins";
@@ -55,13 +63,13 @@
       gap: rem(12);
 
       span {
-        font-size: rem(12);
+        font-size: rem(14);
       }
     }
 
     &__text {
       color: $black;
-      font-size: rem(14);
+      font-size: rem(16);
       margin-top: auto;
       text-align: center;
     }

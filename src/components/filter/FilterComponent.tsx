@@ -102,23 +102,10 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         });
       }
 
-      filterListMobile = [...getSubjects, ...organizationsNames];
+      filterListMobile = [...organizationsNames];
       getDesktopFilters = () => {
         return (
           <>
-            <h2>Teme</h2>
-            <ul className={styles.filter_desktop__list}>
-              {getSubjects.map((filter, index) => {
-                return (
-                  <FilterComponentItem
-                    key={index}
-                    filterItem={filter}
-                    setFilter={(value: string) => putFilterInArray(value)}
-                    filters={filters}
-                  />
-                );
-              })}
-            </ul>
             <h2>Organizacije</h2>
             <ul className={styles.filter_desktop__list}>
               {organizationsNames.map((filter, index) => {
@@ -157,7 +144,6 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
               <p>Izbriši filtere</p>
             </button>
           </SwiperSlide>
-          ;
           {filterListMobile.map((filter, index) => {
             return (
               <SwiperSlide key={index}>

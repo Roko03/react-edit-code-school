@@ -1,0 +1,77 @@
+@import "../../../../../styles/main.scss";
+
+.instructor_item {
+  width: 100%;
+  max-width: rem(266);
+  height: rem(318);
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: rem(14) rem(18);
+  border-radius: rem(4);
+  gap: rem(12);
+
+  @include breakpoint(large) {
+    padding: rem(20) rem(32);
+    width: rem(300);
+    height: rem(400);
+    gap: rem(18);
+  }
+
+  &__image {
+    height: rem(100);
+    width: rem(100);
+    @include breakpoint(large) {
+      height: rem(150);
+      width: rem(150);
+    }
+    border-radius: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    margin-top: rem(12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(12);
+    justify-content: space-between;
+
+    @include breakpoint(large) {
+      gap: rem(16);
+    }
+
+    &__name {
+      color: $blue;
+      font-family: "Poppins";
+      font-size: rem(18);
+      font-weight: 600;
+    }
+
+    &__organization {
+      color: rgba($black, 0.5);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: rem(12);
+
+      span {
+        font-size: rem(14);
+      }
+    }
+
+    &__text {
+      color: $black;
+      font-size: rem(16);
+      margin-top: auto;
+      text-align: center;
+    }
+  }
+}

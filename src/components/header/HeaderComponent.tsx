@@ -26,7 +26,11 @@ const HeaderComponent = () => {
       }
     } else if (!isAdmin && window.location.pathname == "/predavaci") {
       roleManager.setRole("user");
-      navigate("/predavaci");
+      if (searchParams.get("filter")) {
+        navigate(`/predavaci?filter=${searchParams.get("filter")}`);
+      } else {
+        navigate("/predavaci");
+      }
     } else if (!isAdmin && window.location.pathname == "/radionice") {
       roleManager.setRole("user");
       if (searchParams.get("filter")) {

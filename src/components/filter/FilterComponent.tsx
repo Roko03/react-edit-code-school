@@ -157,7 +157,6 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
               <p>Izbriši filtere</p>
             </button>
           </SwiperSlide>
-          ;
           {filterListMobile.map((filter, index) => {
             return (
               <SwiperSlide key={index}>
